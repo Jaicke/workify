@@ -1,0 +1,260 @@
+// Place all the styles related to the Site controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "application";
+
+.logo-white {
+  background-image: asset-url("logos/white.png");
+  width: 115px;
+  height: 110px;
+  background-size: cover;
+}
+
+.site-home {
+  display: flex;
+  flex-direction: column;
+}
+
+.hat-icon {
+  background-image: asset-url("icons/gray-hat.png");
+  width: 40px;
+  height: 31px;
+  background-size: cover;
+}
+
+// Sign
+
+.sign {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sign-student {
+  background: linear-gradient(180deg, $student-primary-color 5%, $student-secondary-color 65%);
+}
+
+.sign-teacher {
+  background: linear-gradient(180deg, $teacher-primary-color 5%, $teacher-secondary-color 65%);
+}
+
+.sign-box {
+  background-color: white;
+  width: 500px;
+  border-radius: 45px;
+}
+
+.sign-tabs .left-tab{
+  border-top-left-radius: 40px;
+  border-top-right-radius: 0;
+  font-size: 23px;
+  text-align: center;
+}
+
+.sign-tabs .right-tab{
+  border-top-right-radius: 40px;
+  border-top-left-radius: 0;
+  font-size: 23px;
+  text-align: center;
+}
+
+.sign .sign-tabs a:not(.active) {
+  border: none;
+  color: white;
+}
+
+.sign.sign-student .sign-tabs a:not(.active) {
+  background-color: $student-secondary-color;
+}
+
+.sign.sign-teacher .sign-tabs a:not(.active) {
+  background-color: $teacher-secondary-color;
+}
+
+.sign.sign-student .sign-tabs .active {
+  color: $student-secondary-color;
+}
+
+.sign.sign-teacher .sign-tabs .active {
+  color: $teacher-secondary-color;
+}
+
+#myTab .nav-item {
+  flex-grow: 1;
+}
+
+.card-title-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sign .card-footer {
+  display: flex;
+  justify-content: center;
+
+  a {
+    color: black;
+  }
+}
+
+.sign-submit-container {
+  display: flex;
+  justify-content: center;
+}
+
+.sign-input-rounded {
+  border-radius: 20px;
+}
+
+// Home
+
+.site-home-mobile {
+  display: none;
+}
+
+.site-home-desktop {
+  padding: 0 50px;
+
+  .site-header {
+    display: flex;
+    justify-content: space-between;
+
+    .site-header-buttons {
+      margin-top: 39px;
+      a {
+        text-decoration: none;
+        font-size: 20px;
+        text-align: center;
+        width: 230px;
+        border-radius: 20px;
+      }
+
+      .signin-button {
+        padding: 3px 52px;
+        color: white;
+        background-color: $teacher-secondary-color;
+        margin-right: 10px;
+      }
+
+      .signin-button:hover {
+        background-color: lighten($teacher-secondary-color, 10%);
+      }
+
+      .signup-button {
+        padding: 3px 20px;
+        color: $student-secondary-color;
+        border: solid 1px $student-secondary-color;
+      }
+    }
+  }
+
+  .logo-gray {
+    background-image: asset-url("logos/gray.png");
+    width: 120px;
+    height: 120px;
+    background-size: cover;
+  }
+
+  .site-ilustration img{
+    width: 700px;
+    height: 455px;
+    object-fit: contain;
+  }
+
+  .site-content {
+    display: flex;
+    align-items: center;
+
+    .site-text {
+      display: flex;
+      flex-direction: column;
+
+      .site-title {
+        color: $student-primary-color;
+        font-size: 60px;
+        font-weight: bold;
+      }
+    }
+  }
+
+  .site-footer {
+    margin-top: 35px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 720px)
+{
+  .site-home-desktop {
+    display: none;
+  }
+
+  .site-home-mobile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 57px;
+    height: 100vh;
+
+    .logo-gray {
+      background-image: asset-url("logos/gray.png");
+      width: 120px;
+      height: 120px;
+      background-size: cover;
+    }
+
+    .site-ilustration img {
+      width: 280px;
+      height: 180px;
+    }
+
+    .site-title {
+      font-size: 35px;
+      font-weight: bold;
+      color: $student-primary-color;
+      margin-top: 30px;
+    }
+
+    .site-subtitle {
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    a {
+      text-decoration: none;
+      font-size: 20px;
+      text-align: center;
+      width: 230px;
+      border-radius: 20px;
+    }
+
+    .signin-button {
+      color: white;
+      background-color: $teacher-secondary-color;
+      margin-top: 30px;
+    }
+
+    .signin-button:hover {
+      background-color: lighten($teacher-secondary-color, 10%);
+    }
+
+    .signup-button {
+      color: $student-secondary-color;
+      border: solid 1px $student-secondary-color;
+      background-color: white;
+      margin-top: 12px;
+    }
+
+    .site-footer {
+      margin-top: 35px;
+      text-align: center;
+    }
+  }
+
+  .sign-box
+   {
+    width: 90%;
+   }
+}

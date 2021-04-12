@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  email: MyString
+  college_id: 1
+  course_id: 1
+  class_shift: 1
+  ingress_year: 1
+  ingress_semester: 1
+  serie: 1
+  password_digest: MyString
+
+two:
+  name: MyString
+  email: MyString
+  college_id: 1
+  course_id: 1
+  class_shift: 1
+  ingress_year: 1
+  ingress_semester: 1
+  serie: 1
+  password_digest: MyString

@@ -1,0 +1,24 @@
+<div class="box">
+  <div class="content">
+    <div class="teacher-list-header">
+      <span>
+        Professores
+      </span>
+      <div>
+        <%= form_tag student_teachers_path, autocomplete: :off, method: :get, remote: true do %>
+          <%= text_field_tag 'search', params[:search], placeholder: "Pesquisar", class: "form-control col-md-12 col-sm-12 col-12", id: "search-teacher-input" %>
+        <% end %>
+      </div>
+    </div>
+    <br>
+    <div class="teacher-list">
+      <% @teachers.each do |teacher| %>
+        <%= render "teacher_card", teacher: teacher %>
+      <% end %>
+    </div>
+
+    <div class="info-pagination">
+      <%= render "pagination", teachers: @teachers %>
+    </div>
+  </div>
+</div>

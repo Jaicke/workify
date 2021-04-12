@@ -1,0 +1,103 @@
+@import "bootstrap";
+@import "font-awesome-sprockets";
+@import "font-awesome";
+@import "sweetalert2";
+@import "select2";
+@import "select2-bootstrap";
+
+$student-primary-color: #015EC5;
+$student-secondary-color: #0A94D5;
+
+$teacher-primary-color: #F8851B;
+$teacher-secondary-color: #FF9C31;
+
+*{
+  font-family: 'Roboto';
+}
+
+.select2 {
+  width:100% !important;
+}
+
+.card-title{
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+}
+
+.card-body{
+  padding: 1.25rem 2rem !important;
+  justify-content: center;
+}
+
+.sign-submit{
+  width: 70%;
+  height: 40px;
+  border-radius: 20px;
+  margin-top: 13px;
+}
+
+.content-title{
+  font-size: 20px;
+  margin-bottom: 15px;
+  margin-left: 12px;
+}
+
+#save-profile-btn{
+  border-radius: 18px;
+}
+
+.content{
+  margin-left: 8px;
+  margin-right: 8px;
+  border: 1px solid rgba(182, 178, 178, 0.5);
+  border-radius: 8px;
+  background-color: #FFF;
+  padding: 20px;
+}
+
+.avatar-input{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.avatar-input .avatar-icon{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 90px;
+  margin-left: -35px;
+  width: 30px;
+  height: 30px;
+  font-size: 18px;
+  color: #111;
+  background-color: #E4E6Eb;
+  border-radius: 50%;
+  z-index: 0;
+  cursor: pointer;
+}
+
+.avatar-input input{
+  display: none;
+}
+
+.avatar-input img{
+  width: 120px;
+  height: 120px;
+  border: 1px solid grey;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.avatar-file-btn{
+  cursor: pointer;
+}
+
+.avatar-input .avatar-preview:hover{
+  opacity: 0.8;
+}

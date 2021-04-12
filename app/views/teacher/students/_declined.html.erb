@@ -1,0 +1,13 @@
+<div class="connect-card">
+  <%= image_tag 'logos/gray_and_orange' %>
+  <div class="connect-icon declined">
+    <%= icon('fas', 'times') %>
+  </div>
+  <div class="connect-text">
+    <h4>Pedido de conexão recusado!</h4>
+    <p>Com isso o aluno não poderá adicioná-lo como orientador ou co-orientador.</p>
+  </div>
+  <div class="connect-button">
+    <%= link_to "Ir para inicio", teacher_home_index_path, class: "btn btn-dark" %>
+  </div>
+</div>

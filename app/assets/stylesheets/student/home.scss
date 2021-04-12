@@ -1,0 +1,251 @@
+*{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+body{
+  background: #f2f7f8;
+}
+
+.wrapper .header{
+  z-index: 1;
+  background-color: #FFF;
+  position: fixed;
+  width: calc(100% - 0%);
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0
+}
+
+.wrapper .header .header-menu{
+  width: calc(100% - 0%);
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.title{
+  font-size: 22px;
+  margin-left: 40px;
+  font-weight: 900;
+}
+
+.wrapper .sidebar .sidebar-header .title{
+  position: fixed;
+}
+
+.wrapper.collapses .header .header-menu .title{
+  margin-top: 2px;
+}
+
+.title span{
+  color: $student-secondary-color;
+}
+
+.header-profile-image {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.wrapper .header .header-menu .sidebar-btn{
+  color: #000;
+  position: absolute;
+  margin-left: 4px;
+  font-size: 22px;
+  font-weight: 900;
+  cursor: pointer;
+  transition: 0.3s;
+  transition-property: color;
+}
+
+.wrapper .header .header-menu .sidebar-btn:hover,
+.wrapper .sidebar .sidebar-header .sidebar-btn:hover{
+  color: $student-secondary-color;
+}
+
+.wrapper .header .header-menu ul{
+  height: 100%;
+  display: flex;
+  align-items: center;
+  margin-bottom: 0;
+}
+
+.wrapper .sidebar{
+  z-index: 1;
+  position: fixed;
+  background-color: #FFF;
+  top: 0;
+  padding-top: 19px;
+  width: 250px;
+  height: calc(100% - 0%);
+  transition: 0.3s;
+  transition-property: width;
+  overflow-y: auto;
+}
+
+.wrapper .sidebar .sidebar-header{
+  height: 70px;
+  padding: 0 20px;
+  display: flex;
+}
+
+.wrapper .sidebar .sidebar-header .sidebar-btn{
+  color: #000;
+  position: absolute;
+  margin-left: 4px;
+  font-size: 22px;
+  font-weight: 900;
+  cursor: pointer;
+  transition: 0.3s;
+  transition-property: color;
+}
+
+.wrapper .sidebar .sidebar-menu{
+  overflow: hidden;
+}
+
+.wrapper .sidebar .sidebar-menu .profile{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.wrapper .sidebar .sidebar-menu .profile .profile-info{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  line-height: 1;
+}
+
+.wrapper .sidebar .sidebar-menu .profile img{
+  margin: 20px 0;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin-right: 5px;
+  object-fit: cover;
+}
+
+.wrapper .sidebar .sidebar-menu .profile p{
+  font-weight: bold;
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+
+.wrapper .sidebar .sidebar-menu .item{
+  width: 100%;
+  overflow: hidden;
+}
+
+.wrapper .sidebar .sidebar-menu .item .menu-btn{
+  display: block;
+  position: relative;
+  width: 100%;
+  padding: 20px;
+  transition: 0.3s;
+  transition-property: color, background-color;
+}
+
+.wrapper .sidebar .sidebar-menu .item .menu-btn:hover{
+  background-color: $student-secondary-color;
+  color: #FFF;
+}
+
+.nav-link{
+  color: rgba(0, 0, 0, 0.7)
+}
+
+.active{
+  border-left: 5px solid $student-secondary-color;
+}
+
+.box{
+  width: calc(100% - 250px);
+  margin-top: 70px;
+  margin-left: 250px;
+  padding: 15px;
+  transition: 0.3s;
+}
+
+.wrapper.collapses .sidebar .sidebar-header .title,
+.wrapper.collapses .sidebar .sidebar-header span{
+  color: transparent;
+}
+
+.wrapper.collapses .sidebar{
+  width: 0;
+}
+
+.box.collapses{
+  width: calc(100% - 0%);
+  margin-left: 5px;
+}
+
+.alert{
+  width: calc(100% - 250px);
+  top: 70px;
+  margin-left: 250px;
+  transition: 0.3s;
+}
+
+.alert.collapses{
+  width: calc(100% - 0%);
+  margin-left: 0;
+}
+
+//mobile
+
+@media (max-width: 720px){
+  .title{
+    font-size: 20px;
+    margin-left: 40px;
+    font-weight: 900;
+  }
+
+  .title span{
+    color: $student-secondary-color;
+  }
+
+  .wrapper .sidebar{
+    z-index: 1;
+    position: fixed;
+    background-color: #FFF;
+    top: 0;
+    padding-top: 19px;
+    width: 50%;
+    height: calc(100% - 0%);
+    transition: 0.3s;
+    transition-property: width;
+    overflow-y: auto;
+  }
+
+  .wrapper .sidebar .sidebar-menu .profile {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .box {
+    width: 100%;
+    margin-top: 70px;
+    margin-left: 0;
+    padding: 15px;
+    transition: 0.3s;
+  }
+
+  .container.collapses{
+    // width: calc(100% - 30px);
+    margin-left: 30px;
+  }
+}

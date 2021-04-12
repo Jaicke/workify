@@ -1,0 +1,14 @@
+<div class="teacher-card">
+  <div class="avatar">
+    <%= image_tag url_for_profile_image(teacher), loading: "lazy" %>
+  </div>
+
+  <div class="info">
+    <span class="teacher-name"><%= teacher.label_name %></span>
+    <span class="teacher-email"><%= teacher.email %></span>
+  </div>
+
+  <div class="button">
+    <%= teacher_card_button_type(teacher.id) %>
+  </div>
+</div>

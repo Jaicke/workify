@@ -1,0 +1,21 @@
+@import "application";
+@import "teacher/home";
+@import "teacher/users";
+@import "teacher/students";
+
+.student-logo {
+  background-image: asset-url("logos/gray_and_orange.png");
+  width: 85px;
+  height: 80px;
+  margin-left: 35px;
+  background-size: cover;
+}
+
+.sidebar-header .student-logo {
+  margin-top: -23px;
+}
+
+.alert-danger{
+  background-color: #d64242;
+  color: white;
+}

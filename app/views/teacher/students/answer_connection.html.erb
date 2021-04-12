@@ -1,0 +1,10 @@
+<div class="connect-container">
+  <% if @answer == 'accepted' %>
+    <%= render "accepted" %>
+  <% elsif @answer == 'declined' %>
+    <%= render "declined" %>
+  <% else %>
+    <!-- Você já respondeu esse convite! -->
+    <%= render "already_answered" %>
+  <% end %>
+</div>

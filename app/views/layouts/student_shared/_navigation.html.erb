@@ -1,0 +1,51 @@
+<div class="wrapper">
+  <div class="header">
+    <div class="header-menu">
+      <div class="student-logo"></div>
+      <div class="sidebar-btn">
+        <%= icon("fas", "bars") %>
+      </div>
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+          <%= image_tag url_for_profile_image(current_user), class: "header-profile-image" %>
+          <%= current_user.label_name %>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <%= nav_dropdown_item "Perfil", edit_profile_student_me_path, 'user' %>
+          <%= nav_dropdown_item "Trocar Senha", change_password_student_me_path, 'lock' %>
+          <div class="dropdown-divider"></div>
+          <%= link_to student_sessions_path, method: :delete, class: "dropdown-item" do %>
+            <%= icon("fas", "sign-out") %> Sair
+          <% end %>
+        </div>
+      </li>
+
+    </div>
+  </div>
+
+  <div class="sidebar">
+    <div class="sidebar-header">
+      <div class="student-logo"></div>
+      <div class="sidebar-btn">
+        <%= icon("fa", "bars") %>
+      </div>
+    </div>
+    <div class="sidebar-menu">
+      <div class="profile">
+        <div class="profile-avatar">
+          <%= image_tag url_for_profile_image(current_user), class: "header-profile-image" %>
+        </div>
+        <div class="profile-info">
+          <p><%= current_user.label_name %></p>
+          <small class="text-muted"><%= current_user.email %></small>
+        </div>
+      </div>
+      <ul>
+        <%= nav_link_to "Início", student_home_index_path, 'home', 'home' %>
+        <%= nav_link_to "Trabalhos", '#', 'works', 'file' %>
+        <%= nav_link_to "Professores", student_teachers_path, 'teachers', 'chalkboard-teacher' %>
+      </ul>
+    </div>
+  </div>
+</div>

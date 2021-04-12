@@ -1,0 +1,46 @@
+<h1>Olá, <%= @teacher.first_name %>!</h1>
+
+<p style="font-size: 16px;">
+  Você recebeu um pedido de conexão, aceite para possibilitar que o aluno o adicione como orientador ou co-orientador.
+</p>
+
+<table style="width: 440px; margin-top: 23px; margin-bottom: 23px;">
+  <tr style="font-size: 16px; color: #1c1e20; opacity: 0.6; font-weight: bold;">
+    <td width="60%">
+      Nome
+    </td>
+    <td width="40%">
+      Faculdade
+    </td>
+  </tr>
+  <tr style="height: 25px; font-size: 16px; color: #1c1e20; font-weight: normal;">
+    <td>
+      <%= @connection.student.label_name %>
+    </td>
+    <td>
+      <%= @connection.student.college.acronym %>
+    </td>
+  </tr>
+
+  <tr style="font-size: 16px; color: #1c1e20; opacity: 0.6; font-weight: bold;">
+    <td width="60%">
+      Curso
+    </td>
+    <td width="40%">
+      Série
+    </td>
+  </tr>
+  <tr style="height: 25px; font-size: 16px; color: #1c1e20; font-weight: normal;">
+    <td>
+      <%= @connection.student.course.name %>
+    </td>
+    <td>
+      <%= @connection.student.serie %>
+    </td>
+  </tr>
+</table>
+
+<div style="text-align: center; font-size: 16px; font-weight:bold;">
+  <%= link_to "Aceitar", answer_connection_teacher_students_url(id: @connection.id, answer: 'accepted'), style: "background-color: #45a245; padding: 5px 30px; border-radius: 10px; text-decoration: none; color: white !important;" %>
+  <%= link_to "Recusar", answer_connection_teacher_students_url(id: @connection.id, answer: 'declined'), style: "background-color: #e4e4e4; padding: 5px 30px; border-radius: 10px; text-decoration: none; color: black !important;" %>
+<div>

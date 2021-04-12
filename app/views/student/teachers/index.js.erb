@@ -1,0 +1,11 @@
+var teachers = document.querySelector(".teacher-list");
+var pagination = document.querySelector(".info-pagination");
+
+teachers.innerHTML = "";
+pagination.innerHTML = "";
+
+pagination.insertAdjacentHTML("beforeend", "<%= j render 'pagination', teachers: @teachers %>");
+
+<% @teachers.each do |teacher| %>
+  teachers.insertAdjacentHTML("beforeend", "<%= j render 'teacher_card', teacher: teacher %>");
+<% end %>

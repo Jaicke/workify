@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Workify - <%= params[:action] %></title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+
+    <%= favicon_link_tag asset_path('icons/gray-hat.png') %>
+    <%= stylesheet_link_tag    'site', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;1,100;1,300&display=swap" rel="stylesheet">
+  </head>
+
+  <body>
+    <%= yield %>
+  </body>
+</html>

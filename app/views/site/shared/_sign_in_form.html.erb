@@ -1,0 +1,32 @@
+<div class="card-body">
+  <div class="card-title-container">
+    <span class="card-title">
+      <span class="hat-icon"></span>
+      Entrar
+    </span>
+  </div>
+  <%= form_with url: form_url, method: :post, autocomplete: "disabled" do |form|%>
+    <div class="form-row">
+      <div class="input-group mb-3">
+        <%= form.email_field :email, class: "form-control sign-input-rounded", id: "#{prefix}_email", placeholder: "E-mail", autofocus: true, required: true %>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="input-group mb-3">
+        <%= form.password_field :password, class: "form-control sign-input-rounded", id: "#{prefix}_password", placeholder: "Senha", required: true %>
+      </div>
+    </div>
+
+    <small class="text-muted"><%= link_to  "Esqueceu a senha?", "#" %></small>
+
+    <div class="sign-submit-container">
+      <%= form.submit "Entrar", class: "btn btn-dark float-righ sign-submit" %>
+    </div>
+
+  <% end %>
+</div>
+<div class="card-footer text-muted">
+  <small class="text-muted">Ainda não possui uma conta? Cadastre-se <%= link_to  "aqui", sign_up_path %>.</small>
+  <br>
+</div>

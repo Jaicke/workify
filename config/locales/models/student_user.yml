@@ -1,0 +1,22 @@
+pt-BR:
+  activerecord:
+    models:
+      student/user:
+        one: Estudante
+        other: Estudantes
+    attributes:
+      student/user:
+        first_name: Nome
+        last_name: Sobrenome
+        college: Faculdade
+        college_id: Faculdade
+        course: Curso
+        course_id: Curso
+        ingress_semester: Semestre de ingresso
+        ingress_year: Ano de ingresso
+        serie: Série
+        class_shift: Turno
+        email: E-mail
+        current_password: Senha Atual
+        password: Senha
+        password_confirmation: Confirmação de Senha

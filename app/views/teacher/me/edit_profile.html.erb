@@ -1,0 +1,68 @@
+<div class="box">
+  <div class="content row">
+    <div class="content-title">
+      Seu Perfil
+    </div>
+    <div class="profile-basic col-md-12">
+      <%= form_with(model: @current_user, url: teacher_me_path, local: false, html: { autocomplete: :off }) do |f| %>
+
+        <div class="form-row">
+          <div class="form-group avatar-input">
+            <%= f.file_field :avatar %>
+            <div class="avatar-preview">
+              <%= image_tag url_for_profile_image(@current_user), id: 'image' %>
+            </div>
+            <div class="avatar-icon" data-toggle="dropdown">
+              <%= icon("fas", "camera") %>
+            </div>
+            <span class="dropdown-menu">
+              <span class="dropdown-item avatar-file-btn">Atualizar Foto</span>
+              <% if current_user.avatar.attached? %>
+                <%= link_to "Remover Foto", remove_avatar_teacher_me_path, method: :delete, class: "dropdown-item", data: { confirm: 'Tem certeza que deseja remover sua foto?' } %>
+              <% end %>
+            </span>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <%= f.label :first_name %>
+            <%= f.text_field :first_name, class: "form-control" %>
+          </div>
+          <div class="form-group col-md-6">
+             <%= f.label :last_name %>
+            <%= f.text_field :last_name, class: "form-control"%>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <%= f.label :whatsapp %>
+            <%= f.text_field :whatsapp, class: "form-control" %>
+          </div>
+        </div>
+
+         <div class="form-row">
+          <div class="form-group col-md-6">
+            <%= f.label :colleges %>
+            <%= f.select :college_ids, options_from_collection_for_select(@colleges, :id, :label, @current_user.colleges.pluck(:id)), { include_blank: true }, multiple: true, class: 'select2 form-control' %>
+          </div>
+
+           <div class="form-group col-md-6">
+            <%= f.label :courses %>
+            <%= f.select :course_ids, options_from_collection_for_select(@courses, :id, :name, @current_user.courses.pluck(:id)), { include_blank: true }, multiple: true, class: 'select2 form-control' %>
+          </div>
+        </div>
+
+         <div class="form-row">
+          <div class="form-group col-md-12">
+            <%= f.label :interests %>
+            <%= f.text_area :interests, class: 'form-control' %>
+          </div>
+        </div>
+
+        <button type="submit" id="save-profile-btn" class="btn btn-dark float-right">Salvar <%= icon("fas", "arrow-right") %></button>
+      <% end %>
+    </div>
+  </div>
+</div>

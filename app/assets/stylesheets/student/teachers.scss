@@ -1,0 +1,151 @@
+// Teacher list
+
+.teacher-list-header {
+  display: flex;
+  justify-content: space-between;
+
+  span {
+    font-size: 20px;
+  }
+}
+
+#search-teacher-input {
+  background-image: asset-url("icons/search-icon.png");
+  background-position: 6px 7px;
+  background-repeat: no-repeat;
+  background-size: 22px 22px;
+  border-radius: 20px;
+  text-indent: 25px;
+}
+
+.teacher-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  grid-gap: 20px;
+}
+
+.info-pagination {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+
+  span {
+    margin-left: 5px;
+
+    a {
+      color: black;
+      padding: 7px;
+    }
+  }
+
+  span.current {
+    background-color: $student_secondary_color;
+    color: white;
+    padding: 0 3px;
+    border-radius: 2px;
+  }
+}
+
+
+// Teacher card
+
+.teacher-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 220px;
+  height: 200px;
+  border-radius: 10px;
+  padding-top: 20px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+  transition: transform .2s;
+
+  .avatar img {
+    width: 90px;
+    height: 90px;
+    border-radius: 45px;
+    object-fit: cover;
+  }
+
+  .info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .teacher-name {
+      font-size: 19px;
+      font-style: normal;
+    }
+
+    .teacher-email {
+      font-size: 10px;
+      color: rgb(83, 75, 75);
+    }
+  }
+
+  .button {
+    margin: 20px 0;
+
+    .btn-connection {
+      text-decoration: none;
+      color: white;
+      padding: 2px 45px;
+      border: none;
+      border-radius: 20px;
+    }
+
+    .btn-connection:focus{
+      outline-style: none;
+    }
+
+    .connect {
+      background-color: $student_primary_color;
+    }
+
+    .connect:hover {
+      background-color: $student_secondary_color;
+    }
+
+    .pending {
+      background-color: #495057;
+    }
+
+    .pending:hover {
+      background-color: #495057db;
+    }
+
+    .connected {
+      background-color: #38972f;
+    }
+
+    .connected:hover {
+      background-color: #495057db;
+    }
+
+  }
+}
+
+.teacher-card:hover {
+  transform: scale(1.1)
+}
+
+@media (max-width: 720px)
+{
+  .teacher-list-header {
+    flex-direction: column;
+    align-items: center;
+
+    span {
+      margin-bottom: 10px;
+    }
+  }
+
+  .teacher-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}

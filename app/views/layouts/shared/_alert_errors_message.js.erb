@@ -1,0 +1,9 @@
+swal({
+  type: 'warning',
+  showConfirmButton: true,
+  allowOutsideClick: true,
+  allowEscapeKey: false,
+  allowEnterKey: true,
+  title: 'Erros encontrados',
+  html: '<%= resource.errors.full_messages.map { |message| "- #{message}" }.join("<br>").html_safe %>'
+});

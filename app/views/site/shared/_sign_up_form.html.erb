@@ -1,0 +1,37 @@
+<div class="card-body">
+  <div class="card-title-container">
+    <span class="card-title">
+      <span class="hat-icon"></span>
+      Cadastrar
+    </span>
+  </div>
+  <%= form_with(url: form_url, local: false, html: { autocomplete: :off }) do |form| %>
+    <div class="form-row">
+      <div class="input-group mb-3">
+        <%= form.text_field :first_name, class: "form-control sign-input-rounded", id: "#{prefix}_first_name", placeholder: "Nome", autofocus: true, required: true %>
+        <%= form.text_field :last_name, class: "form-control sign-input-rounded", id: "#{prefix}_last_name", placeholder: "Sobrenome", required: true %>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="input-group mb-3">
+        <%= form.email_field :email, class: "form-control sign-input-rounded", id: "#{prefix}_email", placeholder: "E-mail", required: true %>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="input-group mb-3">
+        <%= form.password_field :password, class: "form-control sign-input-rounded", id: "#{prefix}_password", placeholder: "Senha", required: true %>
+        <%= form.password_field :password_confirmation, class: "form-control sign-input-rounded", id: "#{prefix}_password_confirmation", placeholder: "Confirmação", required: true %>
+      </div>
+    </div>
+
+    <div class="sign-submit-container">
+      <%= form.submit "Cadastrar", class: "btn btn-dark float-right sign-submit" %>
+    </div>
+  <% end %>
+</div>
+<div class="card-footer text-muted">
+  <small class="text-muted">Já possui uma conta? Acesse <%= link_to  "aqui", sign_in_path %>.</small>
+  <br>
+</div>
