@@ -2,6 +2,7 @@ class Student::BaseController < ApplicationController
   layout 'student'
 
   before_action :authenticate
+  before_action :verify_user_profile
 
   private
 
@@ -20,5 +21,11 @@ class Student::BaseController < ApplicationController
 
   def authenticate
     redirect_to sign_in_path unless logged_in?
+  end
+
+  def verify_user_profile
+    unless @current_user&.profile_completed?
+      redirect_to edit_profile_student_me_path, alert: 'Complete seu perfil para continuar navegando'
+    end
   end
 end

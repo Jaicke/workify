@@ -39,6 +39,10 @@ gem 'sweetalert2'
 gem "select2-rails"
 # Pagination
 gem 'kaminari'
+#soft-delete
+gem 'acts_as_paranoid', '~> 0.7.0'
+#Dynamic nested forms using jQuery made easy
+gem "cocoon"
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'

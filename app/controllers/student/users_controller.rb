@@ -1,5 +1,5 @@
 class Student::UsersController < Student::BaseController
-  skip_before_action :authenticate
+  skip_before_action :authenticate, :verify_user_profile
 
   def create
     @user = Student::User.new(user_params)

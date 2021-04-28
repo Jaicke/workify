@@ -1,0 +1,14 @@
+pt-BR:
+  activerecord:
+    models:
+      work:
+        one: Trabalho
+        other: Trabalhos
+    attributes:
+      work:
+        theme: Tema
+        description: Descrição
+        advisor: Orientador
+        co_advisors: Co-Orientadores
+        group: Em grupo
+        group_members: Membros do grupo

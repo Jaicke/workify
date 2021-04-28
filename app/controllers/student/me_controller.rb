@@ -1,4 +1,6 @@
 class Student::MeController < Student::BaseController
+  skip_before_action :verify_user_profile
+
   before_action :set_user
   before_action :set_colleges, :set_courses, only: [:edit_profile, :update]
 

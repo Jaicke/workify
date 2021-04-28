@@ -1,0 +1,53 @@
+<%= form_with(model: @work, url: path, local: false, html: { autocomplete: :off }) do |f| %>
+
+  <div class="form-row">
+    <div class="form-group col-md-12">
+      <%= f.label :theme %>
+      <%= f.text_field :theme, class:"form-control" %>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <%= f.label :advisor %>
+      <%= f.select :advisor_id, options_from_collection_for_select(@teachers, :id, :label_name, @work.advisor_id), { include_blank: true }, class: 'select2 form-control' %>
+    </div>
+
+    <div class="form-group col-md-6">
+      <%= f.label :co_advisors %>
+      <%= f.select :co_advisor_ids, options_from_collection_for_select(@teachers, :id, :label_name, @work.co_advisors.pluck(:id)), { include_blank: true }, multiple: true, class: 'select2 form-control' %>
+    </div>
+  </div>
+
+  <div class="custom-control custom-switch">
+    <div class="form-group">
+      <%= f.check_box :group, class: "custom-control-input", disabled: !can_access_work_action?(@work) %>
+      <%= f.label :group, class: "custom-control-label" %>
+    </div>
+  </div>
+
+  <div class="form-row" id='fields-for-group-members' style="display:<%= f.object.group? ? 'block' : 'none'%>;">
+    <div class="form-group col-md-12">
+      <%= f.label :group_members %>
+      <%= link_to_add_association f, :group_members, data: { 'association-insertion-method': 'append' }, class: 'icon-link mt-2' do %>
+        <%= icon("fas", "plus-circle") %>
+      <% end %>
+      <%= f.fields_for :group_members do |group_member| %>
+        <%= render 'group_member_fields', f: group_member %>
+      <% end %>
+
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-12">
+      <%= f.label :description %>
+      <%= f.text_area :description, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="text-right">
+    <button type="submit" id="save-profile-btn" class="btn btn-dark">Salvar <%= icon("fas", "arrow-right") %></button>
+  </div>
+<% end %>
+<br>

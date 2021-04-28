@@ -10,8 +10,8 @@ pt-BR:
     page_entries_info:
       one_page:
         display_entries:
-          zero: "%{entry_name}(as) não encontrados(as)"
-          one: "<b>1</b> %{entry_name}(a)"
-          other: "<b>%{count}</b> %{entry_name}"
+          zero: "Nenhum item encontrado"
+          one: "<b>1</b> item"
+          other: "<b>%{count}</b> items"
       more_pages:
         display_entries: "<b>%{first}&nbsp;-&nbsp;%{last}</b> de <b>%{total}</b>"

@@ -7,6 +7,8 @@ class Student::User < ApplicationRecord
   has_many :connections, foreign_key: :student_id
   has_many :teachers, through: :connections
 
+  has_many :works, foreign_key: :created_by
+
   has_one_attached :avatar
 
   validates_uniqueness_of :email
@@ -27,6 +29,17 @@ class Student::User < ApplicationRecord
   def connection_with(teacher_id)
     connection = self.connections.where(teacher_id: teacher_id, status: ['pending', 'accepted']).last
     return connection if connection
+  end
+
+  def profile_completed?
+    [
+      college.present?,
+      course.present?,
+      serie.present?,
+      ingress_year.present?,
+      ingress_semester.present?,
+      class_shift.present?
+    ].all?(true)
   end
 
 end

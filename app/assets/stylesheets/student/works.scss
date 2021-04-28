@@ -1,0 +1,60 @@
+// Place all the styles related to the Student::Works controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.work-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  grid-gap: 20px;
+}
+
+.work-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 220px;
+  height: 200px;
+  border-radius: 10px;
+  padding: 20px 20px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+  transition: transform .2s;
+
+  .work-item-actions {
+    display: flex;
+    justify-content: space-evenly;
+
+    a {
+      border-radius: 20px;
+    }
+  }
+}
+
+.work-item:hover {
+  transform: scale(1.1)
+}
+
+.view-work {
+  display: flex;
+  flex-direction: column;
+
+  .view-work-basic-info {
+    text-align: justify;
+    text-justify: inter-word;
+  }
+
+  .view-work-image {
+    border-radius: 15px;
+    width: 30px;
+    margin-right: -14px;
+  }
+}
+
+@media (max-width: 720px)
+{
+  .work-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}

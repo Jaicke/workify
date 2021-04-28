@@ -1,0 +1,29 @@
+a.icon-link {
+  margin-left: .5rem;
+  color: #28a745;
+  font-size: 22px;
+  vertical-align: middle;
+
+  :hover{
+    color: lighten($color: #28a745, $amount: 10%);
+    text-decoration: none;
+  }
+}
+
+a.remove-icon-link{
+  color: #dc3545;
+
+  :hover{
+    color: lighten($color: #dc3545, $amount: 10%);
+    text-decoration: none;
+  }
+}
+
+a.upload-icon-link{
+  color: #3882ad;
+
+  :hover{
+    color: lighten($color: #3882ad, $amount: 10%);
+    text-decoration: none;
+  }
+}

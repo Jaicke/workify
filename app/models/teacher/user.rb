@@ -6,6 +6,9 @@ class Teacher::User < ApplicationRecord
 
   has_and_belongs_to_many :colleges, class_name: 'College'
   has_and_belongs_to_many :courses, class_name: 'Course'
+  has_and_belongs_to_many :works_co_advising, class_name: 'Work'
+
+  has_many :works_advising, foreign_key: :advisor_id, class_name: 'Work'
 
   has_many :connections, foreign_key: :teacher_id
   has_many :students, through: :connections
@@ -19,11 +22,11 @@ class Teacher::User < ApplicationRecord
   scope :search_by_name, -> (search) { where('LOWER(CONCAT(first_name, last_name)) ILIKE ?', "%#{search.downcase.strip}%") }
 
   def full_name
-    "#{first_name} #{last_name}"
+    "#{first_name} #{last_name}".capitalize
   end
 
   def label_name
     name = full_name.split
-    "#{name.first} #{name.last}"
+    "#{name.first} #{name.last}".capitalize
   end
 end

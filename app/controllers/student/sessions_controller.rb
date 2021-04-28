@@ -1,5 +1,5 @@
 class Student::SessionsController < Student::BaseController
-  skip_before_action :authenticate
+  skip_before_action :authenticate, :verify_user_profile
 
   def create
     user = Student::User.find_by_email(params[:email])

@@ -1,0 +1,31 @@
+<div class="work-item">
+  <div class="work-item-header">
+    <div class="work-item-status">
+      <%= work_status_badge(work.status) %>
+    </div>
+  </div>
+
+  <div class="work-item-body">
+     <div class="work-theme">
+      <span data-toggle="tooltip" data-placement="top" title="<%= work.theme_label %>">
+        <%= work.theme_label.truncate(23) %>
+      </span>
+    </div>
+
+    <div class="work-item-last-modification">
+      <small class="text-muted">Atualizado há <%= time_ago_in_words(work.updated_at) %></small>
+    </div>
+  </div>
+
+  <div class="work-item-actions">
+    <%= link_to student_work_path(work), class: "btn btn-light" do %>
+      <%= icon("fas", "eye") %>
+    <% end %>
+    <%= link_to edit_student_work_path(work), class: "btn btn-light", remote: true do %>
+      <%= icon("fas", "pen") %>
+    <% end %>
+    <%= link_to student_work_path(work), class: "btn btn-light", method: :delete, data: { confirm: "Tem certeza que deseja remover?" } do %>
+      <%= icon("fas", "times") %>
+    <% end if can_access_work_action?(work) %>
+  </div>
+</div>

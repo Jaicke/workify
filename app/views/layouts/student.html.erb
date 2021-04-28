@@ -16,6 +16,7 @@
     <% if logged_in? && controller_path != "student/users" %>
       <%= render  "layouts/student_shared/navigation" %>
       <%= render  "layouts/shared/alerts" %>
+      <%= render  "layouts/modal" %>
     <% end %>
     <%= yield %>
   </body>

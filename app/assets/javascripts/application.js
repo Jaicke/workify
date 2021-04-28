@@ -12,6 +12,7 @@
 //
 //= require jquery3
 //= require jquery_ujs
+//= require cocoon
 //= require sweetalert2
 //= require popper
 //= require bootstrap
@@ -20,41 +21,7 @@
 //= require turbolinks
 //= require_tree .
 
-$(document).on('ready turbolinks:load', function(){
-  sideBarControl()
-
-  $('.select2').select2({
-    theme: "bootstrap"
-  })
-
-})
-
-function sideBarControl(){
-  let sidebarOpen = localStorage.getItem('sidebarOpen')
-  const isMobileDevice = /Mobi/i.test(window.navigator.userAgent)
-
-  if (sidebarOpen === null || isMobileDevice){
-    localStorage.setItem('sidebarOpen', false)
-    collapsesItems()
-  }
-
-  $(".sidebar-btn").click(function(){
-    localStorage.setItem('sidebarOpen', !toBoolean(sidebarOpen))
-    collapsesItems()
-  })
-
-  if (toBoolean(sidebarOpen) && !isMobileDevice){
-    collapsesItems()
-  }
-}
-
-function collapsesItems(){
-  $(".wrapper").toggleClass("collapses")
-  $(".box").toggleClass("collapses")
-  $(".alert").toggleClass("collapses")
-}
-
-function toBoolean(bool) {
+var toBoolean = function(bool) {
   if (bool == 'true'){
     return true
   } else if(bool == 'false'){
@@ -63,3 +30,74 @@ function toBoolean(bool) {
     return undefined
   }
 }
+
+var APPLICATION = (function(application){
+  'use strict'
+
+  var delayedSearch = function(){
+    var timer;
+
+    $('#search-input').on('keyup', function(){
+      clearTimeout(timer);
+      timer = setTimeout(() => {
+        $(this).closest('form').submit()
+      }, 800);
+    })
+  }
+
+  var initializeSelect2 = function(){
+    $('.select2').select2({
+      theme: "bootstrap"
+    })
+
+    $('#modal-window').on('shown.bs.modal', function () {
+      $('.select2').select2({
+        theme: 'bootstrap'
+      });
+    })
+  }
+
+  var initializeTooltip = function(){
+    $('[data-toggle="tooltip"]').tooltip()
+  }
+
+  var collapsesItems = function(){
+    $(".wrapper").toggleClass("collapses")
+    $(".box").toggleClass("collapses")
+    $(".alert").toggleClass("collapses")
+  }
+
+  var sideBarControl = function(){
+    let sidebarOpen = localStorage.getItem('sidebarOpen')
+    const isMobileDevice = /Mobi/i.test(window.navigator.userAgent)
+
+    if (sidebarOpen === null || isMobileDevice){
+      localStorage.setItem('sidebarOpen', false)
+      collapsesItems()
+    }
+
+    $(".sidebar-btn").click(function(){
+      localStorage.setItem('sidebarOpen', !toBoolean(sidebarOpen))
+      collapsesItems()
+    })
+
+    if (toBoolean(sidebarOpen) && !isMobileDevice){
+      collapsesItems()
+    }
+  }
+
+  var application = {
+    init: function(){
+      delayedSearch()
+      sideBarControl()
+      initializeSelect2()
+      initializeTooltip()
+    }
+  }
+
+  return application
+}(APPLICATION || {}))
+
+$(document).on('ready turbolinks:load', function(){
+  APPLICATION.init()
+})

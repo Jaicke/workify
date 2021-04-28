@@ -1,17 +1,6 @@
 var TEACHERS = (function(teachers){
   'use strict'
 
-  var delayedSearch = function(){
-    var timer;
-
-    $('#search-teacher-input').on('keyup', function(){
-      clearTimeout(timer);
-      timer = setTimeout(() => {
-        $(this).closest('form').submit()
-      }, 800);
-    })
-  }
-
   var sendConnection = function(){
     $('.connect').on('click', function(){
       const buttonConnect = $(this)
@@ -38,7 +27,6 @@ var TEACHERS = (function(teachers){
 
   var teachers = {
     init: function(){
-      delayedSearch()
       sendConnection()
     }
   }

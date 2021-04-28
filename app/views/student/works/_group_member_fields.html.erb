@@ -1,0 +1,17 @@
+<div class="nested-fields input-group mb-3">
+  <% if ![@current_user.email, @work.created_by.email].include?(f.object.email) %>
+    <%= f.text_field :email, class: 'form-control', placeholder: 'E-mail' %>
+    <div class="input-group-append">
+      <%= link_to_remove_association f, class: 'btn btn-danger' do %>
+        <%= icon("fas", "times") %>
+      <% end %>
+    </div>
+  <% else %>
+    <%= f.text_field :email, class: 'form-control', placeholder: 'E-mail', readonly: 'readonly' %>
+    <div class="input-group-append" data-toggle="tooltip" data-placement="top" title="Não é possível remover do grupo">
+      <%= link_to '#', class: 'btn btn-danger disabled' do %>
+        <%= icon("fas", "times") %>
+      <% end %>
+    </div>
+  <% end %>
+</div>

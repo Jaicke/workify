@@ -1,0 +1,40 @@
+<div class="box">
+  <div class="content">
+    <%= render 'tabs' %>
+    <div class="view-work">
+      <div class="view-work-basic-info">
+        <h3><%= @work.theme_label %></h3>
+        <p><%= @work.description %></p>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          jdjs
+        </div>
+        <div class="col-md-6">
+          <div class="view-work-info">
+            <% if @work.advisor.present? %>
+              <hr>
+              <h5>Orientadores</h5>
+              <div class="view-work-co-advisors">
+                <%= image_tag url_for_profile_image(@work.advisor), loading: "lazy", class: 'view-work-image' %>
+                <% @work.co_advisors.each do |co_advisor| %>
+                  <%= image_tag url_for_profile_image(co_advisor), loading: "lazy", class: 'view-work-image' %>
+                <% end %>
+              </div>
+            <% end %>
+
+            <% if @work.group? %>
+              <hr>
+              <h5>Grupo</h5>
+              <div class="view-work-group-members">
+                <% Student::User.where(email: @work.group_members.pluck(:email)).each do |member| %>
+                  <%= image_tag url_for_profile_image(member), loading: "lazy", class: 'view-work-image' %>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

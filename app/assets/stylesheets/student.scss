@@ -2,8 +2,9 @@
 @import "student/home";
 @import "student/users";
 @import "student/teachers";
+@import "student/works";
 
-.arrow {
+.arrow-pagination {
   position: relative;
   display: inline-block;
   vertical-align: middle;
@@ -29,7 +30,7 @@
   }
 }
 
-.arrow {
+.arrow-pagination {
   &[class*="-left"]{
     transform: rotate(45deg);
   }

@@ -4,7 +4,7 @@ var pagination = document.querySelector(".info-pagination");
 teachers.innerHTML = "";
 pagination.innerHTML = "";
 
-pagination.insertAdjacentHTML("beforeend", "<%= j render 'pagination', teachers: @teachers %>");
+pagination.insertAdjacentHTML("beforeend", "<%= j render 'layouts/shared/pagination', items: @teachers %>");
 
 <% @teachers.each do |teacher| %>
   teachers.insertAdjacentHTML("beforeend", "<%= j render 'teacher_card', teacher: teacher %>");

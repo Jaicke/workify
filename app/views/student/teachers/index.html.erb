@@ -1,12 +1,12 @@
 <div class="box">
   <div class="content">
-    <div class="teacher-list-header">
+    <div class="list-header">
       <span>
         Professores
       </span>
       <div>
         <%= form_tag student_teachers_path, autocomplete: :off, method: :get, remote: true do %>
-          <%= text_field_tag 'search', params[:search], placeholder: "Pesquisar", class: "form-control col-md-12 col-sm-12 col-12", id: "search-teacher-input" %>
+          <%= text_field_tag 'search', params[:search], placeholder: "Pesquisar", class: "form-control col-md-12 col-sm-12 col-12", id: "search-input" %>
         <% end %>
       </div>
     </div>
@@ -18,7 +18,7 @@
     </div>
 
     <div class="info-pagination">
-      <%= render "pagination", teachers: @teachers %>
+      <%= render "layouts/shared/pagination", items: @teachers %>
     </div>
   </div>
 </div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_12_000719) do
+ActiveRecord::Schema.define(version: 2021_04_28_234156) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -79,6 +79,13 @@ ActiveRecord::Schema.define(version: 2021_03_12_000719) do
     t.index ["user_id"], name: "index_courses_teacher_users_on_user_id"
   end
 
+  create_table "group_members", force: :cascade do |t|
+    t.integer "work_id"
+    t.string "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "student_users", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
@@ -112,6 +119,34 @@ ActiveRecord::Schema.define(version: 2021_03_12_000719) do
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "teacher_users_works", id: false, force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "work_id"
+    t.index ["user_id"], name: "index_teacher_users_works_on_user_id"
+    t.index ["work_id"], name: "index_teacher_users_works_on_work_id"
+  end
+
+  create_table "work_versions", force: :cascade do |t|
+    t.integer "work_id"
+    t.string "title"
+    t.boolean "current", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "works", force: :cascade do |t|
+    t.string "theme"
+    t.string "description"
+    t.integer "status", default: 0
+    t.boolean "group", default: false
+    t.integer "created_by_id"
+    t.integer "advisor_id"
+    t.datetime "deleted_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["status"], name: "index_works_on_status"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

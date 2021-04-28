@@ -1,0 +1,8 @@
+
+<% if @work.errors.any? %>
+  <%= render 'layouts/shared/alert_errors_message', resource: @work %>
+<% end %>
+
+$("#modal-window").find(".modal-title").html("Editar Trabalho");
+$("#modal-window").find(".modal-body").html("<%= j (render 'form', path: student_work_path(@work.id)) %>");
+$("#modal-window").modal();
