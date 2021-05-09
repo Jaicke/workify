@@ -19,7 +19,9 @@ Rails.application.routes.draw do
       post :send_connection, on: :member
     end
     resources :home, only: :index
-    resources :works, only: [:index, :new, :create, :edit, :update, :destroy, :show]
+    resources :works, only: [:index, :new, :create, :edit, :update, :destroy, :show] do
+      resources :work_versions, on: :member, only: [:new, :create, :edit, :update, :show, :destroy]
+    end
   end
 
   namespace :teacher do

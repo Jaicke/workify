@@ -1,0 +1,11 @@
+var versions = document.querySelector(".work-version-list");
+var pagination = document.querySelector(".info-pagination");
+
+versions.innerHTML = "";
+pagination.innerHTML = "";
+
+pagination.insertAdjacentHTML("beforeend", "<%= j render 'layouts/shared/pagination', items: @work_versions %>");
+
+<% @work_versions.each do |version| %>
+  versions.insertAdjacentHTML("beforeend", "<%= j render 'student/works/versions/item', version: version %>");
+<% end %>

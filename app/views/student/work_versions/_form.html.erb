@@ -1,0 +1,21 @@
+<%= form_with(model: @work_version, url: path, local: false, multipart: true, html: { autocomplete: :off }) do |f| %>
+  <div class="form-row">
+    <div class="form-group col-md-12">
+      <%= f.label :title %>
+      <%= f.text_field :title, class:"form-control", placeholder: 'Versão 1' %>
+    </div>
+  </div>
+
+  <% if ['new', 'create'].include?(params[:action]) %>
+    <div class="form-row">
+      <div class="form-group col-md-12">
+        <%= f.label :file %>
+        <%= f.file_field :file, class: "form-control", accept: 'application/pdf' %>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="text-right">
+    <button type="submit" id="save-profile-btn" class="btn btn-dark">Salvar <%= icon("fas", "arrow-right") %></button>
+  </div>
+<% end %>

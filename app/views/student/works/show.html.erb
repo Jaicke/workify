@@ -7,32 +7,11 @@
         <p><%= @work.description %></p>
       </div>
       <div class="row">
-        <div class="col-md-6">
-          jdjs
+        <div class="col-md-8">
+          <%= render 'student/works/versions/list' %>
         </div>
-        <div class="col-md-6">
-          <div class="view-work-info">
-            <% if @work.advisor.present? %>
-              <hr>
-              <h5>Orientadores</h5>
-              <div class="view-work-co-advisors">
-                <%= image_tag url_for_profile_image(@work.advisor), loading: "lazy", class: 'view-work-image' %>
-                <% @work.co_advisors.each do |co_advisor| %>
-                  <%= image_tag url_for_profile_image(co_advisor), loading: "lazy", class: 'view-work-image' %>
-                <% end %>
-              </div>
-            <% end %>
-
-            <% if @work.group? %>
-              <hr>
-              <h5>Grupo</h5>
-              <div class="view-work-group-members">
-                <% Student::User.where(email: @work.group_members.pluck(:email)).each do |member| %>
-                  <%= image_tag url_for_profile_image(member), loading: "lazy", class: 'view-work-image' %>
-                <% end %>
-              </div>
-            <% end %>
-          </div>
+        <div class="col-md-4">
+          <%= render 'student/works/versions/members' %>
         </div>
       </div>
     </div>

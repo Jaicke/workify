@@ -131,6 +131,7 @@ ActiveRecord::Schema.define(version: 2021_04_28_234156) do
   create_table "work_versions", force: :cascade do |t|
     t.integer "work_id"
     t.string "title"
+    t.integer "created_by_id"
     t.boolean "current", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

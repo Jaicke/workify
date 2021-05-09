@@ -1,0 +1,26 @@
+<hr>
+<%= render 'student/works/versions/header' %>
+
+<p class="help-text-box d-block d-sm-none mt-2">Deslize <%= icon("fas", "arrows-alt-h") %> para ver mais.</p>
+
+<div class="table-responsive">
+  <table class="table table-hover mt-md-3">
+  <thead>
+    <tr>
+      <th>Título</th>
+      <th>Criado por</th>
+      <th>Criado em</th>
+      <th width="2%"></th>
+    </tr>
+  </thead>
+  <tbody class="work-version-list">
+    <% @work_versions.each do |version| %>
+      <%= render 'student/works/versions/item', version: version %>
+    <% end %>
+  </tbody>
+</table>
+</div>
+
+<div class="info-pagination">
+  <%= render "layouts/shared/pagination", items: @work_versions %>
+</div>

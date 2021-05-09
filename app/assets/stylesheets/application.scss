@@ -19,6 +19,12 @@ $teacher-secondary-color: #FF9C31;
   font-family: 'Roboto';
 }
 
+.tabs .active {
+  border-bottom: 4px solid;
+  border-radius: 4px;
+  border-left: none !important;
+}
+
 .select2 {
   width:100% !important;
 }

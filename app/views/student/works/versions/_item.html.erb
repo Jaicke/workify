@@ -1,0 +1,25 @@
+<tr>
+  <td>
+    <%= version.title %>
+      <% if version.current? %>
+      <a class="icon-link info-icon-link " title="Versão Atual" data-toggle="tooltip" data-placement="top">
+        <%= icon("fas", "info-circle") %>
+      </a>
+    <% end %>
+  </td>
+  <td><%= image_tag url_for_profile_image(version.created_by), loading: "lazy", class: 'view-work-image' %> <%= version.created_by.first_name%></td>
+  <td><%= version.created_at.strftime('%d/%m/%Y') %></td>
+  <td>
+    <li class="nav-item dropdown">
+      <a class="nav-link" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+        <%= icon("fas", "ellipsis-h") %>
+      </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+        <%= nav_dropdown_item "Visualizar", student_work_work_version_path(work_id: @work.id, id: version.id), 'eye', remote: true %>
+        <%= nav_dropdown_item "Editar", edit_student_work_work_version_path(work_id: @work.id, id: version.id), 'pen', remote: true %>
+        <%= link_to student_work_work_version_path(work_id: @work.id, id: version.id), method: :delete, class: "dropdown-item", data: { confirm: "Tem certeza que deseja remover?" } do %>
+          <%= icon("fas", "trash") %> Remover
+        <% end %>
+    </li>
+  </td>
+</tr>

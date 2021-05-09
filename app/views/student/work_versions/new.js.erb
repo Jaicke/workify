@@ -1,0 +1,7 @@
+<% if @work_version.errors.any? %>
+  <%= render 'layouts/shared/alert_errors_message', resource: @work_version %>
+<% end %>
+
+$("#modal-window").find(".modal-title").html("Adicionar versão");
+$("#modal-window").find(".modal-body").html("<%= j (render 'form', path: student_work_work_versions_path(@work.id)) %>");
+$("#modal-window").modal();

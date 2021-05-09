@@ -1,8 +1,11 @@
 a.icon-link {
   margin-left: .5rem;
-  color: #28a745;
   font-size: 22px;
   vertical-align: middle;
+}
+
+a.success-icon-link {
+  color: #28a745;
 
   :hover{
     color: lighten($color: #28a745, $amount: 10%);
@@ -19,8 +22,10 @@ a.remove-icon-link{
   }
 }
 
-a.upload-icon-link{
+a.info-icon-link{
   color: #3882ad;
+  font-size: 22px;
+  vertical-align: middle;
 
   :hover{
     color: lighten($color: #3882ad, $amount: 10%);

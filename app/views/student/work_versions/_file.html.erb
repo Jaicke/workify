@@ -1,0 +1,8 @@
+<object width="100%" height="450" type="application/pdf" data=<%= url_for(@work_version.file) %>>
+  <div class="fallback-file">
+    <%= icon('far', 'file-pdf') %>
+    <%= link_to 'Visualizar versão', url_for(@work_version.file), target: '_blank' %>
+  </div>
+</object>
+<hr>
+<h5>Comentários</h5>

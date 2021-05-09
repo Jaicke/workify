@@ -1,6 +1,7 @@
 class Student::WorksController < Student::BaseController
   before_action :fetch_work, only: [:edit, :update, :destroy, :show]
   before_action :fetch_teachers, only: [:new, :create, :edit, :update]
+  before_action :fetch_work_versions, only: :show
 
   def index
     @works = Work.left_joins(:group_members)
@@ -17,6 +18,10 @@ class Student::WorksController < Student::BaseController
   end
 
   def show
+    respond_to do |format|
+      format.js
+      format.html
+    end
   end
 
   def new
@@ -83,4 +88,16 @@ class Student::WorksController < Student::BaseController
     teachers_ids = teachers_ids.concat(@work.created_by.teachers.pluck(:id)) if @work
     @teachers = Teacher::User.where(id: teachers_ids)
   end
+
+  def fetch_work_versions
+    @current_work_version = @work.work_versions.where(current: true).last
+
+    @work_versions = @work.work_versions
+                          .order(current: :desc)
+                          .order(created_at: :desc)
+                          .order(:title)
+                          .page(params[:page])
+    @work_versions = @work_versions.where('title ILIKE ?', "%#{params[:search]}%") if params[:search].present?
+  end
+
 end

@@ -7,7 +7,6 @@ class Student::UsersController < Student::BaseController
       if @user.save
         format.html { redirect_to sign_in_path }
       else
-        format.html { render 'new'}
         format.js
       end
     end

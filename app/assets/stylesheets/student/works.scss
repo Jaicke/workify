@@ -39,13 +39,28 @@
 
   .view-work-basic-info {
     text-align: justify;
-    text-justify: inter-word;
+    margin-bottom: 10px;
+    padding: 0px 30px;
   }
 
   .view-work-image {
     border-radius: 15px;
     width: 30px;
+  }
+
+  .negative-margin-right {
     margin-right: -14px;
+  }
+}
+
+.fallback-file {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  i {
+    font-size: 60px;
   }
 }
 

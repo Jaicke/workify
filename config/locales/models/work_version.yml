@@ -1,0 +1,10 @@
+pt-BR:
+  activerecord:
+    models:
+      work_version:
+        one: Versão
+        other: Versões
+    attributes:
+      work_version:
+        title: Título
+        file: Arquivo

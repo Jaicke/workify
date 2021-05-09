@@ -29,7 +29,7 @@
   <div class="form-row" id='fields-for-group-members' style="display:<%= f.object.group? ? 'block' : 'none'%>;">
     <div class="form-group col-md-12">
       <%= f.label :group_members %>
-      <%= link_to_add_association f, :group_members, data: { 'association-insertion-method': 'append' }, class: 'icon-link mt-2' do %>
+      <%= link_to_add_association f, :group_members, data: { 'association-insertion-method': 'append' }, class: 'icon-link success-icon-link mt-2' do %>
         <%= icon("fas", "plus-circle") %>
       <% end %>
       <%= f.fields_for :group_members do |group_member| %>
