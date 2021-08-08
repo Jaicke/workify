@@ -5,7 +5,7 @@ class Student::User < ApplicationRecord
   belongs_to :course, optional: true
 
   has_many :connections, foreign_key: :student_id
-  has_many :teachers, through: :connections
+  has_many :teachers, -> { joins(:connections).where(connections: { status: :accepted }) }, through: :connections
 
   has_many :works, foreign_key: :created_by
   has_many :reviews, foreign_key: :created_by
