@@ -16,9 +16,14 @@ module NavigationHelper
 
     def current_section?(section)
       if section.is_a? Array
-        section.each do |s|
-          return true if request.path.split('/').include?(s)
+        sec_included = false
+        section.each do |sec|
+          if request.path.split('/').include?(sec)
+            sec_included = true
+            break
+          end
         end
+        sec_included
       else
         request.path.split('/').include?(section)
       end

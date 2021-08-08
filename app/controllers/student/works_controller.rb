@@ -4,8 +4,7 @@ class Student::WorksController < Student::BaseController
   before_action :fetch_work_versions, only: :show
 
   def index
-    @works = Work.left_joins(:group_members)
-                 .where('created_by_id = ? OR group_members.email = ?', @current_user.id , @current_user.email)
+    @works = Work.by_owner_or_member(@current_user)
                  .order(created_at: :desc)
                  .distinct
                  .page(params[:page])
@@ -80,7 +79,7 @@ class Student::WorksController < Student::BaseController
   end
 
   def fetch_work
-    @work = Work.find(params[:id])
+    @work = Work.by_owner_or_member(@current_user).find(params[:id])
   end
 
   def fetch_teachers

@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  description: MyString
+  created_by_id: 1
+  work_id: 1
+  old_work_version_id: 1
+  new_version_id: 1
+
+two:
+  title: MyString
+  description: MyString
+  created_by_id: 1
+  work_id: 1
+  old_work_version_id: 1
+  new_version_id: 1

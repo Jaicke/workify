@@ -1,10 +1,6 @@
 <ul class="nav nav-fill tabs">
-  <li class="nav-item">
-    <%= link_to 'Versões', student_work_path(@work), class: 'nav-link active' %>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Revisões</a>
-  </li>
+  <%= nav_link_to "Versões", student_work_path(@work), "works" %>
+  <%= nav_link_to "Revisões", student_reviews_path(work_id: @work), "reviews" %>
   <li class="nav-item">
     <a class="nav-link" href="#">Discussões</a>
   </li>

@@ -37,7 +37,7 @@ var APPLICATION = (function(application){
   var delayedSearch = function(){
     var timer;
 
-    $('#search-input').on('keyup', function(){
+    $('.search-input').on('keyup', function(){
       clearTimeout(timer);
       timer = setTimeout(() => {
         $(this).closest('form').submit()

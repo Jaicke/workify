@@ -13,6 +13,8 @@ class Teacher::User < ApplicationRecord
   has_many :connections, foreign_key: :teacher_id
   has_many :students, through: :connections
 
+  has_many :approvals, class_name: 'Approval', foreign_key: :teacher_id
+
   validates_uniqueness_of :email
   validates_presence_of :first_name, :last_name, :email
   validates_presence_of :colleges, :courses, on: :update

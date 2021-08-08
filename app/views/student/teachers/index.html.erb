@@ -6,7 +6,7 @@
       </span>
       <div>
         <%= form_tag student_teachers_path, autocomplete: :off, method: :get, remote: true do %>
-          <%= text_field_tag 'search', params[:search], placeholder: "Pesquisar", class: "form-control col-md-12 col-sm-12 col-12", id: "search-input" %>
+          <%= text_field_tag 'search', params[:search], placeholder: "Pesquisar", class: "form-control col-md-12 col-sm-12 col-12 search-input" %>
         <% end %>
       </div>
     </div>

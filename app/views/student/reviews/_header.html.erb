@@ -1,0 +1,14 @@
+<div class="row list-header">
+  <div class="col-md-10 col-sm-12">
+    <%= form_tag student_reviews_path(work_id: @work.id), autocomplete: :off, method: :get, remote: true do %>
+      <%= text_field_tag 'search', params[:search], placeholder: "Pesquisar", class: "form-control col-sm-12 col-12 col-md-12 search-input" %>
+    <% end %>
+  </div>
+  <br>
+  <div class="col">
+    <%= link_to new_student_review_path(work_id: @work.id), class: 'btn btn-success col-sm-12' do %>
+      Nova Revisão
+    <% end %>
+  </div>
+</div>
+<br>

@@ -1,0 +1,54 @@
+.review-header {
+  display: flex;
+  justify-content: space-around;
+}
+
+.review-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  grid-gap: 20px;
+}
+
+.review-card {
+  padding: 10px 16px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+}
+
+.review-card-open {
+  opacity: 1;
+}
+
+.review-card-closed {
+  opacity: 0.6;
+}
+
+.review-card-title {
+  font-size: 17px;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.9);
+  text-decoration: none !important;
+}
+
+.review-card-info {
+  font-size: 12px;
+  margin-top: 7px;
+}
+
+.review-card-comments {
+  margin-top:7px;
+
+  a {
+    color: rgba(0, 0, 0, 0.9);
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: $student-primary-color;
+  }
+}
+
+@media (max-width: 720px) {
+  .review-list {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  }
+}

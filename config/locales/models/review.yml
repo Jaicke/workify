@@ -1,0 +1,12 @@
+pt-BR:
+  activerecord:
+    models:
+      review:
+        one: Revisão
+        other: Revisões
+    attributes:
+      review:
+        title: Título
+        description: Descrição
+        old_work_version: Versão antiga
+        new_work_version: Nova versão

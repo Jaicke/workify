@@ -1,0 +1,16 @@
+<div class="box">
+  <div class="content">
+    <%= render 'student/works/tabs' %>
+    <%= render 'header' %>
+
+    <div class="review-list">
+      <% @reviews.each do |review| %>
+        <%= render 'review_card', review: review %>
+      <% end %>
+    </div>
+
+    <div class="info-pagination">
+      <%= render "layouts/shared/pagination", items: @reviews %>
+    </div>
+  </div>
+</div>

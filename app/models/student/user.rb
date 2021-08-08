@@ -8,6 +8,7 @@ class Student::User < ApplicationRecord
   has_many :teachers, through: :connections
 
   has_many :works, foreign_key: :created_by
+  has_many :reviews, foreign_key: :created_by
 
   has_one_attached :avatar
 

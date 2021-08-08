@@ -20,8 +20,9 @@ Rails.application.routes.draw do
     end
     resources :home, only: :index
     resources :works, only: [:index, :new, :create, :edit, :update, :destroy, :show] do
-      resources :work_versions, on: :member, only: [:new, :create, :edit, :update, :show, :destroy]
+      resources :work_versions, on: :member, except: :index
     end
+    resources :reviews, only: [:index, :new, :create]
   end
 
   namespace :teacher do
