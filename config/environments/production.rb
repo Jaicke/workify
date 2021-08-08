@@ -91,4 +91,19 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  config.action_mailer.default_url_options = { :host => "workify.herokuapp.com", protocol: 'http' }
+  config.action_mailer.delivery_method = :smtp
+  #config.active_support.deprecation = :log
+  config.action_mailer.smtp_settings = {
+    address: "smtp.gmail.com",
+    port: 25,
+    domain: "gmail.com",
+    user_name: "tcc.project.cc@gmail.com",
+    password: "yyeelnfepkcorjry",
+    authentication: :plain,
+    enable_starttls_auto: true,
+    openssl_verify_mode:  'none'
+  }
+
 end
