@@ -3,8 +3,8 @@ var TEACHERS = (function(teachers){
 
   var sendConnection = function(){
     $('.connect').on('click', function(){
-      const buttonConnect = $(this)
-      const teacherId = $(this).attr('data-id')
+      let buttonConnect = $(this)
+      let teacherId = $(this).attr('data-id')
 
       $.ajax({
         url: `teachers/${teacherId}/send_connection`,

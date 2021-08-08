@@ -8,8 +8,8 @@ var WORKS = (function(works){
   }
 
   var toggleFields = function(){
-    const groupCheck = $('#work_group')
-    const groupMembersFields = $('#fields-for-group-members')
+    let groupCheck = $('#work_group')
+    let groupMembersFields = $('#fields-for-group-members')
 
     if (groupCheck.is(":checked")){
       groupMembersFields.slideToggle("slow")

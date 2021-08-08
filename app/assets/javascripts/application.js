@@ -69,7 +69,7 @@ var APPLICATION = (function(application){
 
   var sideBarControl = function(){
     let sidebarOpen = localStorage.getItem('sidebarOpen')
-    const isMobileDevice = /Mobi/i.test(window.navigator.userAgent)
+    let isMobileDevice = /Mobi/i.test(window.navigator.userAgent)
 
     if (sidebarOpen === null || isMobileDevice){
       localStorage.setItem('sidebarOpen', false)
