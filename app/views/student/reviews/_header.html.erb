@@ -6,8 +6,12 @@
   </div>
   <br>
   <div class="col">
-    <%= link_to new_student_review_path(work_id: @work.id), class: 'btn btn-success col-sm-12' do %>
-      Nova Revisão
+    <% if @current_user.reviews.open.empty? %>
+      <%= link_to new_student_review_path(work_id: @work.id), class: 'btn btn-success col-sm-12' do %>
+        Nova Revisão
+      <% end %>
+    <% else %>
+      <button type="button" class="btn btn-success col-sm-12" disabled>Nova Revisão</button>
     <% end %>
   </div>
 </div>

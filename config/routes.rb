@@ -36,8 +36,10 @@ Rails.application.routes.draw do
     end
 
     resource :sessions, only: [:create, :destroy]
-    resources :students, only: [] do
-      get :answer_connection, on: :collection
+    #resources :students, only: []
+    resources :connections, only: :index do
+      get :accept, on: :member
+      get :decline, on: :member
     end
     resources :home, only: :index
   end
