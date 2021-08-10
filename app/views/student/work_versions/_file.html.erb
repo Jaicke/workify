@@ -1,9 +1,10 @@
 <object width="100%" height="450" type="application/pdf" data=<%= url_for(@work_version.file) %>>
-  <div class="fallback-file">
-    <!-- <%= icon('far', 'file-pdf') %>
-    <%= link_to 'Visualizar versão', url_for(@work_version.file), target: '_blank' %> -->
-    <iframe src=<%= %"https://docs.google.com/gview?embedded=true&amp;url=#{request.host_with_port}#{url_for(@work_version.file)}&amp;embedded=true" %> frameborder="0" width="100%" height="450"></iframe>
-  </div>
+  <object frameborder="0" width="100%" height="450" data=<%= "https://docs.google.com/gview?embedded=true&amp;url=https://#{request.host_with_port}#{url_for(@work_version.file)}&amp;embedded=true" %>>
+    <div class="fallback-file">
+      <%= icon('far', 'file-pdf') %>
+      <%= link_to 'Visualizar versão', url_for(@work_version.file), target: '_blank' %> 
+    </div>
+  </object>
 </object>
 <hr>
 <h5>Comentários</h5>
