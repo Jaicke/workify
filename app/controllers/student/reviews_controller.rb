@@ -36,7 +36,7 @@ class Student::ReviewsController < Student::BaseController
   end
 
   def replace
-    @review.transactional do
+    @review.transaction do
       @review.closed!
       @review.update!(confirmed: true, confirmed_by_id: @current_user.id, confirmed_at: DateTime.current)
       @review.old_work_version.update!(current: false)
