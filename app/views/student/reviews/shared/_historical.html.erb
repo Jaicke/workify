@@ -1,0 +1,38 @@
+<div class="row">
+  <div class="col-md-12">
+      <div>
+          <div class="card-body">
+              <div id="content">
+                  <ul class="timeline">
+                      <li class="event" data-date="<%= @review.created_at.strftime('%d/%m/%Y - %H:%M') %>">
+                          <h3>Criada</h3>
+                          <span data-toggle="popover" data-placement="top" data-html="true" data-trigger='hover click' data-content="<%= "#{render 'layouts/shared/user_popover', user: @review.created_by}"%>">
+                            <%= image_tag url_for_profile_image(@review.created_by), class: "header-profile-image", style: 'cursor: pointer;' %>
+                            <%= @review.created_by.label_name %>
+                          </span>
+                      </li>
+                      <% if @review.approved? %>
+                          <li class="event" data-date="<%= @review.approvals.first.created_at.strftime('%d/%m/%Y - %H:%M') %>">
+                            <h3>Aprovada</h3>
+                            <% @review.approvals.each do |approval| %>
+                              <span data-toggle="popover" data-placement="top" data-html="true" data-trigger='hover click' data-content="<%= "#{render 'layouts/shared/user_popover', user: approval.teacher}"%>">
+                                <%= image_tag url_for_profile_image(approval.teacher), class: "header-profile-image", style: 'cursor: pointer;' %>
+                              </span>
+                            <% end %>
+                          </li>
+                      <% end %>
+                      <% if @review.confirmed? %>
+                        <li class="event" data-date="<%= @review.confirmed_at.strftime('%d/%m/%Y - %H:%M') %>">
+                            <h3>Confirmada</h3>
+                            <span data-toggle="popover" data-placement="top" data-html="true" data-trigger='hover click' data-content="<%= "#{render 'layouts/shared/user_popover', user: @review.confirmed_by}"%>">
+                              <%= image_tag url_for_profile_image(@review.confirmed_by), class: "header-profile-image", style: 'cursor: pointer;' %>
+                              <%= @review.confirmed_by.label_name %>
+                            </span>
+                        </li>
+                      <% end %>
+                  </ul>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

@@ -24,7 +24,7 @@
           <a class="nav-link active" id="home-tab" data-toggle="tab" href="#resume" role="tab" aria-controls="resume" aria-selected="true">Resumo</a>
         </li>
         <li class="nav-item" role="presentation">
-          <a class="nav-link" id="timeline-tab" data-toggle="tab" href="#timeline" role="tab" aria-controls="timeline" aria-selected="true">Linha do tempo</a>
+          <a class="nav-link" id="historical-tab" data-toggle="tab" href="#historical" role="tab" aria-controls="historical" aria-selected="true">Histórico</a>
         </li>
         <li class="nav-item" role="presentation">
           <a class="nav-link" id="comparation-tab" data-toggle="tab" href="#comparation" role="tab" aria-controls="comparation" aria-selected="false">Comparação</a>
@@ -34,7 +34,9 @@
         <div class="tab-pane fade show active" id="resume" role="tabpanel" aria-labelledby="resume-tab">
           <%= render 'student/reviews/shared/resume' %>
         </div>
-        <div class="tab-pane fade" id="timeline" role="tabpanel" aria-labelledby="timeline-tab">...</div>
+        <div class="tab-pane fade" id="historical" role="tabpanel" aria-labelledby="historical-tab">
+          <%= render 'student/reviews/shared/historical' %>
+        </div>
         <div class="tab-pane fade" id="comparation" role="tabpanel" aria-labelledby="comparation-tab">...</div>
       </div>
     </div>
