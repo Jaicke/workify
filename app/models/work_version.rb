@@ -13,10 +13,16 @@ class WorkVersion < ApplicationRecord
 
   before_validation :set_as_current
 
+  after_create :changes_work_status
+
   private
 
   def set_as_current
     self.current = true if work.work_versions.count.zero?
+  end
+
+  def changes_work_status
+    work.update(status: :in_progress) if work.not_started?
   end
 
   def file_presence

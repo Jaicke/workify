@@ -14,11 +14,13 @@ $student-secondary-color: #0A94D5;
 $teacher-primary-color: #F8851B;
 $teacher-secondary-color: #FF9C31;
 
-
 *{
   font-family: 'Roboto';
 }
 
+.success-color {
+  color: #28a745
+}
 .tabs {
   font-size: 13px;
 }
@@ -84,8 +86,7 @@ $teacher-secondary-color: #FF9C31;
 .content{
   margin-left: 8px;
   margin-right: 8px;
-  //border: 1px solid rgba(182, 178, 178, 0.5);
-  border-radius: 8px;
+  border-radius: 4px;
   background-color: #FFF;
   padding: 20px;
 }
@@ -134,6 +135,30 @@ $teacher-secondary-color: #FF9C31;
   opacity: 0.8;
 }
 
+.user-popover {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    height: 80px;
+    width: auto;
+    border-radius: 40px;
+  }
+
+  .user-popover-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.profile-miniature {
+  border-radius: 15px;
+  width: 30px;
+}
+
 @media (max-width: 720px)
 {
   .list-header {
@@ -142,6 +167,10 @@ $teacher-secondary-color: #FF9C31;
     span {
       margin-bottom: 10px;
     }
+  }
+
+  body {
+    font-size: 0.875rem;
   }
 
 }

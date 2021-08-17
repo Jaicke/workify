@@ -61,6 +61,10 @@ var APPLICATION = (function(application){
     $('[data-toggle="tooltip"]').tooltip()
   }
 
+  var initializePopover = function(){
+    $('[data-toggle="popover"]').popover()
+  }
+
   var collapsesItems = function(){
     $(".wrapper").toggleClass("collapses")
     $(".box").toggleClass("collapses")
@@ -92,6 +96,7 @@ var APPLICATION = (function(application){
       sideBarControl()
       initializeSelect2()
       initializeTooltip()
+      initializePopover()
     }
   }
 

@@ -61,6 +61,6 @@ class Student::WorkVersionsController < Student::BaseController
   end
 
   def fetch_work
-    @work = Work.find(params[:work_id])
+    @work = Work.by_owner_or_member(@current_user).find(params[:work_id])
   end
 end

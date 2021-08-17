@@ -1,0 +1,42 @@
+<div class="box">
+  <div class="content">
+    <%= render 'student/works/tabs' %>
+    <div class="review-info">
+      <div class="review-info-status">
+        <%= review_status_badge(@review.status) %>
+      </div>
+      <h2><%= @review.title %> <%= @review.creation_number %></h2>
+      <div class="review-info-creation mb-3">
+        Criada por
+        <span data-toggle="popover" data-placement="top" data-html="true" data-trigger='hover click' data-content="<%= "#{render 'layouts/shared/user_popover', user: @review.created_by}"%>">
+          <%= image_tag url_for_profile_image(@review.created_by), class: "header-profile-image", style: 'cursor: pointer;' %>
+          <strong><%= @review.created_by.label_name %></strong>
+        </span>
+        há
+        <span data-toggle="tooltip" data-placement="top", title="<%= "#{@review.created_at.strftime("%d/%m/%Y")} às #{ @review.created_at.strftime("%H:%M")}" %>">
+          <%= time_ago_in_words(@review.created_at) %>
+        </span>
+      </div>
+      <p><%= @review.description %></p>
+
+      <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <a class="nav-link active" id="home-tab" data-toggle="tab" href="#resume" role="tab" aria-controls="resume" aria-selected="true">Resumo</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" id="timeline-tab" data-toggle="tab" href="#timeline" role="tab" aria-controls="timeline" aria-selected="true">Linha do tempo</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" id="comparation-tab" data-toggle="tab" href="#comparation" role="tab" aria-controls="comparation" aria-selected="false">Comparação</a>
+        </li>
+      </ul>
+      <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="resume" role="tabpanel" aria-labelledby="resume-tab">
+          <%= render 'student/reviews/shared/resume' %>
+        </div>
+        <div class="tab-pane fade" id="timeline" role="tabpanel" aria-labelledby="timeline-tab">...</div>
+        <div class="tab-pane fade" id="comparation" role="tabpanel" aria-labelledby="comparation-tab">...</div>
+      </div>
+    </div>
+  </div>
+</div>

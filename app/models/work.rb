@@ -2,7 +2,7 @@ class Work < ApplicationRecord
   acts_as_paranoid
   paginates_per 8
 
-  enum status: { waiting_advisor: 0, in_progress: 1, complete: 2 }
+  enum status: { not_started: 0, in_progress: 1, complete: 2 }
 
   belongs_to :created_by, class_name: 'Student::User'
   belongs_to :advisor, class_name: 'Teacher::User', optional: true
@@ -29,6 +29,14 @@ class Work < ApplicationRecord
     "Sem tema"
   end
 
+  def current_version
+    work_versions.find_by(current: true)
+  end
+
+  def last_update_date
+    updated_at > current_version.created_at ? updated_at : current_version.created_at
+  end
+
   private
 
   def set_user_as_member
@@ -40,7 +48,7 @@ class Work < ApplicationRecord
   end
 
   def valid_advisors
-    if co_advisors.pluck(:id).include?(advisor_id)
+    if co_advisors.include?(advisor)
       errors.add(:base, 'Orientador não pode ser co-orientador ao mesmo tempo.')
     end
   end

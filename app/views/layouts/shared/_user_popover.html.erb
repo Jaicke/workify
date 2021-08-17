@@ -1,0 +1,10 @@
+<div class="user-popover">
+  <div class="user-popover-avatar">
+    <%= image_tag url_for_profile_image(user) %>
+  </div>
+
+  <div class="user-popover-info">
+    <strong><%= user.label_name %></strong>
+    <small><%= user.email %></small>
+  </div>
+</div>

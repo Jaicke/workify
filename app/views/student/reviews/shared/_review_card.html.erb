@@ -1,10 +1,10 @@
 <div class="review-card review-card-<%= review.status %>">
   <div class="review-card-header">
-    <%= link_to review.title, '#', class: 'review-card-title' %>
+    <%= link_to review.title, student_review_path(review, work_id: @work.id), class: 'review-card-title' %>
     <% if review.approved? %>
       <span class="badge badge-success" title="Aprovado" data-toggle="tooltip"><%= icon("fas", "check") %> Aprovado</span>
     <% else %>
-      <span class="badge badge-danger" title="Não Aprovado" data-toggle="tooltip"><%= icon("fas", "times") %> Não Aprovado</span>
+      <span class="badge badge-light" title="Não Aprovado" data-toggle="tooltip"><%= icon("fas", "times") %> Não Aprovado</span>
     <% end %>
   </div>
 

@@ -3,6 +3,7 @@ class Review < ApplicationRecord
 
   belongs_to :work
   belongs_to :created_by, class_name: 'Student::User'
+  belongs_to :confirmed_by, class_name: 'Student::User', optional: true
   belongs_to :old_work_version, class_name: 'WorkVersion', optional: true
   belongs_to :new_work_version, class_name: 'WorkVersion', optional: true
 

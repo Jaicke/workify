@@ -1,6 +1,7 @@
 class Student::ReviewsController < Student::BaseController
   before_action :fetch_work
   before_action :fetch_work_versions
+  before_action :fetch_review, only: [:show, :replace]
 
   def index
     @reviews = @work.reviews.order(created_at: :desc).page(params[:page])
@@ -10,6 +11,9 @@ class Student::ReviewsController < Student::BaseController
       format.js
       format.html
     end
+  end
+
+  def show
   end
 
   def new
@@ -31,10 +35,23 @@ class Student::ReviewsController < Student::BaseController
   def update
   end
 
+  def replace
+    @review.closed!
+    @review.update(confirmed: true, confirmed_by_id: @current_user.id, confirmed_at: DateTime.current)
+    @review.old_work_version.update(current: false)
+    @review.new_work_version.update(current: true)
+
+    redirect_to student_review_path(id: @review, work_id: @work.id)
+  end
+
   private
 
+  def fetch_review
+    @review = @work.reviews.find(params[:id])
+  end
+
   def fetch_work
-    @work = Work.find(params[:work_id])
+    @work = Work.by_owner_or_member(@current_user).find(params[:work_id])
   end
 
   def fetch_work_versions

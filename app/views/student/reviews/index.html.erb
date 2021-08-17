@@ -1,11 +1,11 @@
 <div class="box">
   <div class="content">
     <%= render 'student/works/tabs' %>
-    <%= render 'header' %>
+    <%= render 'student/reviews/shared/header' %>
 
     <div class="review-list">
       <% @reviews.each do |review| %>
-        <%= render 'review_card', review: review %>
+        <%= render 'student/reviews/shared/review_card', review: review %>
       <% end %>
     </div>
 

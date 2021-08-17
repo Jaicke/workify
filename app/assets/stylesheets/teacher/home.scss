@@ -165,7 +165,7 @@ body{
   color: rgba(0, 0, 0, 0.7)
 }
 
-.active{
+.wrapper .sidebar .sidebar-menu .active.nav-item.item > a {
   border-left: 5px solid $teacher-secondary-color;
 }
 
@@ -188,7 +188,7 @@ body{
 
 .box.collapses{
   width: calc(100% - 0%);
-  margin-left: 5px;
+  margin-left: 0;
 }
 
 .alert{
@@ -244,6 +244,9 @@ body{
     transition: 0.3s;
   }
 
+  .content {
+    padding: 20px 10px;
+  }
 
   .container.collapses{
     // width: calc(100% - 30px);

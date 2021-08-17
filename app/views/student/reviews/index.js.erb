@@ -7,5 +7,5 @@ pagination.innerHTML = "";
 pagination.insertAdjacentHTML("beforeend", "<%= j render 'layouts/shared/pagination', items: @reviews %>");
 
 <% @reviews.each do |review| %>
-  reviews.insertAdjacentHTML("beforeend", "<%= j render 'review_card', review: review %>");
+  reviews.insertAdjacentHTML("beforeend", "<%= j render 'student/reviews/shared/review_card', review: review %>");
 <% end %>

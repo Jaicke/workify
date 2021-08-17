@@ -22,7 +22,9 @@ Rails.application.routes.draw do
     resources :works, only: [:index, :new, :create, :edit, :update, :destroy, :show] do
       resources :work_versions, on: :member, except: :index
     end
-    resources :reviews, only: [:index, :new, :create]
+    resources :reviews, only: [:index, :show, :new, :create] do
+      patch :replace, on: :member
+    end
   end
 
   namespace :teacher do

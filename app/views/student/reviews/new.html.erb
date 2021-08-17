@@ -1,6 +1,6 @@
 <div class="box">
   <div class="content">
     <%= render 'student/works/tabs' %>
-    <%= render 'form', path: student_reviews_path(work_id: @work.id) %>
+    <%= render 'student/reviews/shared/form', path: student_reviews_path(work_id: @work.id) %>
   </div>
 </div>

@@ -1,9 +1,9 @@
 module Student::WorksHelper
   def work_status_badge(status)
     badges = {
-      waiting_advisor: '<span class="badge badge badge-secondary">Aguardando Orientador</span>',
-      in_progress: '<span class="badge badge badge-info">Em progresso</span>',
-      complete: '<span class="badge badge badge-success">Completo</span>'
+      not_started: '<span class="badge badge-secondary">Não iniciado</span>',
+      in_progress: '<span class="badge badge-info">Em progresso</span>',
+      complete: '<span class="badge badge-success">Completo</span>'
     }
 
     badges[status.to_sym].html_safe

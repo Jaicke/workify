@@ -1,0 +1,39 @@
+<div class="card mt-3">
+  <div class="card-body">
+    <%= icon("fas", "exchange-alt") %>
+    Substituir
+    <strong>
+      <%= link_to @review.old_work_version.title, student_work_work_version_path(id: @review.old_work_version.id, work_id: @work.id), remote: true %>
+    </strong>
+    por
+    <strong><%= link_to @review.new_work_version.title, student_work_work_version_path(id: @review.new_work_version.id, work_id: @work.id), remote: true %></strong>
+  </div>
+</div>
+
+<div class="card mt-3">
+  <div class="card-body">
+    <%= icon("fas", "user-check") %>
+    <% if @review.approved? %>
+      Aprovada por
+    <% end %>
+    <% if @review.approvals.each do |approval| %>
+      <%= image_tag url_for_profile_image(approval.teacher), loading: "lazy", class: 'profile-miniature negative-margin-right', title: approval.teacher.label_name, data: { toggle: 'tooltip', placement: 'top' } %>
+    <% end.empty? %>
+      Nenhum orientador aprovou ainda
+    <% end %>
+  </div>
+</div>
+
+<div class="card mt-3">
+  <div class="card-body">
+    <% if @review.confirmed? %>
+      <%= icon("fas", "check-circle", class: 'success-color') %> Confirmado por <%= @review.confirmed_by.label_name %>
+    <% else %>
+      <%= link_to replace_student_review_path(id: @review, work_id: @work.id), class: 'btn btn-outline-success', method: :patch, data: { confirm: "Deseja mesmo substituir a versão atual?" } do %>
+        <%= icon("fas", "check-circle") %> Confirmar
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
+<h3 class="mt-3">Comentários</h3>
