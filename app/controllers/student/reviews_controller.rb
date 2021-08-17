@@ -36,12 +36,14 @@ class Student::ReviewsController < Student::BaseController
   end
 
   def replace
-    @review.closed!
-    @review.update(confirmed: true, confirmed_by_id: @current_user.id, confirmed_at: DateTime.current)
-    @review.old_work_version.update(current: false)
-    @review.new_work_version.update(current: true)
+    @review.transactional do
+      @review.closed!
+      @review.update!(confirmed: true, confirmed_by_id: @current_user.id, confirmed_at: DateTime.current)
+      @review.old_work_version.update!(current: false)
+      @review.new_work_version.update!(current: true)
+    end
 
-    redirect_to student_review_path(id: @review, work_id: @work.id)
+    redirect_to student_review_path(id: @review, work_id: @work.id), notice: 'Versão atual substituída.'
   end
 
   private
