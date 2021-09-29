@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_04_235129) do
+ActiveRecord::Schema.define(version: 2021_08_19_032252) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -136,15 +136,22 @@ ActiveRecord::Schema.define(version: 2021_08_04_235129) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "review_events", force: :cascade do |t|
+    t.integer "review_id"
+    t.integer "action"
+    t.string "by_user_type"
+    t.bigint "by_user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["by_user_type", "by_user_id"], name: "index_review_events_on_by_user_type_and_by_user_id"
+  end
+
   create_table "reviews", force: :cascade do |t|
     t.string "title"
     t.text "description"
     t.integer "status"
     t.string "creation_number"
     t.boolean "confirmed"
-    t.integer "confirmed_by_id"
-    t.datetime "confirmed_at"
-    t.integer "created_by_id"
     t.integer "work_id"
     t.integer "old_work_version_id"
     t.integer "new_work_version_id"

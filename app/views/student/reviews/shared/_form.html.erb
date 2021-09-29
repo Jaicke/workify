@@ -1,10 +1,13 @@
 <%= form_with(model: @review, url: path, local: false, html: { autocomplete: :off }) do |f| %>
-  <div class="form-row">
-    <div class="form-group col-md-12">
-      <%= f.label :new_work_version %>
-      <%= f.select :new_work_version_id, options_from_collection_for_select(@work_versions, :id, :title, @review.new_work_version_id), { include_blank: 'Sem versão' }, class: 'select2 form-control' %>
+
+  <% if @review.open? || @review.status.nil? %>
+    <div class="form-row">
+      <div class="form-group col-md-12">
+        <%= f.label :new_work_version %>
+        <%= f.select :new_work_version_id, options_from_collection_for_select(@work_versions, :id, :title, @review.new_work_version_id), { include_blank: 'Sem versão' }, class: 'select2 form-control' %>
+      </div>
     </div>
-  </div>
+  <% end %>
 
   <div class="form-row">
     <div class="form-group col-md-12">

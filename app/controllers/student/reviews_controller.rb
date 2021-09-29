@@ -1,7 +1,7 @@
 class Student::ReviewsController < Student::BaseController
   before_action :fetch_work
   before_action :fetch_work_versions
-  before_action :fetch_review, only: [:show, :replace]
+  before_action :fetch_review, only: [:show, :replace, :edit, :update, :close]
 
   def index
     @reviews = @work.reviews.order(created_at: :desc).page(params[:page])
@@ -21,8 +21,9 @@ class Student::ReviewsController < Student::BaseController
   end
 
   def create
-    @review = @work.reviews.new(review_params.merge!(created_by_id: @current_user.id))
+    @review = @work.reviews.new(review_params)
     if @review.save
+      ReviewEvent.create!(review_id: @review.id, by_user: @current_user, action: :created)
       redirect_to student_reviews_path(work_id: @work.id), notice: 'Revisão adicionada, aguarde seu orientador aprovar.'
     else
       render :new
@@ -33,17 +34,25 @@ class Student::ReviewsController < Student::BaseController
   end
 
   def update
+    @work_versions = @work.work_versions
+
+    if @review.update(review_params)
+      redirect_to student_review_path(id: @review, work_id: @work.id), notice: 'Revisão atualizada com sucesso.'
+    else
+      render :edit
+    end
   end
 
   def replace
-    @review.transaction do
-      @review.closed!
-      @review.update!(confirmed: true, confirmed_by_id: @current_user.id, confirmed_at: DateTime.current)
-      @review.old_work_version.update!(current: false)
-      @review.new_work_version.update!(current: true)
-    end
-
+    @review.confirm_replace
+    ReviewEvent.create!(review_id: @review.id, by_user: @current_user, action: :confirmed)
     redirect_to student_review_path(id: @review, work_id: @work.id), notice: 'Versão atual substituída.'
+  end
+
+  def close
+    @review.closed!
+    ReviewEvent.create!(review_id: @review.id, by_user: @current_user, action: :closed)
+    redirect_to student_review_path(id: @review, work_id: @work.id), notice: 'Revisão fechada.'
   end
 
   private

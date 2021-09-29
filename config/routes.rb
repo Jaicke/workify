@@ -22,8 +22,9 @@ Rails.application.routes.draw do
     resources :works, only: [:index, :new, :create, :edit, :update, :destroy, :show] do
       resources :work_versions, on: :member, except: :index
     end
-    resources :reviews, only: [:index, :show, :new, :create] do
+    resources :reviews, only: [:index, :show, :new, :create, :edit, :update] do
       patch :replace, on: :member
+      get :close, on: :member
     end
   end
 

@@ -2,12 +2,11 @@ class Review < ApplicationRecord
   enum status: [:open, :closed]
 
   belongs_to :work
-  belongs_to :created_by, class_name: 'Student::User'
-  belongs_to :confirmed_by, class_name: 'Student::User', optional: true
   belongs_to :old_work_version, class_name: 'WorkVersion', optional: true
   belongs_to :new_work_version, class_name: 'WorkVersion', optional: true
 
   has_many :approvals, class_name: 'Approval'
+  has_many :review_events, class_name: 'ReviewEvent'
 
   validates :old_work_version, presence: true
   validates :new_work_version, presence: true
@@ -20,6 +19,23 @@ class Review < ApplicationRecord
 
   def approved?
     self.approvals.any?
+  end
+
+  def confirm_replace
+    self.transaction do
+      self.closed!
+      self.update!(confirmed: true)
+      self.old_work_version.update!(current: false)
+      self.new_work_version.update!(current: true)
+    end
+  end
+
+  def created_by
+    review_events.find_by(action: :created).by_user
+  end
+
+  def confirmed_by
+    review_events.find_by(action: :confirmed).by_user
   end
 
   private

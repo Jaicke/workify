@@ -24,16 +24,18 @@
   </div>
 </div>
 
-<div class="card mt-3">
-  <div class="card-body">
-    <% if @review.confirmed? %>
-      <%= icon("fas", "check-circle", class: 'success-color') %> Confirmado por <%= @review.confirmed_by.label_name %>
-    <% else %>
-      <%= link_to replace_student_review_path(id: @review, work_id: @work.id), class: 'btn btn-outline-success', method: :patch, data: { confirm: "Deseja mesmo substituir a versão atual?" } do %>
-        <%= icon("fas", "check-circle") %> Confirmar
+<% unless @review.closed? && !@review.confirmed? %>
+  <div class="card mt-3">
+    <div class="card-body">
+      <% if @review.confirmed? %>
+        <%= icon("fas", "check-circle", class: 'success-color') %> Confirmado por <%= @review.confirmed_by.label_name %>
+      <% else %>
+        <%= link_to replace_student_review_path(id: @review, work_id: @work.id), class: 'btn btn-outline-success', method: :patch, data: { confirm: "Deseja mesmo substituir a versão atual?" } do %>
+          <%= icon("fas", "check-circle") %> Confirmar
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
   </div>
-</div>
+<% end %>
 
 <h3 class="mt-3">Comentários</h3>

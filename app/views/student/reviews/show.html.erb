@@ -2,8 +2,21 @@
   <div class="content">
     <%= render 'student/works/tabs' %>
     <div class="review-info">
-      <div class="review-info-status">
-        <%= review_status_badge(@review.status) %>
+      <div class="review-info-header">
+        <div class="review-info-status">
+          <%= review_status_badge(@review.status) %>
+        </div>
+        <div class="dropdown">
+          <button class="btn btn-light dropdown-toggle col-md-12 col-sm-12 col-12 mb-3" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Opções
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <%= nav_dropdown_item "Editar", edit_student_review_path(work_id: @work.id, id: @review.id), '' %>
+            <% if @review.open? %>
+              <%= nav_dropdown_item "Fechar", close_student_review_path(work_id: @work.id, id: @review.id), '', data: { confirm: 'Deseja mesmo fechar essa Revisão?'} %>
+            <% end %>
+          </div>
+        </div>
       </div>
       <h2><%= @review.title %> <%= @review.creation_number %></h2>
       <div class="review-info-creation mb-3">
@@ -26,9 +39,6 @@
         <li class="nav-item" role="presentation">
           <a class="nav-link" id="historical-tab" data-toggle="tab" href="#historical" role="tab" aria-controls="historical" aria-selected="true">Histórico</a>
         </li>
-        <li class="nav-item" role="presentation">
-          <a class="nav-link" id="comparation-tab" data-toggle="tab" href="#comparation" role="tab" aria-controls="comparation" aria-selected="false">Comparação</a>
-        </li>
       </ul>
       <div class="tab-content" id="myTabContent">
         <div class="tab-pane fade show active" id="resume" role="tabpanel" aria-labelledby="resume-tab">
@@ -37,7 +47,6 @@
         <div class="tab-pane fade" id="historical" role="tabpanel" aria-labelledby="historical-tab">
           <%= render 'student/reviews/shared/historical' %>
         </div>
-        <div class="tab-pane fade" id="comparation" role="tabpanel" aria-labelledby="comparation-tab">...</div>
       </div>
     </div>
   </div>

@@ -1,0 +1,6 @@
+<div class="box">
+  <div class="content">
+    <%= render 'student/works/tabs' %>
+    <%= render 'student/reviews/shared/form', path: student_review_path(work_id: @work.id) %>
+  </div>
+</div>

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  review_id: 1
+  action: 1
+  by_user: one
+  by_user_type: By user
+
+two:
+  review_id: 1
+  action: 1
+  by_user: two
+  by_user_type: By user

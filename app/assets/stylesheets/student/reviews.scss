@@ -49,6 +49,11 @@
 
 // Review details
 
+.review-info-header {
+  display: flex;
+  justify-content: space-between;
+}
+
 .review-info {
   text-align: justify;
   padding: 0px 30px;
@@ -70,5 +75,13 @@
 @media (max-width: 720px) {
   .review-list {
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  }
+
+  .review-info-header {
+    flex-direction: column-reverse;
+  }
+
+  .review-info-header > .dropdown.show > div {
+    width: 100%;
   }
 }
