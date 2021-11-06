@@ -1,6 +1,7 @@
 class Student::WorksController < Student::BaseController
   before_action :fetch_work, only: [:edit, :update, :destroy, :show]
   before_action :fetch_teachers, only: [:new, :create, :edit, :update]
+  before_action :fetch_members, only: :show
   before_action :fetch_work_versions, only: :show
 
   def index
@@ -80,6 +81,10 @@ class Student::WorksController < Student::BaseController
 
   def fetch_work
     @work = Work.by_owner_or_member(@current_user).find(params[:id])
+  end
+
+  def fetch_members
+    @members = Student::User.where(email: @work.group_members.pluck(:email))
   end
 
   def fetch_teachers

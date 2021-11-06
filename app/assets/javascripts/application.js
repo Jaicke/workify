@@ -50,6 +50,11 @@ var APPLICATION = (function(application){
       theme: "bootstrap"
     })
 
+     $('.select2-tags').select2({
+      theme: "bootstrap",
+      tags: true
+    })
+
     $('#modal-window').on('shown.bs.modal', function () {
       $('.select2').select2({
         theme: 'bootstrap'

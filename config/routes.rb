@@ -26,6 +26,7 @@ Rails.application.routes.draw do
       patch :replace, on: :member
       get :close, on: :member
     end
+    resources :discussions, only: [:index, :edit, :update, :new, :create, :destroy, :show]
   end
 
   namespace :teacher do

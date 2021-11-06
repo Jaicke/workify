@@ -21,6 +21,7 @@ $teacher-secondary-color: #FF9C31;
 .success-color {
   color: #28a745
 }
+
 .tabs {
   font-size: 13px;
 }
@@ -30,9 +31,26 @@ $teacher-secondary-color: #FF9C31;
   border-left: none !important;
 }
 
-.select2 {
+.select2, .select2-tags{
   width:100% !important;
 }
+
+.select2-selection__choice {
+  background-color: #343a40 !important;
+  color: white !important;
+  border-radius: 15px !important;
+  border: none !important;
+  padding: 1px 10px !important;
+}
+
+.tag {
+  background-color: #343a40;
+  color: white;
+  border-radius: 0.25rem;
+  border: none;
+  padding: 1px 10px;
+}
+
 
 .list-header {
   display: flex;
@@ -79,7 +97,7 @@ $teacher-secondary-color: #FF9C31;
   margin-left: 12px;
 }
 
-#save-profile-btn{
+.btn-rounded{
   border-radius: 18px;
 }
 

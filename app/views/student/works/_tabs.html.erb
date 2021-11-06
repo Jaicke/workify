@@ -1,9 +1,8 @@
 <ul class="nav nav-fill tabs mb-3">
   <%= nav_link_to "Versões", student_work_path(@work), "works" %>
   <%= nav_link_to "Revisões", student_reviews_path(work_id: @work), "reviews" %>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Discussões</a>
-  </li>
+  <%= nav_link_to "Discussões", student_discussions_path(work_id: @work), "discussions" %>
+
   <li class="nav-item">
     <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Cronograma</a>
   </li>

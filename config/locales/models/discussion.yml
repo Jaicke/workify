@@ -1,0 +1,11 @@
+pt-BR:
+  activerecord:
+    models:
+      discussion:
+        one: Discussão
+        other: Discussões
+    attributes:
+      discussion:
+        title: Título
+        body: Corpo
+        tags: Tags

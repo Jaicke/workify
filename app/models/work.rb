@@ -10,6 +10,7 @@ class Work < ApplicationRecord
   has_many :group_members, class_name: 'GroupMember', inverse_of: :work
   has_many :work_versions
   has_many :reviews
+  has_many :discussions
 
   has_and_belongs_to_many :co_advisors, class_name: 'Teacher::User'
 
@@ -19,7 +20,7 @@ class Work < ApplicationRecord
 
   accepts_nested_attributes_for :group_members, reject_if: :all_blank, allow_destroy: true
 
-  before_validation :set_user_as_member, on: :create, if: :group?
+  before_validation :set_user_as_member, if: :group?
   before_validation :removes_group_members, unless: :group?
 
   scope :by_owner_or_member, ->(current_user) { left_joins(:group_members).where('created_by_id = ? OR group_members.email = ?', current_user.id , current_user.email) }
@@ -34,17 +35,19 @@ class Work < ApplicationRecord
   end
 
   def last_update_date
+    return updated_at if current_version.nil?
+
     updated_at > current_version.created_at ? updated_at : current_version.created_at
   end
 
   private
 
   def set_user_as_member
-    group_members.build(email: created_by.email)
+    group_members.build(email: created_by.email) if group_members.find_by(email: created_by.email).nil?
   end
 
   def removes_group_members
-    group_members.where.not(email: created_by.email).destroy_all
+    group_members.destroy_all
   end
 
   def valid_advisors

@@ -1,0 +1,20 @@
+<div class="discussion-card row">
+  <div class="discussion-card-title col-md-6">
+    <%= link_to discussion.title, student_discussion_path(discussion, work_id: @work.id) %>
+  </div>
+
+  <div class="discussion-card-info col-md-6">
+    <span class="discussion-created-at">
+      <%= discussion.created_at.strftime("%d/%m/%Y") %>
+    </span>
+    <span data-toggle="popover" data-placement="top" data-html="true" data-trigger='hover click' data-content="<%= "#{render 'layouts/shared/user_popover', user: discussion.created_by}"%>">
+      <%= image_tag url_for_profile_image(discussion.created_by), class: "header-profile-image", style: 'cursor: pointer;' %>
+      <%= discussion.created_by.label_name %>
+    </span>
+    <div class="tags">
+      <% discussion.tags.each do |tag| %>
+        <span class="tag"><%= tag %></span>
+      <% end %>
+    </div>
+  </div>
+</div>

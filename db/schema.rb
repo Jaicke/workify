@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_19_032252) do
+ActiveRecord::Schema.define(version: 2021_09_29_002734) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -127,6 +127,18 @@ ActiveRecord::Schema.define(version: 2021_08_19_032252) do
     t.bigint "course_id"
     t.index ["course_id"], name: "index_courses_teacher_users_on_course_id"
     t.index ["user_id"], name: "index_courses_teacher_users_on_user_id"
+  end
+
+  create_table "discussions", force: :cascade do |t|
+    t.string "title"
+    t.string "body"
+    t.string "tags", default: [], array: true
+    t.integer "work_id"
+    t.string "created_by_type"
+    t.bigint "created_by_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["created_by_type", "created_by_id"], name: "index_discussions_on_created_by_type_and_created_by_id"
   end
 
   create_table "group_members", force: :cascade do |t|

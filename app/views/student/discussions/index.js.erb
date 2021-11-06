@@ -1,0 +1,11 @@
+var discussions = document.querySelector(".discussion-list");
+var pagination = document.querySelector(".info-pagination");
+
+discussions.innerHTML = "";
+pagination.innerHTML = "";
+
+pagination.insertAdjacentHTML("beforeend", "<%= j render 'layouts/shared/pagination', items: @discussions %>");
+
+<% @discussions.each do |discussion| %>
+  discussions.insertAdjacentHTML("beforeend", "<%= j render 'student/discussions/shared/discussion_card', discussion: discussion %>");
+<% end %>

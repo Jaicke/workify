@@ -1,0 +1,13 @@
+<div class="row list-header mb-3">
+  <div class="col-md-10 col-sm-12 mb-3">
+    <%= form_tag student_discussions_path(work_id: @work.id), autocomplete: :off, method: :get, remote: true do %>
+      <%= text_field_tag 'search', params[:search], placeholder: "Pesquisar por título ou tag", class: "form-control col-sm-12 col-12 col-md-12 search-input" %>
+    <% end %>
+  </div>
+
+  <div class="col">
+    <%= link_to new_student_discussion_path(work_id: @work.id), class: 'btn btn-success col-sm-12' do %>
+      Criar discussão
+    <% end %>
+  </div>
+</div>
