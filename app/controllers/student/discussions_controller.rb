@@ -1,5 +1,7 @@
 class Student::DiscussionsController < Student::BaseController
   before_action :fetch_work
+  before_action :fetch_discussion, only: [:show, :edit, :update, :destroy, :change_status]
+  before_action :fetch_discussion_answers, only: :show
 
   def index
     @discussions = @work.discussions.order(created_at: :desc).page(params[:page])
@@ -9,6 +11,9 @@ class Student::DiscussionsController < Student::BaseController
       format.js
       format.html
     end
+  end
+
+  def show
   end
 
   def new
@@ -29,10 +34,18 @@ class Student::DiscussionsController < Student::BaseController
 
   def update
     if @discussion.update(discussion_params)
-      redirect_to student_discussions_path(work_id: @work.id), notice: 'Discussão atualizada com sucesso.'
+      redirect_to student_discussion_path(work_id: @work.id), notice: 'Discussão atualizada com sucesso.'
     else
       render :edit
     end
+  end
+
+  def change_status
+    @discussion.update(closed: !@discussion.closed)
+
+    notice = @discussion.closed? ? 'Discussão fechada.' : 'Discussão aberta.'
+
+    redirect_to student_discussion_path(work_id: @work.id), notice: notice
   end
 
   def destroy
@@ -44,6 +57,14 @@ class Student::DiscussionsController < Student::BaseController
 
   def fetch_work
     @work = Work.by_owner_or_member(@current_user).find(params[:work_id])
+  end
+
+  def fetch_discussion
+    @discussion = @work.discussions.find(params[:id])
+  end
+
+  def fetch_discussion_answers
+    @discussion_answers = @discussion.discussion_answers.order(favorite: :desc, created_at: :desc).page(params[:page])
   end
 
   def discussion_params

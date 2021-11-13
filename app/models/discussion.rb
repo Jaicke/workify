@@ -4,12 +4,13 @@ class Discussion < ApplicationRecord
   belongs_to :work
   belongs_to :created_by, polymorphic: true
 
+  has_many :discussion_answers
+
   validates :title, :body, presence: true
   validate :tags_quantity
 
   before_validation :remove_empty_tags
   before_validation :capitalize_tags
-
 
   private
 

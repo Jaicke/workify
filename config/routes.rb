@@ -26,7 +26,12 @@ Rails.application.routes.draw do
       patch :replace, on: :member
       get :close, on: :member
     end
-    resources :discussions, only: [:index, :edit, :update, :new, :create, :destroy, :show]
+    resources :discussions, only: [:index, :edit, :update, :new, :create, :destroy, :show] do
+      get :change_status, on: :member
+      resources :discussion_answers, only: [:edit, :update, :create, :destroy] do
+        get :toggle_favorite, on: :member
+      end
+    end
   end
 
   namespace :teacher do

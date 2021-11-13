@@ -1,4 +1,6 @@
 class Student::User < ApplicationRecord
+  attr_accessor :first_login
+
   enum class_shift: [:morning, :afternoon, :night, :full_time]
 
   belongs_to :college, optional: true
@@ -9,14 +11,20 @@ class Student::User < ApplicationRecord
 
   has_many :works, foreign_key: :created_by
   has_many :reviews, foreign_key: :created_by
+  has_many :discussions, foreign_key: :created_by
+  has_many :discussion_answers, foreign_key: :created_by
 
   has_one_attached :avatar
 
-  validates_uniqueness_of :email
-  validates_presence_of :first_name, :last_name, :email
-  validates_presence_of :serie, :ingress_year, :ingress_semester, :class_shift, :college, :course, on: :update
+  with_options({ unless: :first_login }) do
+    validates_uniqueness_of :email
+    validates_presence_of :first_name, :last_name, :email
+    validates_presence_of :serie, :ingress_year, :ingress_semester, :class_shift, :college, :course, on: :update
+  end
 
   has_secure_password
+
+  before_validation :check_profile
 
   def full_name
     "#{first_name} #{last_name}"
@@ -41,6 +49,10 @@ class Student::User < ApplicationRecord
       ingress_semester.present?,
       class_shift.present?
     ].all?(true)
+  end
+
+  def check_profile
+    self.first_login = true unless profile_completed?
   end
 
 end

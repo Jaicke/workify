@@ -1,5 +1,68 @@
 <div class="box">
-  <div class="content">
-   Show discussion
+  <div class="content discussion">
+    <%= render 'student/works/tabs' %>
+
+    <div class="header">
+      <h1 class="discussion-title">
+        <%= @discussion.title %>
+        <% if @discussion.closed? %>
+          <span data-toggle="tooltip" data-placement="top" title="Fechada">
+            <%= icon("fas", "check", class: 'success-color') %>
+          </span>
+        <% end %>
+      </h1>
+
+      <% if @discussion.created_by == @current_user %>
+        <div class="dropdown">
+          <button class="btn btn-light dropdown-toggle col-md-12 col-sm-12 col-12 mb-3" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Opções
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <%= nav_dropdown_item "Fechar", change_status_student_discussion_path(work_id: @work.id, id: @discussion.id), '', data: { confirm: 'Deseja mesmo fechar a discussão?' } unless @discussion.closed? %>
+            <%= nav_dropdown_item "Abrir", change_status_student_discussion_path(work_id: @work.id, id: @discussion.id), '', data: { confirm: 'Deseja mesmo abrir a discussão?' } if @discussion.closed? %>
+            <%= nav_dropdown_item "Editar", edit_student_discussion_path(work_id: @work.id, id: @discussion.id), '' if @discussion.created_by == @current_user %>
+            <%= nav_dropdown_item "Excluir", student_discussion_path(work_id: @work.id, id: @discussion.id), '', data: { confirm: 'Deseja mesmo excluir a discussão?' }, method: :delete %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="tags">
+      <% @discussion.tags.each do |tag| %>
+        <span class="tag"><%= tag %></span>
+      <% end %>
+    </div>
+
+    <div class="body">
+      <div class="author mb-2 mt-3">
+        <span data-toggle="popover" data-placement="top" data-html="true" data-trigger='hover click' data-content="<%= "#{render 'layouts/shared/user_popover', user: @discussion.created_by}"%>">
+          <%= image_tag url_for_profile_image(@discussion.created_by), class: "header-profile-image", style: 'cursor: pointer;' %>
+          <strong><%= @discussion.created_by.label_name %></strong>
+        </span>
+        <span data-toggle="tooltip" data-placement="top", title="<%= "#{@discussion.created_at.strftime("%d/%m/%Y")} às #{ @discussion.created_at.strftime("%H:%M")}" %>">
+          há
+          <%= time_ago_in_words(@discussion.created_at) %>
+        </span>
+      </div>
+      <%= @discussion.body.html_safe %>
+    </div>
+
+    <div class="answers mt-5">
+      <h6>
+        <%= icon("far", "comments") %> Respostas <span class="badge badge-info"><%= @discussion.discussion_answers.count %></span>
+      </h6>
+
+      <% @discussion_answers.each do |answer| %>
+         <%= render 'student/discussions/shared/discussion_answer_card', answer: answer %>
+      <% end %>
+
+      <div class="info-pagination mb-3">
+        <%= render "layouts/shared/pagination", items: @discussion_answers %>
+      </div>
+
+      <% unless @discussion.closed? %>
+        <%= render 'student/discussions/shared/form_answer', path: student_discussion_discussion_answers_path(work_id: @work.id, discussion_id: @discussion.id) %>
+      <% end %>
+    </div>
   </div>
 </div>

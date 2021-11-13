@@ -6,17 +6,17 @@
         <div class="review-info-status">
           <%= review_status_badge(@review.status) %>
         </div>
-        <div class="dropdown">
-          <button class="btn btn-light dropdown-toggle col-md-12 col-sm-12 col-12 mb-3" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Opções
-          </button>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <%= nav_dropdown_item "Editar", edit_student_review_path(work_id: @work.id, id: @review.id), '' %>
-            <% if @review.open? %>
-              <%= nav_dropdown_item "Fechar", close_student_review_path(work_id: @work.id, id: @review.id), '', data: { confirm: 'Deseja mesmo fechar essa Revisão?'} %>
-            <% end %>
+        <% if @review.open? || @review.created_by == @current_user %>
+          <div class="dropdown">
+            <button class="btn btn-light dropdown-toggle col-md-12 col-sm-12 col-12 mb-3" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Opções
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <%= nav_dropdown_item "Editar", edit_student_review_path(work_id: @work.id, id: @review.id), '' if @review.created_by == @current_user %>
+              <%= nav_dropdown_item "Fechar", close_student_review_path(work_id: @work.id, id: @review.id), '', data: { confirm: 'Deseja mesmo fechar essa Revisão?'} if @review.open? %>
+            </div>
           </div>
-        </div>
+        <% end %>
       </div>
       <h2><%= @review.title %> <%= @review.creation_number %></h2>
       <div class="review-info-creation mb-3">

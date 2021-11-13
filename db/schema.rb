@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_29_002734) do
+ActiveRecord::Schema.define(version: 2021_11_07_192801) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -129,9 +129,21 @@ ActiveRecord::Schema.define(version: 2021_09_29_002734) do
     t.index ["user_id"], name: "index_courses_teacher_users_on_user_id"
   end
 
+  create_table "discussion_answers", force: :cascade do |t|
+    t.string "content"
+    t.integer "discussion_id"
+    t.boolean "favorite", default: false
+    t.string "created_by_type"
+    t.bigint "created_by_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["created_by_type", "created_by_id"], name: "index_discussion_answers_on_created_by_type_and_created_by_id"
+  end
+
   create_table "discussions", force: :cascade do |t|
     t.string "title"
     t.string "body"
+    t.boolean "closed", default: false
     t.string "tags", default: [], array: true
     t.integer "work_id"
     t.string "created_by_type"

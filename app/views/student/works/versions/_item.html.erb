@@ -20,6 +20,7 @@
         <%= link_to student_work_work_version_path(work_id: @work.id, id: version.id), method: :delete, class: "dropdown-item", data: { confirm: "Tem certeza que deseja remover?" } do %>
           <%= icon("fas", "trash") %> Remover
         <% end %>
+      </div>
     </li>
   </td>
 </tr>

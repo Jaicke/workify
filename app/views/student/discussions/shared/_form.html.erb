@@ -10,7 +10,7 @@
   <div class="form-row">
     <div class="form-group col-md-12">
       <%= f.label :tags %>
-      <%= f.select :tags, ['Tema', 'Melhoria'], { include_blank: false }, class: 'select2-tags form-control', multiple: 'multiple' %>
+      <%= f.select :tags, options_for_select(options_for_tag_select(@discussion), @discussion.tags), { include_blank: false }, class: 'select2-tags form-control', multiple: 'multiple' %>
     </div>
   </div>
 
