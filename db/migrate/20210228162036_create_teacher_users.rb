@@ -5,7 +5,6 @@ class CreateTeacherUsers < ActiveRecord::Migration[5.2]
       t.string :last_name
       t.string :email
       t.string :whatsapp
-      t.text   :interests
       t.string :password_digest
 
       t.timestamps

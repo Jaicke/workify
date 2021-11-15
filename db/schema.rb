@@ -130,7 +130,7 @@ ActiveRecord::Schema.define(version: 2021_11_07_192801) do
   end
 
   create_table "discussion_answers", force: :cascade do |t|
-    t.string "content"
+    t.text "content"
     t.integer "discussion_id"
     t.boolean "favorite", default: false
     t.string "created_by_type"
@@ -142,7 +142,7 @@ ActiveRecord::Schema.define(version: 2021_11_07_192801) do
 
   create_table "discussions", force: :cascade do |t|
     t.string "title"
-    t.string "body"
+    t.text "body"
     t.boolean "closed", default: false
     t.string "tags", default: [], array: true
     t.integer "work_id"
@@ -212,7 +212,6 @@ ActiveRecord::Schema.define(version: 2021_11_07_192801) do
     t.string "last_name"
     t.string "email"
     t.string "whatsapp"
-    t.text "interests"
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -236,7 +235,7 @@ ActiveRecord::Schema.define(version: 2021_11_07_192801) do
 
   create_table "works", force: :cascade do |t|
     t.string "theme"
-    t.string "description"
+    t.text "description"
     t.integer "status", default: 0
     t.boolean "group", default: false
     t.integer "created_by_id"
