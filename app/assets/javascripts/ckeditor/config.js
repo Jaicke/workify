@@ -34,6 +34,7 @@ CKEDITOR.editorConfig = function( config )
   config.allowedContent = true;
   config.filebrowserUploadMethod = 'form';
   config.removeDialogTabs = 'image:Link;image:advanced;';
+  config.filebrowserImageBrowseUrl = '';
 
   // Toolbar groups configuration.
   config.toolbar = [
