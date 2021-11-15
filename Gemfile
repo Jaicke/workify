@@ -43,6 +43,8 @@ gem 'kaminari'
 gem 'acts_as_paranoid', '~> 0.7.0'
 #Dynamic nested forms using jQuery made easy
 gem "cocoon"
+# WYSIWYG text editor
+gem 'ckeditor', github: 'galetahub/ckeditor'
 
 # Use ActiveStorage variant
 gem 'mini_magick', '~> 4.8'

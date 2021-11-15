@@ -16,3 +16,4 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 Rails.application.config.assets.precompile += %w( student.scss )
 Rails.application.config.assets.precompile += %w( teacher.scss )
 Rails.application.config.assets.precompile += %w( site.scss )
+Rails.application.config.assets.precompile += %w[ckeditor/config.js]
