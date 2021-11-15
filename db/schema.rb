@@ -212,6 +212,7 @@ ActiveRecord::Schema.define(version: 2021_11_07_192801) do
     t.string "last_name"
     t.string "email"
     t.string "whatsapp"
+    t.text "interests"
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
