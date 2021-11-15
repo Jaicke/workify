@@ -30,7 +30,7 @@
           <%= time_ago_in_words(@review.created_at) %>
         </span>
       </div>
-      <p><%= @review.description %></p>
+      <p><%= @review.description.html_safe %></p>
 
       <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item" role="presentation">
