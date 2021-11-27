@@ -28,7 +28,7 @@
 </div>
 
 <div class="content">
-  <%= answer.content %>
+  <%= answer.content.html_safe %>
 
   <% if @discussion.created_by == @current_user %>
     <% if answer.favorite? %>
