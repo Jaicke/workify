@@ -7,7 +7,6 @@ CKEDITOR.editorConfig = function( config )
 {
   // Define changes to default configuration here. For example:
   // config.language = 'fr';
-  config.uiColor = '#ffffff';
 
   /* Filebrowser routes */
   // The location of an external file browser, that should be launched when "Browse Server" button is pressed.
@@ -35,6 +34,8 @@ CKEDITOR.editorConfig = function( config )
   config.filebrowserUploadMethod = 'form';
   config.removeDialogTabs = 'image:Link;image:advanced;';
   config.filebrowserImageBrowseUrl = '';
+  config.language = 'pt-BR';
+  config.uiColor = '#ffffff';
 
   // Toolbar groups configuration.
   config.toolbar = [
