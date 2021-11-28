@@ -53,6 +53,15 @@
   }
 }
 
+.work-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.work-theme {
+  font-size: 2rem !important;
+}
+
 .fallback-file {
   display: flex;
   flex-direction: column;
@@ -71,5 +80,13 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+  }
+
+  .work-header {
+    flex-direction: column-reverse;
+  }
+
+  .work-header > .dropdown.show > div {
+    width: 100%;
   }
 }

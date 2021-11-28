@@ -3,7 +3,18 @@
     <%= render 'tabs' %>
     <div class="view-work">
       <div class="view-work-basic-info">
-        <h3><%= @work.theme_label %></h3>
+        <div class="work-header">
+          <h3 class="work-theme"><%= @work.theme_label %></h3>
+          <div class="dropdown">
+            <button class="btn btn-light dropdown-toggle col-md-12 col-sm-12 col-12 mb-3" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Opções
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <%= nav_dropdown_item "Editar", edit_student_work_path(@work), '', remote: true  %>
+              <%= nav_dropdown_item "Excluir", student_work_path(@work), '', data: { confirm: 'Tem certeza que deseja remover?' }, method: :delete %>
+            </div>
+          </div>
+        </div>
         <p><%= @work.description.html_safe %></p>
       </div>
       <div class="row">
