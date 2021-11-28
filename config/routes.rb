@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     end
 
     resource :sessions, only: [:create, :destroy]
-    resources :teachers, only: :index do
+    resources :teachers, only: [:index, :show] do
       post :send_connection, on: :member
     end
     resources :home, only: :index

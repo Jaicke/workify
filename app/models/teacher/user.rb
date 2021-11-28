@@ -18,6 +18,7 @@ class Teacher::User < ApplicationRecord
   validates_uniqueness_of :email
   validates_presence_of :first_name, :last_name, :email
   validates_presence_of :colleges, :courses, on: :update
+  validates :whatsapp, numericality: { only_integer: true }, if: -> { whatsapp.present? }
 
   scope :by_college, ->(college_id) { includes(:colleges).where(colleges: { id: college_id }) }
   scope :by_course, ->(course_id) { includes(:courses).where(courses: { id: course_id }) }

@@ -13,7 +13,7 @@
     <br>
     <div class="teacher-list">
       <% @teachers.each do |teacher| %>
-        <%= render "teacher_card", teacher: teacher %>
+        <%= render "student/teachers/shared/teacher_card", teacher: teacher %>
       <% end %>
     </div>
 

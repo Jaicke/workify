@@ -36,9 +36,9 @@
         </div>
 
         <div class="form-row">
-          <div class="form-group col-md-6">
-            <%= f.label :whatsapp %>
-            <%= f.text_field :whatsapp, class: "form-control" %>
+          <div class="form-group col-md-12">
+            <%= f.label :whatsapp %> (Opcional)
+            <%= f.phone_field :whatsapp, class: "form-control" %>
           </div>
         </div>
 
@@ -56,7 +56,7 @@
 
          <div class="form-row">
           <div class="form-group col-md-12">
-            <%= f.label :interests %>
+            <%= f.label :interests %> (Opcional)
             <%= f.text_area :interests, class: 'form-control' %>
           </div>
         </div>

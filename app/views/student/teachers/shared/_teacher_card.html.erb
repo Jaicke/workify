@@ -1,6 +1,8 @@
 <div class="teacher-card">
   <div class="avatar">
-    <%= image_tag url_for_profile_image(teacher), loading: "lazy" %>
+    <%= link_to student_teacher_path(teacher) do %>
+      <%= image_tag url_for_profile_image(teacher), loading: "lazy" %>
+    <% end %>
   </div>
 
   <div class="info">
