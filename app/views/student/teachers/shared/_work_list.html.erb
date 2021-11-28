@@ -1,0 +1,16 @@
+<div class="teacher-work-list">
+  <% works.each do |work| %>
+    <div class='teacher-work'>
+      <span data-toggle="tooltip" data-placement="top" title="<%= work.theme_label %>" class="teacher-work-theme">
+        <%= work.theme_label.truncate(23) %>
+      </span>
+      <div class="work-item-last-modification">
+        <small class="text-muted">Criado em <%= work.created_at.strftime('%d/%m/%Y') %></small>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<div class="info-pagination">
+  <%= render "layouts/shared/pagination", items: works %>
+</div>

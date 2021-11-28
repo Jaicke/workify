@@ -1,6 +1,6 @@
 class Work < ApplicationRecord
   acts_as_paranoid
-  paginates_per 8
+  paginates_per 1
 
   enum status: { not_started: 0, in_progress: 1, complete: 2 }
 
