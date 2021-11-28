@@ -4,7 +4,7 @@
 @import "teacher/connections";
 
 .student-logo {
-  background-image: asset-url("logos/gray_and_orange.svg");
+  background-image: asset-url($teacher_logo);
   width: 85px;
   height: 80px;
   margin-left: 35px;
