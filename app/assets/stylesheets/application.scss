@@ -8,11 +8,13 @@ $modal-fade-transform: scale(.8);
 @import "select2-bootstrap";
 @import "icons";
 
-$student-primary-color: #015EC5;
-$student-secondary-color: #0A94D5;
+$teacher-primary-color: #015EC5;
+$teacher-secondary-color: #0A94D5;
+$teacher-logo: "logos/gray_and_blue.svg";
 
-$teacher-primary-color: #F8851B;
-$teacher-secondary-color: #FF9C31;
+$student-primary-color: #F8851B;
+$student-secondary-color: #FF9C31;
+$student-logo: "logos/gray_and_orange.svg";
 
 *{
   font-family: 'Roboto';
