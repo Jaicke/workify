@@ -50,7 +50,7 @@ class Student::WorksController < Student::BaseController
 
   def update
     if @work.update(work_params)
-      redirect_to student_works_path, notice: 'Trabalho atualizado.'
+      redirect_to request.referrer, notice: 'Trabalho atualizado.'
     else
       render :edit
     end

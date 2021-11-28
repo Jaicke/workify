@@ -27,6 +27,18 @@
   font-size: 12px;
 }
 
+.discussion .header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.discussion-card-title {
+  font-size: 17px;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.9);
+  text-decoration: none !important;
+}
+
 .discussion-title {
   font-size: 2rem !important;
 }
@@ -54,4 +66,15 @@
   display: flex;
   justify-content: space-between;
   padding: 10px;
+}
+
+@media (max-width: 720px)
+{
+  .discussion .header {
+    flex-direction: column-reverse;
+  }
+
+  .discussion .header > .dropdown.show > div {
+    width: 100%;
+  }
 }
