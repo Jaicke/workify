@@ -56,7 +56,7 @@ CKEDITOR.editorConfig = function( config )
     { name: 'styles', items: [ 'Font', 'FontSize' ] },
     { name: 'paragraph', groups: [ 'list', 'indent', 'blocks', 'align', 'bidi' ], items: [ 'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock' ] },
     { name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ], items: [ 'Bold', 'Italic', 'Underline', 'Strike', '-', 'RemoveFormat' ] },
-    { name: 'insert', items: [ 'Image', 'Table' ] },
+    { name: 'insert', items: [ 'Image' ] },
   ];
 
   config.toolbar = 'mini';

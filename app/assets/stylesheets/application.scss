@@ -20,6 +20,11 @@ $student-logo: "logos/gray_and_orange.svg";
   font-family: 'Roboto';
 }
 
+img {
+  max-width: 100%;
+  height: auto;
+}
+
 .success-color {
   color: #28a745
 }

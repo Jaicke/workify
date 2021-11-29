@@ -62,6 +62,11 @@
   border-bottom-left-radius: .3rem;
 }
 
+.answer-header {
+  display: flex;
+  justify-content: space-between;
+}
+
 .answers .content {
   display: flex;
   justify-content: space-between;
