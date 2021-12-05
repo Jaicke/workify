@@ -1,0 +1,7 @@
+<% if @discussion_answer.errors.any? %>
+  <%= render 'layouts/shared/alert_errors_message', resource: @discussion_answer %>
+<% end %>
+
+$("#modal-window").find(".modal-title").html("Editar resposta");
+$("#modal-window").find(".modal-body").html("<%= j (render 'form', path: teacher_discussion_discussion_answer_path(work_id: @work.id, discussion_id: @discussion.id)) %>");
+$("#modal-window").modal();

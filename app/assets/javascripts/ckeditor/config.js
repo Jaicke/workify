@@ -30,6 +30,8 @@ CKEDITOR.editorConfig = function( config )
   // The location of a script that handles file uploads.
   config.filebrowserUploadUrl = "/ckeditor/attachment_files";
 
+  config.removePlugins = "exportpdf"
+
   config.allowedContent = true;
   config.filebrowserUploadMethod = 'form';
   config.removeDialogTabs = 'image:Link;image:advanced;';

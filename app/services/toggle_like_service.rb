@@ -5,7 +5,7 @@ class ToggleLikeService
   end
 
   def call!
-    @like = @likeable.likes.find_by(user_id: @user.id)
+    @like = @likeable.likes.find_by(user_id: @user.id, user_type: @user.class.name)
 
     return like if @like.nil?
 

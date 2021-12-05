@@ -1,0 +1,22 @@
+<div class="box">
+  <div class="content">
+    <%= render 'teacher/works/shared/tabs' %>
+
+    <div class="view-work">
+      <div class="view-work-basic-info">
+        <div class="work-header">
+          <h3 class="work-theme"><%= @work.theme_label %></h3>
+        </div>
+        <p><%= @work.description.html_safe %></p>
+      </div>
+      <div class="row">
+        <div class="col-md-8">
+          <%#= render 'student/works/versions/list' %>
+        </div>
+        <div class="col-md-4">
+          <%#= render 'student/works/versions/members' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

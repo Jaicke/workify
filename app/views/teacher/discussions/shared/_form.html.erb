@@ -1,0 +1,29 @@
+<%= form_with(model: @discussion, url: path, local: false, html: { autocomplete: :off }) do |f| %>
+
+  <div class="form-row">
+    <div class="form-group col-md-12">
+      <%= f.label :title %>
+      <%= f.text_field :title, class:"form-control" %>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-12">
+      <%= f.label :tags %>
+      <%= f.select :tags, options_for_select(options_for_tag_select(@discussion), @discussion.tags), { include_blank: false }, class: 'select2-tags form-control', multiple: 'multiple' %>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-12">
+      <%= f.label :body %>
+      <%= f.cktext_area :body %>
+    </div>
+  </div>
+
+  <div class="text-right">
+    <%= link_to "Cancelar", 'javascript:history.back()', class: 'btn btn-danger btn-rounded' %>
+    <button type="submit" class="btn btn-dark btn-rounded">Salvar <%= icon("fas", "arrow-right") %></button>
+  </div>
+<% end %>
+<br>

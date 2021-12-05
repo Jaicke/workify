@@ -1,0 +1,6 @@
+<div class="box">
+  <div class="content">
+    <%= render 'teacher/works/shared/tabs' %>
+    <%= render 'teacher/discussions/shared/form', path: teacher_discussions_path(work_id: @work.id) %>
+  </div>
+</div>
