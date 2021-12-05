@@ -119,7 +119,6 @@ ActiveRecord::Schema.define(version: 2021_12_04_232833) do
     t.bigint "student_id"
     t.bigint "teacher_id"
     t.integer "status", default: 0
-    t.integer "integer", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["student_id"], name: "index_connections_on_student_id"

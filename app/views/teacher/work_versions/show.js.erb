@@ -1,0 +1,3 @@
+$("#modal-window").find(".modal-title").html("<%= @work_version.title %>");
+$("#modal-window").find(".modal-body").html("<%= j (render 'teacher/work_versions/shared/file') %>");
+$("#modal-window").modal();
