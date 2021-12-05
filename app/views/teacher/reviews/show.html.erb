@@ -1,0 +1,42 @@
+<div class="box">
+  <div class="content">
+    <%= render 'teacher/works/shared/tabs' %>
+    <div class="review-info">
+      <div class="review-info-header">
+        <div class="review-info-status">
+          <%= review_status_badge(@review.status) %>
+        </div>
+      </div>
+      <h2><%= @review.title %> <%= @review.creation_number %></h2>
+      <div class="review-info-creation mb-3">
+        Criada por
+        <span data-toggle="popover" data-placement="top" data-html="true" data-trigger='hover click' data-content="<%= "#{render 'layouts/shared/user_popover', user: @review.created_by}"%>">
+          <%= image_tag url_for_profile_image(@review.created_by), class: "header-profile-image", style: 'cursor: pointer;' %>
+          <strong><%= @review.created_by.label_name %></strong>
+        </span>
+        há
+        <span data-toggle="tooltip" data-placement="top", title="<%= "#{@review.created_at.strftime("%d/%m/%Y")} às #{ @review.created_at.strftime("%H:%M")}" %>">
+          <%= time_ago_in_words(@review.created_at) %>
+        </span>
+      </div>
+      <p><%= @review.description.html_safe %></p>
+
+      <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <a class="nav-link active" id="home-tab" data-toggle="tab" href="#resume" role="tab" aria-controls="resume" aria-selected="true">Resumo</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" id="historical-tab" data-toggle="tab" href="#historical" role="tab" aria-controls="historical" aria-selected="true">Histórico</a>
+        </li>
+      </ul>
+      <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="resume" role="tabpanel" aria-labelledby="resume-tab">
+          <%= render 'teacher/reviews/shared/resume' %>
+        </div>
+        <div class="tab-pane fade" id="historical" role="tabpanel" aria-labelledby="historical-tab">
+          <%= render 'teacher/reviews/shared/historical' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

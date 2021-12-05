@@ -1,0 +1,21 @@
+<div class="row">
+  <div class="col-md-12">
+      <div>
+          <div class="card-body">
+              <div id="content">
+                  <ul class="timeline">
+                    <% @review.review_events.each do |review_event| %>
+                      <li class="event" data-date="<%= review_event.created_at.strftime('%d/%m/%Y - %H:%M') %>">
+                        <h3><%= review_event.action_label %></h3>
+                        <span data-toggle="popover" data-placement="top" data-html="true" data-trigger='hover click' data-content="<%= "#{render 'layouts/shared/user_popover', user: review_event.by_user}"%>">
+                          <%= image_tag url_for_profile_image(review_event.by_user), class: "header-profile-image", style: 'cursor: pointer;' %>
+                          <%= review_event.by_user.label_name %>
+                        </span>
+                      </li>
+                    <% end %>
+                  </ul>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

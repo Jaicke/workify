@@ -45,6 +45,7 @@ class Student::ReviewsController < Student::BaseController
 
   def replace
     @review.confirm_replace
+    ReviewEvent.create!(review_id: @review.id, by_user: @current_user, action: :closed)
     ReviewEvent.create!(review_id: @review.id, by_user: @current_user, action: :confirmed)
     redirect_to student_review_path(id: @review, work_id: @work.id), notice: 'Versão atual substituída.'
   end

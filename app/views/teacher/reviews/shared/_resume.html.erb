@@ -1,0 +1,45 @@
+<div class="card mt-3">
+  <div class="card-body">
+    <%= icon("fas", "exchange-alt") %>
+    Substituir
+    <strong>
+      <%= link_to @review.old_work_version.title, teacher_work_work_version_path(id: @review.old_work_version.id, work_id: @work.id), remote: true %>
+    </strong>
+    por
+    <strong><%= link_to @review.new_work_version.title, teacher_work_work_version_path(id: @review.new_work_version.id, work_id: @work.id), remote: true %></strong>
+  </div>
+</div>
+
+<div class="card mt-3">
+  <div class="card-body">
+    <%= icon("fas", "user-check") %>
+    <% if @review.approved? %>
+      Aprovada por
+    <% end %>
+    <% if @review.approvals.each do |approval| %>
+      <%= image_tag url_for_profile_image(approval.teacher), loading: "lazy", class: 'profile-miniature negative-margin-right', title: approval.teacher.label_name, data: { toggle: 'tooltip', placement: 'top' } %>
+    <% end.empty? %>
+      Nenhum orientador aprovou ainda
+    <% end %>
+    <% if @review.approvals.find_by(teacher_id: @current_user.id).nil? %>
+      <br><br>
+      <%= link_to approve_teacher_review_path(@review, work_id: @work.id), class: 'btn btn-outline-success', method: :patch do %>
+        <%= icon("fas", "check-circle") %> Aprovar
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
+<% unless @review.closed? && !@review.confirmed? %>
+  <div class="card mt-3">
+    <div class="card-body">
+      <% if @review.confirmed? %>
+        <%= icon("fas", "check-circle", class: 'success-color') %> Confirmado por <%= @review.confirmed_by.label_name %>
+      <% else %>
+        <%= icon("fas", "times-circle", class: 'danger-color') %> Não confirmado ainda
+      <% end %>
+    </div>
+  </div>
+<% end %>
+
+<h3 class="mt-3">Comentários</h3>

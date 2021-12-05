@@ -5,6 +5,10 @@
 @import "teacher/students";
 @import "teacher/works";
 
+$timeline-color: $teacher-primary-color;
+@import "timeline";
+
+
 .student-logo {
   background-image: asset-url($teacher_logo);
   width: 85px;

@@ -1,0 +1,11 @@
+var reviews = document.querySelector(".review-list");
+var pagination = document.querySelector(".info-pagination");
+
+reviews.innerHTML = "";
+pagination.innerHTML = "";
+
+pagination.insertAdjacentHTML("beforeend", "<%= j render 'layouts/shared/pagination', items: @reviews %>");
+
+<% @reviews.each do |review| %>
+  reviews.insertAdjacentHTML("beforeend", "<%= j render 'teacher/reviews/shared/review_card', review: review %>");
+<% end %>
