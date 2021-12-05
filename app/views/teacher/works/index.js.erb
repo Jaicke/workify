@@ -1,0 +1,11 @@
+var works = document.querySelector(".work-list");
+var pagination = document.querySelector(".info-pagination");
+
+works.innerHTML = "";
+pagination.innerHTML = "";
+
+pagination.insertAdjacentHTML("beforeend", "<%= j render 'layouts/shared/pagination', items: @works %>");
+
+<% @works.each do |work| %>
+  works.insertAdjacentHTML("beforeend", "<%= j render 'teacher/works/shared/work_item', work: work %>");
+<% end %>

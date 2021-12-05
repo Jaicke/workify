@@ -53,5 +53,6 @@ Rails.application.routes.draw do
       get :decline, on: :member
     end
     resources :home, only: :index
+    resources :works, only: [:index, :show]
   end
 end

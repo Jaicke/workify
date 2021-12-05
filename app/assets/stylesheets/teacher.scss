@@ -3,6 +3,7 @@
 @import "teacher/users";
 @import "teacher/connections";
 @import "teacher/students";
+@import "teacher/works";
 
 .student-logo {
   background-image: asset-url($teacher_logo);

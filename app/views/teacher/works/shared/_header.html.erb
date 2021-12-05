@@ -1,0 +1,11 @@
+<div class="list-header">
+  <span>
+    Trabalhos
+  </span>
+  <div>
+    <%= form_tag teacher_works_path, autocomplete: :off, method: :get, remote: true do %>
+      <%= text_field_tag 'search', params[:search], placeholder: "Pesquisar", class: "form-control col-md-12 col-sm-12 col-12 search-input" %>
+    <% end %>
+  </div>
+</div>
+<br>

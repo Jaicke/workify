@@ -1,0 +1,21 @@
+<%= link_to teacher_work_path(work) do %>
+  <div class="work-item">
+    <div class="work-item-header">
+      <div class="work-item-status">
+        <%= work_status_badge(work.status) %>
+      </div>
+    </div>
+
+    <div class="work-item-body">
+      <div>
+        <span data-toggle="tooltip" data-placement="top" title="<%= work.theme_label %>">
+          <%= work.theme_label.truncate(23) %>
+        </span>
+      </div>
+
+      <div class="work-item-last-modification">
+        <small class="text-muted">Atualizado há <%= time_ago_in_words(work.last_update_date) %></small>
+      </div>
+    </div>
+  </div>
+<% end %>

@@ -1,0 +1,14 @@
+<div class="box">
+  <div class="content">
+    <%= render "teacher/works/shared/header" %>
+    <div class="work-list">
+      <% @works.each do |work| %>
+        <%= render "teacher/works/shared/work_item", work: work %>
+      <% end %>
+    </div>
+
+    <div class="info-pagination">
+      <%= render "layouts/shared/pagination", items: @works %>
+    </div>
+  </div>
+</div>
