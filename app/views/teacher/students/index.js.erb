@@ -1,0 +1,11 @@
+var students = document.querySelector(".user-list");
+var pagination = document.querySelector(".info-pagination");
+
+students.innerHTML = "";
+pagination.innerHTML = "";
+
+pagination.insertAdjacentHTML("beforeend", "<%= j render 'layouts/shared/pagination', items: @students %>");
+
+<% @students.each do |student| %>
+  students.insertAdjacentHTML("beforeend", "<%= j render 'teacher/students/shared/student_card', student: student %>");
+<% end %>

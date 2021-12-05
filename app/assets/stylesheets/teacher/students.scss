@@ -1,0 +1,95 @@
+.student-profile .header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.student-profile .avatar img {
+  width: 160px;
+  height: 160px;
+  border-radius: 80px;
+  object-fit: cover;
+  margin-bottom: 15px;
+}
+
+.student-profile .student-name {
+  font-size: 35px;
+  font-weight: 600;
+}
+
+.student-profile h5 {
+  margin-top: 10px;
+  font-weight: 600;
+}
+
+.student-profile .student-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.student-profile .student-college {
+  font-size: 16px;
+  text-align: center;
+}
+
+.student-profile .course-info {
+  text-align: center;
+}
+
+.student-profile .header .tag {
+  opacity: 0.8;
+  margin-right: 10px;
+  border-radius: 10px;
+}
+
+.student-profile .contacts {
+  display: flex;
+  justify-content: space-evenly;
+  font-size: 17px;
+  width: 500px;
+  margin-bottom: 20px;
+
+  a {
+    color: #000000;
+  }
+}
+
+.student-work-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-gap: 20px;
+}
+
+.student-work-list .student-work {
+  width: 280px;
+  height: 100px;
+  border-radius: 10px;
+  padding: 20px 20px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 30px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+}
+
+.student-work-theme {
+  font-size: 18px;
+}
+
+@media (max-width: 720px)
+{
+  .student-profile .contacts {
+    font-size: 15px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  .student-work-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}

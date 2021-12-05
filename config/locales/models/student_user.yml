@@ -20,3 +20,8 @@ pt-BR:
         current_password: Senha Atual
         password: Senha
         password_confirmation: Confirmação de Senha
+      student/user/class_shift:
+        night: Noite
+        afternoon: Tarde
+        morning: Manhã
+        full_time: Integral

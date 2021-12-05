@@ -1,4 +1,6 @@
 class Student::User < ApplicationRecord
+  paginates_per 8
+
   attr_accessor :first_login
 
   enum class_shift: [:morning, :afternoon, :night, :full_time]
@@ -26,6 +28,8 @@ class Student::User < ApplicationRecord
   has_secure_password
 
   before_validation :check_profile
+
+  scope :search_by_name, -> (search) { where('LOWER(CONCAT(first_name, last_name)) ILIKE ?', "%#{search.downcase.strip}%") }
 
   def full_name
     "#{first_name} #{last_name}"

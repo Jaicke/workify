@@ -47,7 +47,7 @@ Rails.application.routes.draw do
     end
 
     resource :sessions, only: [:create, :destroy]
-    #resources :students, only: []
+    resources :students, only: [:index, :show]
     resources :connections, only: :index do
       get :accept, on: :member
       get :decline, on: :member
