@@ -11,9 +11,11 @@ class Teacher::User < ApplicationRecord
   has_many :works_advising, foreign_key: :advisor_id, class_name: 'Work'
 
   has_many :connections, foreign_key: :teacher_id
-  has_many :students, through: :connections
+  has_many :students, -> { joins(:connections).where(connections: { status: :accepted }) }, through: :connections
 
   has_many :approvals, class_name: 'Approval', foreign_key: :teacher_id
+  has_many :discussions, foreign_key: :created_by
+  has_many :discussion_answers, foreign_key: :created_by
   has_many :likes
 
   validates_uniqueness_of :email
