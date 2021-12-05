@@ -2,23 +2,23 @@
   <div class="content">
     <div class="list-header">
       <span>
-        Professores
+        Alunos
       </span>
       <div>
-        <%= form_tag student_teachers_path, autocomplete: :off, method: :get, remote: true do %>
+        <%= form_tag teacher_students_path, autocomplete: :off, method: :get, remote: true do %>
           <%= text_field_tag 'search', params[:search], placeholder: "Pesquisar", class: "form-control col-md-12 col-sm-12 col-12 search-input" %>
         <% end %>
       </div>
     </div>
     <br>
     <div class="user-list">
-      <% @teachers.each do |teacher| %>
-        <%= render "student/teachers/shared/teacher_card", teacher: teacher %>
+      <% @students.each do |student| %>
+        <%= render "teacher/students/shared/student_card", student: student %>
       <% end %>
     </div>
 
     <div class="info-pagination">
-      <%= render "layouts/shared/pagination", items: @teachers %>
+      <%= render "layouts/shared/pagination", items: @students %>
     </div>
   </div>
 </div>

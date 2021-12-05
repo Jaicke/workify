@@ -1,0 +1,61 @@
+<div class="box">
+  <div class="content">
+    <div class="student-profile">
+      <div class="header">
+
+        <div class="avatar">
+          <%= image_tag url_for_profile_image(@student), loading: "lazy" %>
+        </div>
+
+        <div class="student-info">
+          <span class="student-name">
+            <%= @student.label_name %>
+          </span>
+
+          <div class="contacts">
+            <div class="email">
+              <%= icon("far", "envelope") %>
+              <%= link_to "mailto:#{@student.email}" do %>
+                <%= @student.email %>
+              <% end %>
+            </div>
+          </div>
+
+          <div class="student-college bold">
+            <%= @student.college.name %>
+          </div>
+
+          <div class="course-info">
+            <%= @student.course.name %>
+          </div>
+
+          <div class="current-situation">
+            Série <%= @student.serie %> |
+            Ingressou no <%= @student.ingress_semester %>º semestre de <%= @student.ingress_year %> |
+            <%= Student::User.human_attribute_name("class_shift.#{@student.class_shift}") %>
+          </div>
+        </div>
+
+      </div>
+
+      <h4>Trabalhos</h4><br>
+      <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <a class="nav-link active" id="home-tab" data-toggle="tab" href="#resume" role="tab" aria-controls="resume" aria-selected="true">Orientando</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" id="historical-tab" data-toggle="tab" href="#historical" role="tab" aria-controls="historical" aria-selected="true">Orientados</a>
+        </li>
+      </ul>
+      <br>
+      <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="resume" role="tabpanel" aria-labelledby="resume-tab">
+          <%= render 'teacher/students/shared/work_list', works: @works_advising %>
+        </div>
+        <div class="tab-pane fade" id="historical" role="tabpanel" aria-labelledby="historical-tab">
+          <%= render 'teacher/students/shared/work_list', works: @works_advised %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

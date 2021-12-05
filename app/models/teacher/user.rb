@@ -1,5 +1,5 @@
 class Teacher::User < ApplicationRecord
-  paginates_per 2
+  paginates_per 8
 
   has_secure_password
   has_one_attached :avatar

@@ -1,0 +1,13 @@
+<div class="user-card">
+  <div class="avatar">
+    <%= link_to teacher_student_path(student) do %>
+      <%= image_tag url_for_profile_image(student), loading: "lazy" %>
+    <% end %>
+  </div>
+
+  <div class="info">
+    <span class="user-name"><%= student.label_name %></span>
+    <span class="user-email"><%= student.email %></span>
+  </div>
+
+</div>
