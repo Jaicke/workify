@@ -1,5 +1,5 @@
 class Teacher::UsersController < Teacher::BaseController
-  skip_before_action :authenticate
+  skip_before_action :authenticate, :verify_user_profile
 
   def create
     @user = Teacher::User.new(user_params)

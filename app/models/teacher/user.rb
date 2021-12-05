@@ -1,6 +1,8 @@
 class Teacher::User < ApplicationRecord
   paginates_per 8
 
+  attr_accessor :first_login
+
   has_secure_password
   has_one_attached :avatar
 
@@ -34,5 +36,16 @@ class Teacher::User < ApplicationRecord
   def label_name
     name = full_name.split
     "#{name.first} #{name.last}".capitalize
+  end
+
+  def profile_completed?
+    [
+      colleges.any?,
+      courses.any?
+    ].all?(true)
+  end
+
+  def check_profile
+    self.first_login = true unless profile_completed?
   end
 end
