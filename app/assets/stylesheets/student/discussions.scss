@@ -1,9 +1,5 @@
-.star-check {
-  color: #ffd864;
-}
-
-.star-uncheck {
-  color: black;
+.like-heart {
+  color: rgb(216, 114, 114);
 }
 
 .discussion-list {
@@ -46,7 +42,6 @@
 .discussion .author {
   display: flex;
   justify-content: space-between;
-  padding: 10px 20px;
 }
 
 .discussion .header {
@@ -65,13 +60,25 @@
 .answer-header {
   display: flex;
   justify-content: space-between;
-}
-
-.answers .content {
-  display: flex;
-  justify-content: space-between;
   padding: 10px;
 }
+
+.answer-header .actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.answer-header .actions a {
+  color: #000000;
+  text-decoration: none;
+}
+
+.answers .answer-content {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
 
 @media (max-width: 720px)
 {

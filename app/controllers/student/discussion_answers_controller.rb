@@ -1,7 +1,7 @@
 class Student::DiscussionAnswersController < Student::BaseController
   before_action :fetch_work
   before_action :fetch_discussion
-  before_action :fetch_discussion_answer, only: [:edit, :update, :destroy, :toggle_favorite]
+  before_action :fetch_discussion_answer, only: [:edit, :update, :destroy, :toggle_like]
 
   def create
     @discussion_answer = @discussion.discussion_answers.new(create_discussion_answer_params.merge!(created_by: @current_user))
@@ -25,12 +25,10 @@ class Student::DiscussionAnswersController < Student::BaseController
     end
   end
 
-  def toggle_favorite
-    @discussion_answer.update(favorite: !@discussion_answer.favorite)
+  def toggle_like
+    ToggleLikeService.call!(@discussion_answer, @current_user)
 
-    notice = @discussion_answer.favorite? ? 'Marcado como favorito' : 'Desmarcado como favorito'
-
-    redirect_to student_discussion_path(id: @discussion.id, work_id: @work.id), notice: notice
+    redirect_to student_discussion_path(id: @discussion.id, work_id: @work.id)
   end
 
   def destroy

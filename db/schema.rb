@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_15_171949) do
+ActiveRecord::Schema.define(version: 2021_12_04_232833) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -143,7 +143,6 @@ ActiveRecord::Schema.define(version: 2021_11_15_171949) do
   create_table "discussion_answers", force: :cascade do |t|
     t.text "content"
     t.integer "discussion_id"
-    t.boolean "favorite", default: false
     t.string "created_by_type"
     t.bigint "created_by_id"
     t.datetime "created_at", null: false
@@ -169,6 +168,17 @@ ActiveRecord::Schema.define(version: 2021_11_15_171949) do
     t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "likes", force: :cascade do |t|
+    t.string "user_type"
+    t.bigint "user_id"
+    t.string "likeable_type"
+    t.bigint "likeable_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["likeable_type", "likeable_id"], name: "index_likes_on_likeable_type_and_likeable_id"
+    t.index ["user_type", "user_id"], name: "index_likes_on_user_type_and_user_id"
   end
 
   create_table "review_events", force: :cascade do |t|

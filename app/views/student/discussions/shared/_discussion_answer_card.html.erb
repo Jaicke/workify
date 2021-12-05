@@ -24,32 +24,14 @@
         </div>
       </li>
     <% end %>
+
+    <%= link_to toggle_like_student_discussion_discussion_answer_path(id: answer.id, work_id: @work.id, discussion_id: @discussion.id) do %>
+      <%= current_user_like_icon(answer) %> <%= answer.likes.count %>
+    <% end %>
   </div>
 </div>
 
-<div class="content">
+
+<div class="answer-content">
   <%= answer.content.html_safe %>
-
-  <% if @discussion.created_by == @current_user %>
-    <% if answer.favorite? %>
-      <%= link_to toggle_favorite_student_discussion_discussion_answer_path(id: answer.id, work_id: @work.id, discussion_id: @discussion.id) do %>
-        <span data-toggle="tooltip" data-placement="top" title="Desmarcar como favorito">
-            <%= icon("fas", "star", class: "star-check") %>
-        </span>
-      <% end %>
-    <% end %>
-
-    <% unless answer.favorite? %>
-      <%= link_to toggle_favorite_student_discussion_discussion_answer_path(id: answer.id, work_id: @work.id, discussion_id: @discussion.id) do %>
-        <span data-toggle="tooltip" data-placement="top" title="Marcar como favorito">
-            <%= icon("far", "star", class: "star-uncheck") %>
-        </span>
-      <% end %>
-    <% end %>
-  <% else %>
-    <span data-toggle="tooltip" data-placement="top" title="Favorito">
-      <%= icon("fas", "star", class: "star-check") if answer.favorite? %>
-    </span>
-    <%= icon("far", "star", class: "star-uncheck") unless answer.favorite? %>
-  <% end %>
 </div>
