@@ -13,6 +13,7 @@ class Student::User < ApplicationRecord
   has_many :reviews, foreign_key: :created_by
   has_many :discussions, foreign_key: :created_by
   has_many :discussion_answers, foreign_key: :created_by
+  has_many :likes
 
   has_one_attached :avatar
 
