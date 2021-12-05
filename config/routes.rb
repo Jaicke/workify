@@ -53,7 +53,12 @@ Rails.application.routes.draw do
       get :decline, on: :member
     end
     resources :home, only: :index
-    resources :works, only: [:index, :show]
+    resources :works, only: [:index, :show] do
+      resources :work_versions, on: :member, only: :show
+    end
+    resources :reviews, only: [:index, :show] do
+      patch :approve, on: :member
+    end
     resources :discussions, only: [:index, :edit, :update, :new, :create, :destroy, :show] do
       get :change_status, on: :member
       resources :discussion_answers, only: [:edit, :update, :create, :destroy] do
