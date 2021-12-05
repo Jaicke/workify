@@ -23,7 +23,7 @@ class Teacher::StudentsController < Teacher::BaseController
   end
 
   def fetch_works
-    work_ids = @student.works.joins(:co_advisors).where('advisor_id = :current_user_id OR teacher_users_works.user_id = :current_user_id', current_user_id: @current_user.id)
+    work_ids = @student.works.by_adivisor_or_co_advisor(@current_user)
 
     @works_advising = Work.where(id: work_ids).in_progress.page(params[:page])
     @works_advised = Work.where(id: work_ids).complete.page(params[:page])
