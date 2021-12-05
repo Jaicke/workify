@@ -1,6 +1,6 @@
 <div class="discussion-card row">
   <div class="col-md-6">
-    <%= link_to discussion.title, student_discussion_path(discussion, work_id: @work.id), class: 'discussion-card-title' %>
+    <%= link_to discussion.title, teacher_discussion_path(discussion, work_id: @work.id), class: 'discussion-card-title' %>
     <% if discussion.closed? %>
       <span data-toggle="tooltip" data-placement="top" title="Fechada">
         <%= icon("fas", "check", class: 'success-color') %>
@@ -26,7 +26,7 @@
     </span>
 
     <div class="card-comments">
-      <%= link_to student_discussion_path(discussion, work_id: @work.id) do %>
+      <%= link_to teacher_discussion_path(discussion, work_id: @work.id) do %>
         <%= icon("far", "comments") %> <%= discussion.discussion_answers.count %>
       <% end %>
     </div>

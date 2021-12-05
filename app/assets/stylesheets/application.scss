@@ -20,6 +20,10 @@ $student-logo: "logos/gray_and_orange.svg";
   font-family: 'Roboto';
 }
 
+html, body {
+  height: 100%;
+}
+
 .bold {
   font-weight: 500;
 }
@@ -194,7 +198,6 @@ img {
 }
 
 .content{
-  height: 100%;
   margin-left: 8px;
   margin-right: 8px;
   border-radius: 4px;
@@ -291,4 +294,112 @@ img {
     font-size: 0.875rem;
   }
 
+}
+
+// Discussions
+
+.like-heart {
+  color: rgb(216, 114, 114);
+}
+
+.discussion-list {
+  padding: 20px;
+}
+
+.discussion-card {
+  align-items: center;
+  padding: 10px 16px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 30px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+  margin-bottom: 20px;
+}
+
+.discussion-card-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.discussion-created-at {
+  font-size: 12px;
+}
+
+.discussion .header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.discussion-card-title {
+  font-size: 17px;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.9);
+  text-decoration: none !important;
+}
+
+.discussion-title {
+  font-size: 2rem !important;
+}
+
+.discussion .author {
+  display: flex;
+  justify-content: space-between;
+}
+
+.discussion .header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.discussion .body{
+  font-size: 15px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 30px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+  padding: 20px;
+  border-bottom-right-radius: .3rem;
+  border-bottom-left-radius: .3rem;
+}
+
+.answer-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.answer-header .actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.answer-header .actions a {
+  color: #000000;
+  text-decoration: none;
+}
+
+.answers .answer-content {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.card-comments {
+  margin-top:7px;
+
+  a {
+    color: rgba(0, 0, 0, 0.9);
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: #015EC5;
+  }
+}
+
+
+@media (max-width: 720px)
+{
+  .discussion .header {
+    flex-direction: column-reverse;
+  }
+
+  .discussion .header > .dropdown.show > div {
+    width: 100%;
+  }
 }

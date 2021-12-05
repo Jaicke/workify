@@ -1,0 +1,16 @@
+<div class="box">
+  <div class="content">
+    <%= render 'teacher/works/shared/tabs' %>
+    <%= render 'teacher/discussions/shared/header' %>
+
+    <div class="discussion-list">
+      <% @discussions.each do |discussion| %>
+        <%= render 'teacher/discussions/shared/discussion_card', discussion: discussion %>
+      <% end %>
+    </div>
+
+    <div class="info-pagination">
+      <%= render "layouts/shared/pagination", items: @discussions %>
+    </div>
+  </div>
+</div>

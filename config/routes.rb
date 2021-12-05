@@ -54,5 +54,11 @@ Rails.application.routes.draw do
     end
     resources :home, only: :index
     resources :works, only: [:index, :show]
+    resources :discussions, only: [:index, :edit, :update, :new, :create, :destroy, :show] do
+      get :change_status, on: :member
+      resources :discussion_answers, only: [:edit, :update, :create, :destroy] do
+        get :toggle_like, on: :member
+      end
+    end
   end
 end
