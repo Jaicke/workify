@@ -11,6 +11,7 @@ class Work < ApplicationRecord
   has_many :work_versions
   has_many :reviews
   has_many :discussions
+  has_many :events
 
   has_and_belongs_to_many :co_advisors, class_name: 'Teacher::User'
 

@@ -11,7 +11,7 @@ body{
 }
 
 .wrapper .header{
-  z-index: 1;
+  z-index: 5;
   background-color: #FFF;
   position: fixed;
   width: calc(100% - 0%);
@@ -80,7 +80,7 @@ body{
 }
 
 .wrapper .sidebar{
-  z-index: 1;
+  z-index: 5;
   position: fixed;
   background-color: #FFF;
   top: 0;
@@ -217,7 +217,7 @@ body{
   }
 
   .wrapper .sidebar{
-    z-index: 1;
+    z-index: 5;
     position: fixed;
     background-color: #FFF;
     top: 0;

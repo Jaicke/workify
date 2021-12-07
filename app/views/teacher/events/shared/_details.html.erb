@@ -1,0 +1,42 @@
+<div class="event-header">
+  <span class="event-title">
+    <%= @event.title %>
+  </span>
+  <span class="actions">
+    Editar
+    Remover
+  </span>
+</div>
+
+<div class="event-body">
+  <span>
+    <%= icon("far", "calendar") %>
+    <%= l(@event.event_date, format: '%A') %> -
+    <%= l(@event.event_date, format: '%d %b') %>
+  </span>
+
+   <span>
+    <%= icon("far", "clock") %>
+    <%= l(@event.event_date, format: '%H:%M') %>h
+  </span>
+
+  <% if @event.online? %>
+    <span>
+      <%= icon("fas", "mobile-alt") %> Online
+    </span>
+    <span>
+      <%= icon("fas", "link") %> <%= @event.room_url %>
+    </span>
+  <% else %>
+    <span>
+      <%= icon("far", "map") %> <%= @event.place %>
+    </span>
+  <% end %>
+
+  <span>
+    <%= icon("fas", "eye-dropper") %> <span class="event-color" style="background: <%= @event.color %>;"> </span>
+  </span>
+  <span>
+    <%= icon("far", "file-alt") %> <%= @event.description %>
+  </span>
+</div>

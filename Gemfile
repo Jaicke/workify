@@ -45,7 +45,9 @@ gem 'acts_as_paranoid', '~> 0.7.0'
 gem "cocoon"
 # WYSIWYG text editor
 gem 'ckeditor', github: 'galetahub/ckeditor'
-
+# Calendar
+gem 'fullcalendar-rails'
+gem 'momentjs-rails'
 # Use ActiveStorage variant
 gem 'mini_magick', '~> 4.8'
 

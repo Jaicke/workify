@@ -1,0 +1,67 @@
+<%= form_with(model: @event, url: path, local: false, html: { autocomplete: :off }) do |f| %>
+
+  <div class="form-row">
+    <div class="form-group col-md-12">
+      <%= f.label :title %>
+      <%= f.text_field :title, class:"form-control" %>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <%= f.label :event_date %>
+      <%= f.datetime_field :event_date, class:"form-control" %>
+    </div>
+
+    <div class="form-group col-md-6">
+      <%= f.label :color %>
+      <%= f.color_field :color, class:"form-control", list: 'colors', value: '#616161' %>
+      <datalist id="colors">
+        <option>#D50000</option>
+        <option>#E67C73</option>
+        <option>#f4511e</option>
+        <option>#f6bf26</option>
+        <option>#33b679</option>
+        <option>#0b8043</option>
+        <option>#039be5</option>
+        <option>#3f51b5</option>
+        <option>#7986cb</option>
+        <option>#8e24aa</option>
+        <option>#616161</option>
+      </datalist>
+    </div>
+  </div>
+
+  <div class="custom-control custom-switch">
+    <div class="form-group">
+      <%= f.check_box :online, class: "custom-control-input" %>
+      <%= f.label :online, class: "custom-control-label" %>
+    </div>
+  </div>
+
+  <div class="form-row" id="room-field" style="display:<%= f.object.online? ? 'block' : 'none'%>;">
+    <div class="form-group col-md-12">
+      <%= f.label :room_url %>
+      <%= f.text_field :room_url, class:"form-control" %>
+    </div>
+  </div>
+
+  <div class="form-row" id="place-field" style="display:<%= f.object.online? ? 'none' : 'block'%>;">
+    <div class="form-group col-md-12">
+      <%= f.label :place %>
+      <%= f.text_field :place, class:"form-control" %>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-12">
+      <%= f.label :description %>
+      <%= f.text_area :description, class:"form-control" %>
+    </div>
+  </div>
+
+  <div class="text-right">
+    <button type="submit" class="btn-rounded btn btn-dark">Salvar <%= icon("fas", "arrow-right") %></button>
+  </div>
+<% end %>
+<br>

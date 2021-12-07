@@ -1,0 +1,24 @@
+<%= link_to teacher_event_path(id: event.id, work_id: event.work.id), remote: true do %>
+  <div class="event-card" style="background: <%= event.color %>;">
+    <div class="date-info">
+      <span class="date">
+        <%= l(event.event_date, format: '%A') %> -
+        <%= l(event.event_date, format: '%d %b') %>
+      </span>
+
+      <span class="time">
+        <%= event.event_date.strftime('%H:%M') %>h
+      </span>
+    </div>
+
+    <div class="event-info">
+      <span class="event-title">
+        <%= event.title %>
+      </span>
+
+      <span class="event-description">
+        <%= event.description %>
+      </span>
+    </div>
+  </div>
+<% end %>

@@ -19,6 +19,7 @@ class Teacher::User < ApplicationRecord
   has_many :discussions, foreign_key: :created_by
   has_many :discussion_answers, foreign_key: :created_by
   has_many :likes
+  has_many :events
 
   validates_uniqueness_of :email
   validates_presence_of :first_name, :last_name, :email

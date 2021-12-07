@@ -24,11 +24,11 @@ pt-BR:
     - dez
     day_names:
     - domingo
-    - segunda-feira
-    - terça-feira
-    - quarta-feira
-    - quinta-feira
-    - sexta-feira
+    - segunda
+    - terça
+    - quarta
+    - quinta
+    - sexta
     - sábado
     formats:
       default: "%d/%m/%Y"

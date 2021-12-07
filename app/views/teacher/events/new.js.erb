@@ -1,0 +1,7 @@
+<% if @event.errors.any? %>
+  <%= render 'layouts/shared/alert_errors_message', resource: @event %>
+<% end %>
+
+$("#modal-window").find(".modal-title").html("Criar Evento");
+$("#modal-window").find(".modal-body").html("<%= j (render 'teacher/events/shared/form', path: teacher_events_path(work_id: @work.id)) %>");
+$("#modal-window").modal();
