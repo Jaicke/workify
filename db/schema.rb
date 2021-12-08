@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_04_232833) do
+ActiveRecord::Schema.define(version: 2021_12_06_025301) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -160,6 +160,22 @@ ActiveRecord::Schema.define(version: 2021_12_04_232833) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["created_by_type", "created_by_id"], name: "index_discussions_on_created_by_type_and_created_by_id"
+  end
+
+  create_table "events", force: :cascade do |t|
+    t.string "title"
+    t.string "description"
+    t.datetime "event_date"
+    t.boolean "online", default: false
+    t.string "room_url"
+    t.string "place"
+    t.string "color"
+    t.integer "work_id"
+    t.string "created_by_type"
+    t.bigint "created_by_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["created_by_type", "created_by_id"], name: "index_events_on_created_by_type_and_created_by_id"
   end
 
   create_table "group_members", force: :cascade do |t|

@@ -1,0 +1,5 @@
+$("#modal-window").find(".modal-title").html("");
+$("#modal-window").find(".modal-dialog").removeClass("modal-lg");
+$("#modal-window").find(".modal-dialog").addClass("modal-dialog-centered");
+$("#modal-window").find(".modal-body").html("<%= j (render 'teacher/events/shared/details') %>");
+$("#modal-window").modal();

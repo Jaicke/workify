@@ -7,6 +7,7 @@ $modal-fade-transform: scale(.8);
 @import "select2";
 @import "select2-bootstrap";
 @import "icons";
+@import 'fullcalendar';
 
 $teacher-primary-color: #015EC5;
 $teacher-secondary-color: #0A94D5;
@@ -483,6 +484,91 @@ img {
   .review-info-header > .dropdown.show > div {
     width: 100%;
   }
+}
+
+// Events
+
+#calendar {
+  padding: 20px;
+}
+
+.event-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+
+  a {
+    text-decoration: none;
+  }
+}
+
+.event-card {
+  color: #FFF;
+  padding: 20px;
+  margin-top: 10px;
+  border-radius: 8px;
+}
+
+.event-card:hover {
+  transform: scale(1.05);
+}
+
+.event-card .date-info {
+  display: flex;
+  justify-content: space-between;
+  font-size: 18px;
+}
+
+.event-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.event-info .event-title {
+  margin-top: 8px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.btn-add-event {
+  position: fixed;
+  z-index: 200;
+  bottom: 20px;
+  right: 60px;
+  height: 3.3rem;
+  width: 3.3rem;
+  font-size: 28px;
+  box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2), 0px 6px 10px 0px rgba(0, 0, 0, 0.14), 0px 1px 18px 0px rgba(0,0,0,.12);
+}
+
+.event-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+}
+
+.event-title {
+  font-size: 25px;
+  font-weight: 600;
+}
+
+.event-color {
+  height: 23px;
+  width: 23px;
+  border-radius: 50%;
+  position: absolute;
+  border: 1px solid #000000;
+}
+
+.event-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.event-body i {
+  margin-right: 9px;
 }
 
 // Pagination

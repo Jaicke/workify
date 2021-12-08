@@ -1,0 +1,15 @@
+pt-BR:
+  activerecord:
+    models:
+      event:
+        one: Evento
+        other: Eventos
+    attributes:
+      event:
+        title: Título
+        description: Descrição
+        event_date: Data do evento
+        color: Cor
+        online: Online
+        room_url: Link da sala
+        place: Lugar

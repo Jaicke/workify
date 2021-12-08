@@ -1,0 +1,53 @@
+<div class="event-header">
+  <h6 class="event-title">
+    <%= @event.title %>
+  </h6>
+  <div class="actions">
+    <%= link_to edit_teacher_event_path(id: @event.id, work_id: @work.id), remote: true, class: 'btn btn-light rounded-circle' do %>
+      <%= icon("fas", "pen") %>
+    <% end %>
+    <%= link_to teacher_event_path(id: @event.id, work_id: @work.id), data: { confirm: 'Deseja mesmo excluir este evento?' }, method: :delete, class: 'btn btn-light rounded-circle' do %>
+      <%= icon("fas", "trash") %>
+    <% end %>
+  </div>
+</div>
+
+<div class="event-body">
+  <span>
+    <%= icon("fas", "calendar") %>
+    <%= l(@event.event_date, format: '%A').capitalize %> -
+    <%= l(@event.event_date, format: '%d %b') %>
+  </span>
+
+  <span>
+    <%= icon("fas", "clock") %>
+    <%= l(@event.event_date, format: '%H:%M') %>h
+  </span>
+
+  <span>
+    <%= icon("fas", "user") %>
+    <%= @event.created_by.email %>
+  </span>
+
+  <% if @event.online? %>
+    <span>
+      <%= icon("fas", "mobile-alt") %> Online
+    </span>
+    <span>
+      <%= icon("fas", "link") %> <%= @event.room_url %>
+    </span>
+  <% else %>
+    <span>
+      <%= icon("fas", "map") %> <%= @event.place %>
+    </span>
+  <% end %>
+
+  <span>
+    <%= icon("fas", "eye-dropper") %> <span class="event-color" style="background: <%= @event.color %>;"> </span>
+  </span>
+  <% if @event.description.present? %>
+    <span>
+      <%= icon("fas", "file-alt") %> <%= @event.description %>
+    </span>
+  <% end %>
+</div>
