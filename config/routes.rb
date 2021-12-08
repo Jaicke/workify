@@ -20,7 +20,9 @@ Rails.application.routes.draw do
     resources :teachers, only: [:index, :show] do
       post :send_connection, on: :member
     end
-    resources :home, only: :index
+    resources :home, only: [:index] do
+      get :events, on: :collection
+    end
     resources :works, only: [:index, :new, :create, :edit, :update, :destroy, :show] do
       resources :work_versions, on: :member, except: :index
     end
@@ -53,7 +55,9 @@ Rails.application.routes.draw do
       get :accept, on: :member
       get :decline, on: :member
     end
-    resources :home, only: :index
+    resources :home, only: :index do
+      get :events, on: :collection
+    end
     resources :works, only: [:index, :show] do
       resources :work_versions, on: :member, only: :show
     end
