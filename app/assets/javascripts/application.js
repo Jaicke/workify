@@ -169,6 +169,11 @@ var EVENTS = (function(events){
   }
 
   var setEventOnCalendarUlrAsRemote = function() {
+    $('body').on('mouseover', '.fc-list-table tr', function(){
+      $(this).removeClass('fc-list-item fc-has-url')
+      $(this).find('a').attr("data-remote", true)
+    })
+
     $('body').on('click', '.fc-event-container a', function(){
       $(this).attr("data-remote", true)
     })

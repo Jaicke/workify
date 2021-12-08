@@ -1,5 +1,21 @@
 <div class="box">
   <div class="content">
-    <div id="calendar"></div>
+    <input type="hidden" id="url-events" value=<%= events_teacher_home_index_path %> />
+    <div class="home-header">
+      <h3>Oi, <%= current_user.label_name %>!</h3>
+      <p>
+        Fique de olho nas útimas atualizações e em seus próximos compromissos!
+      </p>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-md-7">
+        <h5>Notificações</h4>
+      </div>
+      <div class="col-md-5">
+        <h5>Seus compromissos</h4>
+        <div id="calendar"></div>
+      </div>
+    </div>
   </div>
 </div>

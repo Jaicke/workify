@@ -45,7 +45,7 @@ class Teacher::EventsController < Teacher::BaseController
 
   def update
     if @event.update(event_params)
-      redirect_to teacher_events_path(work_id: @work.id), notice: 'Evento atualizado'
+      redirect_to request.referrer, notice: 'Evento atualizado'
     else
       render :edit
     end
@@ -53,7 +53,7 @@ class Teacher::EventsController < Teacher::BaseController
 
   def destroy
     @event.destroy
-    redirect_to teacher_events_path(work_id: @work.id), notice: 'Evento removido'
+    redirect_to request.referrer, notice: 'Evento removido'
   end
 
   private
