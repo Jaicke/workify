@@ -1,16 +1,16 @@
 <hr>
 <h5>Orientadores</h5>
 
-<% if @work.advisor.present? %>
+<% if @work.advisor.present? ||  @work.co_advisors.any? %>
   <div class="view-work-co-advisors">
-    <%= image_tag url_for_profile_image(@work.advisor), loading: "lazy", class: 'view-work-image negative-margin-right', title: @work.advisor.label_name, data: { toggle: 'tooltip', placement: 'top' } %>
+    <%= image_tag url_for_profile_image(@work.advisor), loading: "lazy", class: 'view-work-image negative-margin-right', title: @work.advisor.label_name, data: { toggle: 'tooltip', placement: 'top' } if @work.advisor.present? %>
     <% @work.co_advisors.each do |co_advisor| %>
       <%= image_tag url_for_profile_image(co_advisor), loading: "lazy", class: 'view-work-image negative-margin-right', title: co_advisor.label_name, data: { toggle: 'tooltip', placement: 'top' } %>
     <% end %>
   </div>
 <% end %>
 
-<% if @work.advisor.nil? %>
+<% if @work.advisor.nil? && @work.co_advisors.empty? %>
   <div class="view-work-co-advisors">
     Sem orientadores
   </div>

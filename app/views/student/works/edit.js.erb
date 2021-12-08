@@ -4,5 +4,6 @@
 <% end %>
 
 $("#modal-window").find(".modal-title").html("Editar Trabalho");
+$("#modal-window").find(".modal-dialog").addClass("modal-lg");
 $("#modal-window").find(".modal-body").html("<%= j (render 'form', path: student_work_path(@work.id)) %>");
 $("#modal-window").modal();
