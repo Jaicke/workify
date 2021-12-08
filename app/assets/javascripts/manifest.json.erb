@@ -5,8 +5,20 @@
   "start_url": "/",
   "icons": [
   <% icon_sizes.map { |s| "#{s}x#{s}" }.each.with_index do |dim, i| %>
+    <%
+      android_src = "/icons/android-icon-#{dim}.png"
+      apple_src = "/icons/apple-icon-#{dim}.png"
+
+      src = if File.exists?("#{Rails.public_path}/#{android_src}")
+        android_src
+      elsif File.exists?("#{Rails.public_path}/#{apple_src}")
+        apple_src
+      else
+        image_path "serviceworker-rails/heart-#{dim}.png"
+      end
+    %>
     {
-      "src": "<%= image_path "serviceworker-rails/heart-#{dim}.png" %>",
+      "src": "<%= src %>",
       "sizes": "<%= dim %>",
       "type": "image/png"
     }<%= i == (icon_sizes.length - 1) ? '' : ',' %>
