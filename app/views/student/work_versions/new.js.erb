@@ -3,5 +3,7 @@
 <% end %>
 
 $("#modal-window").find(".modal-title").html("Adicionar versão");
+$("#modal-window").find(".modal-dialog").removeClass("modal-lg");
+$("#modal-window").find(".modal-dialog").addClass("modal-dialog-centered");
 $("#modal-window").find(".modal-body").html("<%= j (render 'form', path: student_work_work_versions_path(@work.id)) %>");
 $("#modal-window").modal();

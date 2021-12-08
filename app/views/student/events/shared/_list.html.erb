@@ -1,0 +1,39 @@
+<div class="event-list">
+  <ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item" role="presentation">
+      <a class="nav-link active" id="home-tab" data-toggle="tab" href="#today" role="tab" aria-controls="today" aria-selected="true">Hoje</a>
+    </li>
+    <li class="nav-item" role="presentation">
+      <a class="nav-link" id="week-tab" data-toggle="tab" href="#week" role="tab" aria-controls="week" aria-selected="true">Semana</a>
+    </li>
+    <li class="nav-item" role="presentation">
+      <a class="nav-link" id="month-tab" data-toggle="tab" href="#month" role="tab" aria-controls="month" aria-selected="true">Mês</a>
+    </li>
+  </ul>
+  <div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="today" role="tabpanel" aria-labelledby="today-tab">
+      <% if @today_events.each do |event| %>
+        <%= render 'student/events/shared/event_card', event: event %>
+      <% end.empty? %>
+        <br>
+        Nenhum item
+      <% end %>
+    </div>
+    <div class="tab-pane fade" id="week" role="tabpanel" aria-labelledby="week-tab">
+      <% if @week_events.each do |event| %>
+        <%= render 'student/events/shared/event_card', event: event %>
+      <% end.empty? %>
+        <br>
+        Nenhum item
+      <% end %>
+    </div>
+    <div class="tab-pane fade" id="month" role="tabpanel" aria-labelledby="month-tab">
+      <% if @month_events.each do |event| %>
+        <%= render 'student/events/shared/event_card', event: event %>
+      <% end.empty? %>
+        <br>
+        Nenhum item
+      <% end %>
+    </div>
+  </div>
+</div>

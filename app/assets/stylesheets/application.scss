@@ -484,6 +484,7 @@ img {
   .review-info-header > .dropdown.show > div {
     width: 100%;
   }
+
 }
 
 // Events
@@ -569,6 +570,15 @@ img {
 
 .event-body i {
   margin-right: 9px;
+}
+
+@media (max-width: 720px) {
+
+  .btn-add-event {
+    position: fixed;
+    bottom: 20px;
+    right: 10px;
+  }
 }
 
 // Pagination
