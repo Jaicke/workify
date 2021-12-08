@@ -129,7 +129,7 @@ var EVENTS = (function(events){
       header: {
         left: 'prev,next today',
         center: 'title',
-        right: 'month,agendaWeek,listMonth'
+        right: 'month,listMonth'
       },
       events: {
         url: `${urlEvents.value}.json`

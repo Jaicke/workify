@@ -1,3 +1,5 @@
 $("#modal-window").find(".modal-title").html("<%= @work_version.title %>");
+$("#modal-window").find(".modal-dialog").addClass("modal-lg");
+$("#modal-window").find(".modal-dialog").addClass("modal-dialog-centered");
 $("#modal-window").find(".modal-body").html("<%= j (render 'file') %>");
 $("#modal-window").modal();

@@ -34,6 +34,7 @@ Rails.application.routes.draw do
         get :toggle_like, on: :member
       end
     end
+    resources :events, only: [:index, :new, :create, :show, :edit, :update, :destroy]
   end
 
   namespace :teacher do

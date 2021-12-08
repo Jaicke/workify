@@ -1,0 +1,17 @@
+<div class="box">
+  <div class="content">
+    <%= render 'student/works/tabs' %>
+    <input type="hidden" id="url-events" value=<%= student_events_path(work_id: @work) %> />
+    <div class="row">
+      <div class="col-md-8">
+        <%= render 'student/events/shared/calendar' %>
+      </div>
+      <div class="col-md-4">
+        <%= render 'student/events/shared/list' %>
+      </div>
+    </div>
+    <%= link_to new_student_event_path(work_id: @work.id), class: 'btn btn-success btn-add-event rounded-circle', remote: true do %>
+      <%= icon("fas", "plus") %>
+    <% end %>
+  </div>
+</div>
