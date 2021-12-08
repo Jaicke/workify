@@ -25,7 +25,7 @@ class Work < ApplicationRecord
   before_validation :removes_group_members, unless: :group?
 
   scope :by_owner_or_member, ->(current_user) { left_joins(:group_members).where('created_by_id = ? OR group_members.email = ?', current_user.id , current_user.email) }
-  scope :by_adivisor_or_co_advisor, ->(current_user) { joins(:co_advisors).where('advisor_id = :current_user_id OR teacher_users_works.user_id = :current_user_id', current_user_id: current_user.id) }
+  scope :by_adivisor_or_co_advisor, ->(current_user) { left_joins(:co_advisors).where('advisor_id = :current_user_id OR teacher_users_works.user_id = :current_user_id', current_user_id: current_user.id) }
 
   def theme_label
     return theme if theme.present?
