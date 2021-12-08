@@ -2,14 +2,16 @@
   <h6 class="event-title">
     <%= @event.title %>
   </h6>
-  <div class="actions">
-    <%= link_to edit_student_event_path(id: @event.id, work_id: @work.id), remote: true, class: 'btn btn-light rounded-circle' do %>
-      <%= icon("fas", "pen") %>
-    <% end %>
-    <%= link_to student_event_path(id: @event.id, work_id: @work.id), data: { confirm: 'Deseja mesmo excluir este evento?' }, method: :delete, class: 'btn btn-light rounded-circle' do %>
-      <%= icon("fas", "trash") %>
-    <% end %>
-  </div>
+  <% if @event.created_by == @current_user %>
+    <div class="actions">
+      <%= link_to edit_student_event_path(id: @event.id, work_id: @work.id), remote: true, class: 'btn btn-light rounded-circle' do %>
+        <%= icon("fas", "pen") %>
+      <% end %>
+      <%= link_to student_event_path(id: @event.id, work_id: @work.id), data: { confirm: 'Deseja mesmo excluir este evento?' }, method: :delete, class: 'btn btn-light rounded-circle' do %>
+        <%= icon("fas", "trash") %>
+      <% end %>
+    </div>
+  <% end %>
 </div>
 
 <div class="event-body">
