@@ -1,0 +1,34 @@
+<div class="work-members">
+  <div class="teachers">
+    <h5>Orientadores</h5>
+
+    <% if @work.advisor.present? ||  @work.co_advisors.any? %>
+      <div class="view-work-co-advisors">
+        <%= image_tag url_for_profile_image(@work.advisor), loading: "lazy", class: 'view-work-image negative-margin-right', title: @work.advisor.label_name, data: { toggle: 'tooltip', placement: 'top' } if @work.advisor.present? %>
+        <% @work.co_advisors.each do |co_advisor| %>
+          <%= image_tag url_for_profile_image(co_advisor), loading: "lazy", class: 'view-work-image negative-margin-right', title: co_advisor.label_name, data: { toggle: 'tooltip', placement: 'top' } %>
+        <% end %>
+      </div>
+    <% end %>
+
+    <% if @work.advisor.nil? && @work.co_advisors.empty? %>
+      <div class="view-work-co-advisors">
+        Sem orientadores
+      </div>
+    <% end %>
+  </div>
+
+  <div class="group">
+    <hr>
+    <h5>Estudantes</h5>
+    <div class="view-work-group-members">
+      <% @members.each do |member| %>
+        <%= image_tag url_for_profile_image(member), loading: "lazy", class: 'view-work-image negative-margin-right', title: member.label_name, data: { toggle: 'tooltip', placement: 'top' } %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="view-work-button">
+  <%= link_to "Visualizar versão atual", teacher_work_work_version_path(work_id: @work.id, id: @work.current_version.id), remote: true, class: 'btn btn-info' %>
+</div>

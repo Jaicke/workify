@@ -1,5 +1,6 @@
 <div class="event-header">
   <h6 class="event-title">
+    <span class="event-color" style="background: <%= @event.color %>;"> </span>
     <%= @event.title %>
   </h6>
    <% if @event.created_by == @current_user %>
@@ -44,12 +45,9 @@
     </span>
   <% end %>
 
-  <span>
-    <%= icon("fas", "eye-dropper") %> <span class="event-color" style="background: <%= @event.color %>;"> </span>
-  </span>
   <% if @event.description.present? %>
-    <span>
-      <%= icon("fas", "file-alt") %> <%= @event.description %>
+    <span class="event-description">
+      <%= @event.description %>
     </span>
   <% end %>
 </div>

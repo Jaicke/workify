@@ -4,7 +4,7 @@
   </div>
 
   <div class="user-popover-info">
-    <strong><%= user.label_name %></strong>
+    <strong><%= @current_user == user ? 'Você' : user.label_name %></strong>
     <small><%= user.email %></small>
   </div>
 </div>
