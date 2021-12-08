@@ -192,3 +192,4 @@ $(document).on('ready turbolinks:load', function(){
   APPLICATION.init()
   EVENTS.init()
 })
+//= require serviceworker-companion
