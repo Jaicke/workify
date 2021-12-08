@@ -15,7 +15,7 @@
 
     <div class="form-group col-md-6">
       <%= f.label :color %>
-      <%= f.color_field :color, class:"form-control", list: 'colors', value: '#616161' %>
+      <%= f.color_field :color, class:"form-control", list: 'colors', value: f.object.color || '#616161' %>
       <datalist id="colors">
         <option>#D50000</option>
         <option>#E67C73</option>

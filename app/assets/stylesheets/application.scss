@@ -546,7 +546,7 @@ img {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 17px 0;
+  padding: 8px 0;
 }
 
 .event-title {
@@ -555,17 +555,20 @@ img {
 }
 
 .event-color {
-  height: 20px;
-  width: 30px;
-  border-radius: 17%;
+  height: 23px;
+  width: 23px;
+  border-radius: 50%;
   position: absolute;
-  margin-left: 4px;
   border: 1px solid #000000;
 }
 
 .event-body {
   display: flex;
   flex-direction: column;
+}
+
+.event-body i {
+  margin-right: 9px;
 }
 
 // Pagination

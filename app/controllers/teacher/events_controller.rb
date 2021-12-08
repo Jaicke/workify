@@ -1,6 +1,6 @@
 class Teacher::EventsController < Teacher::BaseController
   before_action :fetch_work
-  before_action :fetch_event, only: [:show]
+  before_action :fetch_event, only: [:show, :edit, :update, :destroy]
   before_action :fetch_events, only: :index
 
   def index
@@ -23,7 +23,7 @@ class Teacher::EventsController < Teacher::BaseController
   def create
     @event = @work.events.new(event_params.merge!(created_by: @current_user))
     if @event.save
-      redirect_to teacher_events_path(work_id: @work.id), notice: 'Evento adicionado com sucesso'
+      redirect_to teacher_events_path(work_id: @work.id), notice: 'Evento adicionado'
     else
       render :new
     end
@@ -34,6 +34,26 @@ class Teacher::EventsController < Teacher::BaseController
       format.html
       format.js
     end
+  end
+
+  def edit
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
+
+  def update
+    if @event.update(event_params)
+      redirect_to teacher_events_path(work_id: @work.id), notice: 'Evento atualizado'
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @event.destroy
+    redirect_to teacher_events_path(work_id: @work.id), notice: 'Evento removido'
   end
 
   private
@@ -50,9 +70,10 @@ class Teacher::EventsController < Teacher::BaseController
     current_date = DateTime.current
 
     @events = @work.events.order(event_date: :asc, title: :asc)
-    @today_events = @events.where(event_date: current_date.beginning_of_day..current_date.end_of_day).first(6)
-    @week_events = @events.where(event_date: current_date.beginning_of_week(:sunday)..current_date.end_of_week(:sunday)).first(6)
-    @month_events = @events.where(event_date: current_date.beginning_of_month..current_date.end_of_month).first(6)
+
+    @today_events = @events.where(event_date: current_date..current_date.end_of_day).first(6)
+    @week_events = @events.where(event_date: current_date..current_date.end_of_week(:sunday)).first(6)
+    @month_events = @events.where(event_date: current_date..current_date.end_of_month).first(6)
   end
 
   def event_params
