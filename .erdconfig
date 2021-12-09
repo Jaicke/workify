@@ -1,6 +1,5 @@
 attributes:
   - content
-  - primary_key
   - foreign_key
   - inheritance
 disconnected: true

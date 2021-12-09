@@ -18,6 +18,7 @@ class Teacher::User < ApplicationRecord
   has_many :approvals, class_name: 'Approval', foreign_key: :teacher_id
   has_many :discussions, foreign_key: :created_by
   has_many :discussion_answers, foreign_key: :created_by
+  has_many :notifications, foreign_key: :recipient
   has_many :likes
   has_many :events
 

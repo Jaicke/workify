@@ -9,13 +9,15 @@ class Student::User < ApplicationRecord
   belongs_to :course, optional: true
 
   has_many :connections, foreign_key: :student_id
-  has_many :teachers, -> { joins(:connections).where(connections: { status: :accepted }) }, through: :connections
+  has_many :teachers, -> { includes(:connections).where(connections: { status: :accepted }) }, through: :connections
 
   has_many :works, foreign_key: :created_by
   has_many :reviews, foreign_key: :created_by
   has_many :discussions, foreign_key: :created_by
   has_many :discussion_answers, foreign_key: :created_by
+  has_many :notifications, foreign_key: :recipient
   has_many :likes
+  has_many :events
 
   has_one_attached :avatar
 
