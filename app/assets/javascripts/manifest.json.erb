@@ -2,8 +2,8 @@
 {
   "name": "Workify",
   "short_name": "Workify",
-  "start_url": "./",
-  "scope": ".",
+  "start_url": "/",
+  "scope": "/",
   "icons": [
   <% icon_sizes.map { |s| "#{s}x#{s}" }.each.with_index do |dim, i| %>
     <%
@@ -25,8 +25,8 @@
     }<%= i == (icon_sizes.length - 1) ? '' : ',' %>
   <% end %>
   ],
-  "theme_color": "#000000",
-  "background_color": "#FFFFFF",
+  "theme_color": "#FFFFFF",
+  "background_color": "#015EC5",
   "display": "fullscreen",
   "orientation": "portrait"
 }
