@@ -42,6 +42,14 @@ class Work < ApplicationRecord
     updated_at > current_version.created_at ? updated_at : current_version.created_at
   end
 
+  def all_advisors
+    
+  end
+
+  def all_members
+
+  end
+
   private
 
   def set_user_as_member

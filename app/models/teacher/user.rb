@@ -32,12 +32,12 @@ class Teacher::User < ApplicationRecord
   scope :search_by_name, -> (search) { where('LOWER(CONCAT(first_name, last_name)) ILIKE ?', "%#{search.downcase.strip}%") }
 
   def full_name
-    "#{first_name} #{last_name}".capitalize
+    "#{first_name} #{last_name}".titleize
   end
 
   def label_name
     name = full_name.split
-    "#{name.first} #{name.last}".capitalize
+    "#{name.first} #{name.last}".titleize
   end
 
   def profile_completed?
