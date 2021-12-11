@@ -2,6 +2,9 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   mount Ckeditor::Engine => '/ckeditor'
 
+  notify_to :student_users, controller: 'student/notifications'
+  notify_to :teacher_users, controller: 'teacher/notifications'
+
   root to: 'site#home'
   get '/sign_up', to: 'site#sign_up'
   get '/sign_in', to: 'site#sign_in'

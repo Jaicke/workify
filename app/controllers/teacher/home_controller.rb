@@ -1,4 +1,5 @@
 class Teacher::HomeController < Teacher::BaseController
+  before_action :fetch_notifications, only: :index
 
   def index
   end
@@ -9,5 +10,11 @@ class Teacher::HomeController < Teacher::BaseController
     respond_to do |format|
       format.json
     end
+  end
+
+  private
+
+  def fetch_notifications
+    @notifications = @current_user.notifications
   end
 end

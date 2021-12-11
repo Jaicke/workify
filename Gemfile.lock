@@ -49,6 +49,11 @@ GEM
       i18n (>= 0.7, < 2)
       minitest (~> 5.1)
       tzinfo (~> 1.1)
+    activity_notification (2.2.2)
+      i18n (>= 0.5.0)
+      jquery-rails (>= 3.1.1)
+      railties (>= 5.0.0, < 6.2)
+      swagger-blocks (>= 3.0.0)
     acts_as_paranoid (0.7.1)
       activerecord (>= 5.2, < 7.0)
       activesupport (>= 5.2, < 7.0)
@@ -234,6 +239,7 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
+    swagger-blocks (3.0.0)
     sweetalert2 (7.25.6)
       railties (>= 3.1.0)
     thor (1.0.1)
@@ -261,6 +267,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activity_notification
   acts_as_paranoid (~> 0.7.0)
   bcrypt (~> 3.1.7)
   bootsnap (>= 1.1.0)

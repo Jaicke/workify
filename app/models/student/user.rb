@@ -1,4 +1,7 @@
 class Student::User < ApplicationRecord
+  # Setup for notification gem
+  acts_as_target
+
   paginates_per 8
 
   attr_accessor :first_login

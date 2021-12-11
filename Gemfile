@@ -52,6 +52,8 @@ gem 'momentjs-rails'
 gem 'mini_magick', '~> 4.8'
 # PWA gem
 gem "serviceworker-rails"
+# Notifications gem
+gem 'activity_notification'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

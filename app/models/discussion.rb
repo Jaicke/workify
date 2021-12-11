@@ -1,4 +1,7 @@
 class Discussion < ApplicationRecord
+  acts_as_notifiable :users,
+                     targets: ->(discussion, key) { (discussion.work.members.to_a + discussion.work.all_advisors.to_a - [discussion.created_by]) },
+                     tracked: { only: [:create], send_later: false }
   paginates_per 8
 
   belongs_to :work

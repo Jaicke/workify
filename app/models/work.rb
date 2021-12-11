@@ -21,7 +21,7 @@ class Work < ApplicationRecord
 
   accepts_nested_attributes_for :group_members, reject_if: :all_blank, allow_destroy: true
 
-  before_validation :set_user_as_member, if: :group?
+  before_validation :set_user_as_member
   before_validation :removes_group_members, unless: :group?
 
   scope :by_owner_or_member, ->(current_user) { left_joins(:group_members).where('works.created_by_id = ? OR group_members.email = ?', current_user.id , current_user.email) }
@@ -40,6 +40,16 @@ class Work < ApplicationRecord
     return updated_at if current_version.nil?
 
     updated_at > current_version.created_at ? updated_at : current_version.created_at
+  end
+
+  def members
+    Student::User.where(email: group_members.pluck(:email))
+  end
+
+  def all_advisors
+    ids = co_advisors.pluck(:id)
+    ids = ids.push(advisor_id) if advisor_id.present?
+    Teacher::User.where(id: ids)
   end
 
   private
