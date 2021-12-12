@@ -7,7 +7,7 @@ var NOTIFICATIONS = (function(notifications){
       let namespace = location.pathname.includes('student') ? 'student' : 'teacher'
 
       $.ajax({
-        url: `http://${location.host}/${namespace}/notifications/${notificationId}/read`,
+        url: `${location.origin}/${namespace}/notifications/${notificationId}/read`,
         type: 'put',
       })
     })
