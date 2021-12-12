@@ -2,6 +2,7 @@ class Review < ApplicationRecord
   enum status: [:open, :closed]
 
   belongs_to :work
+  belongs_to :created_by, class_name: 'Student::User'
   belongs_to :old_work_version, class_name: 'WorkVersion', optional: true
   belongs_to :new_work_version, class_name: 'WorkVersion', optional: true
 
@@ -28,10 +29,6 @@ class Review < ApplicationRecord
       self.old_work_version.update!(current: false)
       self.new_work_version.update!(current: true)
     end
-  end
-
-  def created_by
-    review_events.find_by(action: :created).by_user
   end
 
   def confirmed_by
