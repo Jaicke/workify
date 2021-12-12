@@ -21,7 +21,7 @@ class Student::ReviewsController < Student::BaseController
   end
 
   def create
-    @review = @work.reviews.new(review_params)
+    @review = @work.reviews.new(review_params.merge!(created_by: @current_user))
     if @review.save
       ReviewEvent.create!(review_id: @review.id, by_user: @current_user, action: :created)
       redirect_to student_reviews_path(work_id: @work.id), notice: 'Revisão adicionada, aguarde seu orientador aprovar.'

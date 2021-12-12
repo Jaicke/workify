@@ -2,11 +2,17 @@
   <div class="card-body">
     <%= icon("fas", "exchange-alt") %>
     Substituir
-    <strong>
-      <%= link_to @review.old_work_version.title, student_work_work_version_path(id: @review.old_work_version.id, work_id: @work.id), remote: true %>
-    </strong>
+    <% if @review.old_work_version.present? %>
+      <strong><%= link_to @review.old_work_version.title, student_work_work_version_path(id: @review.old_work_version.id, work_id: @work.id), remote: true %></strong>
+    <% else %>
+      <strong>Versão apagada</strong>
+    <% end %>
     por
-    <strong><%= link_to @review.new_work_version.title, student_work_work_version_path(id: @review.new_work_version.id, work_id: @work.id), remote: true %></strong>
+    <% if @review.new_work_version.present? %>
+      <strong><%= link_to @review.new_work_version.title, student_work_work_version_path(id: @review.new_work_version.id, work_id: @work.id), remote: true %></strong>
+    <% else %>
+      <strong>Versão apagada</strong>
+    <% end %>
   </div>
 </div>
 

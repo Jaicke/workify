@@ -186,6 +186,7 @@ ActiveRecord::Schema.define(version: 2021_12_09_035019) do
     t.string "creation_number"
     t.boolean "confirmed"
     t.integer "work_id"
+    t.integer "created_by_id"
     t.integer "old_work_version_id"
     t.integer "new_work_version_id"
     t.datetime "created_at", null: false
