@@ -24,11 +24,17 @@ class Teacher::ConnectionService
 
   def accept_connection
     @connection.accepted!
+    create_notification(:accepted)
     Student::UserMailer.with(connection: @connection).connection_accepted_email.deliver_later
   end
 
   def decline_connection
     @connection.declined!
+    create_notification(:declined)
     Student::UserMailer.with(connection: @connection).connection_declined_email.deliver_later
+  end
+
+  def create_notification(action)
+    NotificationService.create!(@connection.teacher, @connection.student, action, @connection)
   end
 end

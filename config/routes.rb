@@ -8,6 +8,9 @@ Rails.application.routes.draw do
 
   namespace :student do
     resources :users, only: [:create]
+    resources :notifications, only: :index do
+      put :read, on: :member
+    end
 
     resource :me, controller: "me", only: [:show, :update] do
       get :edit_profile, on: :member
@@ -41,6 +44,9 @@ Rails.application.routes.draw do
 
   namespace :teacher do
     resources :users, only: [:create]
+    resources :notifications, only: :index do
+      put :read, on: :member
+    end
 
     resource :me, controller: "me", only: [:show, :update] do
       get :edit_profile, on: :member

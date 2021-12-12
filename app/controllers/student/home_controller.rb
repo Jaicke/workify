@@ -1,4 +1,6 @@
 class Student::HomeController < Student::BaseController
+  before_action :fetch_notifications, only: :index
+
   def index
   end
 
@@ -8,5 +10,11 @@ class Student::HomeController < Student::BaseController
     respond_to do |format|
       format.json
     end
+  end
+
+  private
+
+  def fetch_notifications
+    @notifications = @current_user.notifications.order(created_at: :desc).first(5)
   end
 end

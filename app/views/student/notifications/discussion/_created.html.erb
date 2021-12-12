@@ -1,0 +1,27 @@
+<%= link_to student_discussion_path(notification.notifiable, work_id: notification.notifiable.work_id) do %>
+  <div class="notification-card">
+    <input type="hidden" name="notification-id" value=<%= notification.id %>>
+    <div class="notification-body">
+      <span data-toggle="popover" data-placement="top" data-html="true" data-trigger='hover click' data-content="<%= "#{render 'layouts/shared/user_popover', user: notification.user}"%>">
+        <%= image_tag url_for_profile_image(notification.user), class: "notification-user-image", style: 'cursor: pointer;' %>
+      </span>
+
+      <strong><%= notification.user.label_name %></strong>
+      <%= Notification.human_attribute_name("action.#{notification.action}") %>
+      uma
+      <%= notification.notifiable.class.model_name.human(count: 1).downcase %>
+      no trabalho
+      <%= notification.notifiable.work.theme_label %>!
+
+      <div class="notification-footer">
+        <small class="text-muted">há <%= time_ago_in_words(notification.created_at) %></small>
+      </div>
+    </div>
+
+    <% unless notification.read %>
+      <div class="notification-status">
+        <span></span>
+      </div>
+    <% end %>
+  </div>
+<% end %>

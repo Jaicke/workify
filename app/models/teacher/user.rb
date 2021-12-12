@@ -16,8 +16,9 @@ class Teacher::User < ApplicationRecord
   has_many :students, -> { includes(:connections).where(connections: { status: :accepted }) }, through: :connections
 
   has_many :approvals, class_name: 'Approval', foreign_key: :teacher_id
-  has_many :discussions, foreign_key: :created_by
-  has_many :discussion_answers, foreign_key: :created_by
+  has_many :discussions, as: :created_by
+  has_many :discussion_answers, as: :created_by
+  has_many :notifications, as: :recipient
   has_many :likes
   has_many :events
 
@@ -31,12 +32,12 @@ class Teacher::User < ApplicationRecord
   scope :search_by_name, -> (search) { where('LOWER(CONCAT(first_name, last_name)) ILIKE ?', "%#{search.downcase.strip}%") }
 
   def full_name
-    "#{first_name} #{last_name}".capitalize
+    "#{first_name} #{last_name}".titleize
   end
 
   def label_name
     name = full_name.split
-    "#{name.first} #{name.last}".capitalize
+    "#{name.first} #{name.last}".titleize
   end
 
   def profile_completed?

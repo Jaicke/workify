@@ -9,13 +9,15 @@ class Student::User < ApplicationRecord
   belongs_to :course, optional: true
 
   has_many :connections, foreign_key: :student_id
-  has_many :teachers, -> { joins(:connections).where(connections: { status: :accepted }) }, through: :connections
+  has_many :teachers, -> { includes(:connections).where(connections: { status: :accepted }) }, through: :connections
 
   has_many :works, foreign_key: :created_by
   has_many :reviews, foreign_key: :created_by
-  has_many :discussions, foreign_key: :created_by
-  has_many :discussion_answers, foreign_key: :created_by
+  has_many :discussions, as: :created_by
+  has_many :discussion_answers, as: :created_by
+  has_many :notifications, as: :recipient
   has_many :likes
+  has_many :events
 
   has_one_attached :avatar
 
@@ -32,12 +34,12 @@ class Student::User < ApplicationRecord
   scope :search_by_name, -> (search) { where('LOWER(CONCAT(first_name, last_name)) ILIKE ?', "%#{search.downcase.strip}%") }
 
   def full_name
-    "#{first_name} #{last_name}"
+    "#{first_name} #{last_name}".titleize
   end
 
   def label_name
     name = full_name.split
-    "#{name.first} #{name.last}"
+    "#{name.first} #{name.last}".titleize
   end
 
   def connection_with(teacher_id)

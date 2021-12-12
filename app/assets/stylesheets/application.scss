@@ -7,6 +7,7 @@ $modal-fade-transform: scale(.8);
 @import "select2";
 @import "select2-bootstrap";
 @import "icons";
+@import "notifications";
 @import 'fullcalendar';
 
 $teacher-primary-color: #015EC5;
@@ -19,6 +20,10 @@ $student-logo: "logos/gray_and_orange.svg";
 
 *{
   font-family: 'Roboto';
+}
+
+#calendar {
+  background-color: #e9edeea1;
 }
 
 .dropdown {

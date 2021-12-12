@@ -11,6 +11,7 @@ class Discussion < ApplicationRecord
 
   before_validation :remove_empty_tags
   before_validation :capitalize_tags
+  after_create :create_notification
 
   private
 
@@ -24,5 +25,13 @@ class Discussion < ApplicationRecord
 
   def tags_quantity
     errors.add(:base, 'Máximo de tags permitidas é quatro') unless tags.count <= 4
+  end
+
+  def create_notification
+    recipients = (work.members.to_a + work.all_advisors.to_a) - [created_by]
+
+    recipients.each do |recipient|
+      NotificationService.create!(self.created_by, recipient, :created, self)
+    end
   end
 end

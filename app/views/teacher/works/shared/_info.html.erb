@@ -29,6 +29,8 @@
   </div>
 </div>
 
-<div class="view-work-button">
-  <%= link_to "Visualizar versão atual", teacher_work_work_version_path(work_id: @work.id, id: @work.current_version.id), remote: true, class: 'btn btn-info' %>
-</div>
+<% if @work.current_version.present? %>
+  <div class="view-work-button">
+    <%= link_to "Visualizar versão atual", teacher_work_work_version_path(work_id: @work.id, id: @work.current_version.id), remote: true, class: 'btn btn-info' %>
+  </div>
+<% end %>

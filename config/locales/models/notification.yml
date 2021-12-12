@@ -1,0 +1,16 @@
+pt-BR:
+  activerecord:
+    models:
+      notification:
+        one: Notificação
+        other: Notificações
+    attributes:
+      notification/action:
+        approved: aprovou
+        created: criou
+        Fechou: fechou
+        confirmed: confirmou
+        answered: respondeu
+        accepted: aceitou
+        declined: recusou
+        sent: enviou

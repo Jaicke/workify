@@ -20,6 +20,7 @@ class Student::TeachersController < Student::BaseController
 
   def send_connection
     connection = Connection.find_or_create_by!(teacher_id: params[:id], student_id: current_user.id, status: :pending)
+
     Teacher::UserMailer.with(connection: connection).send_connection_email.deliver_later
   end
 
