@@ -1,10 +1,56 @@
+.notifications-list {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.notifications-list a {
+  text-decoration: none;
+  color: #000000;
+}
+
 .notification-card {
-  padding: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 30px;
   border-radius: 10px;
   background-color: #e9edeea1;
   margin-bottom: 10px;
 }
 
-.notification-card a:first-of-type {
-  text-decoration: none;
+.notification-card:hover {
+  background-color: #abb9bda1;
+}
+
+.notification-card .notification-user-image {
+  height: 40px;
+  width: 40px;
+  margin-right: 10px;
+  border-radius: 50%;
+}
+
+.notification-footer {
+  margin-left: 53px;
+}
+
+.notification-status span {
+  display: inline-block;
+  height: 12px;
+  width: 12px;
+  border-radius: 50%;
+  background-color: #3882ad;
+}
+
+@media (max-width: 720px)
+{
+  .notification-card .notification-user-image {
+    height: 30px;
+    width: 30px;
+  }
+
+  .notification-footer {
+    margin-left: 0;
+  }
+
 }

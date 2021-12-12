@@ -13,9 +13,9 @@ class Student::User < ApplicationRecord
 
   has_many :works, foreign_key: :created_by
   has_many :reviews, foreign_key: :created_by
-  has_many :discussions, foreign_key: :created_by
-  has_many :discussion_answers, foreign_key: :created_by
-  has_many :notifications, foreign_key: :recipient
+  has_many :discussions, as: :created_by
+  has_many :discussion_answers, as: :created_by
+  has_many :notifications, as: :recipient
   has_many :likes
   has_many :events
 

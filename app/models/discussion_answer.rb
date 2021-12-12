@@ -13,7 +13,10 @@ class DiscussionAnswer < ApplicationRecord
   private
 
   def create_notification
-    # Tem que notificar a todos os membros
-    NotificationService.create!(self.created_by, self.discussion.created_by, :answered, self.discussion)
+    recipients = (discussion.work.members.to_a + discussion.work.all_advisors.to_a) - [created_by]
+
+    recipients.each do |recipient|
+      NotificationService.create!(self.created_by, recipient, :answered, self.discussion)
+    end
   end
 end

@@ -6,7 +6,8 @@ class Notification < ApplicationRecord
     :approved,
     :answered,
     :accepted,
-    :declined
+    :declined,
+    :sent
   ]
 
   belongs_to :user, polymorphic: true

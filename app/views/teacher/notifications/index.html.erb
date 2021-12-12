@@ -1,0 +1,19 @@
+<div class="box">
+  <div class="content">
+    <div class="list-header">
+      <span>
+        Notificações
+      </span>
+    </div>
+
+    <div class="notifications-list">
+      <% @notifications.each do |notification| %>
+        <%= render "teacher/notifications/#{notification.notifiable.class.name.sub('::', '_').downcase}/#{notification.action}", notification: notification %>
+      <% end %>
+    </div>
+
+    <div class="info-pagination">
+      <%= render "layouts/shared/pagination", items: @notifications %>
+    </div>
+  </div>
+</div>
