@@ -17,9 +17,6 @@
       <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
         <%= nav_dropdown_item "Visualizar", student_work_work_version_path(work_id: @work.id, id: version.id), 'eye', remote: true %>
         <%= nav_dropdown_item "Editar", edit_student_work_work_version_path(work_id: @work.id, id: version.id), 'pen', remote: true %>
-        <%= link_to student_work_work_version_path(work_id: @work.id, id: version.id), method: :delete, class: "dropdown-item", data: { confirm: "Tem certeza que deseja remover?" } do %>
-          <%= icon("fas", "trash") %> Remover
-        <% end %>
       </div>
     </li>
   </td>
