@@ -7,8 +7,13 @@
     </div>
 
     <div class="notifications-list">
-      <% @notifications.each do |notification| %>
-        <%= render "teacher/notifications/#{notification.notifiable.class.name.sub('::', '_').downcase}/#{notification.action}", notification: notification %>
+      <%= link_to teacher_notifications_path do %>
+        <div id="new-notification-alert"></div>
+      <% end %>
+      <% if @notifications.each do |notification| %>
+        <%= render "teacher/notifications/#{notification.notifiable_type.underscore}/#{notification.action}", notification: notification %>
+      <% end.empty? %>
+        Nenhuma notificação.
       <% end %>
     </div>
 

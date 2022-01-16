@@ -12,8 +12,16 @@
       <div class="col-md-7">
         <h5>Notificações</h4>
         <div class="notifications-list">
-          <% @notifications.each do |notification| %>
-            <%= render "student/notifications/#{notification.notifiable.class.name.sub('::', '_').downcase}/#{notification.action}", notification: notification %>
+          <%= link_to student_home_index_path do %>
+            <div id="new-notification-alert"></div>
+          <% end %>
+
+          <% if @notifications.each do |notification| %>
+            <%= render "student/notifications/#{notification.notifiable_type.underscore}/#{notification.action}", notification: notification %>
+          <% end.empty? %>
+            <div class="empty-notification">
+              Nenhuma notificação.
+            </div>
           <% end %>
 
           <% if current_user.notifications.count > 5 %>
