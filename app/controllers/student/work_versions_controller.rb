@@ -41,15 +41,6 @@ class Student::WorkVersionsController < Student::BaseController
   def show
   end
 
-  def destroy
-    if @work_version.current?
-      redirect_to student_work_path(id: @work), alert: 'Não é possível remover a Versão Atual'
-    else
-      @work_version.destroy
-      redirect_to student_work_path(id: @work), notice: 'Versão removida'
-    end
-  end
-
   private
 
   def work_version_params
