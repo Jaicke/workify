@@ -5,22 +5,43 @@
       <div class="sidebar-btn">
         <%= icon("fas", "bars") %>
       </div>
+      <ul>
+        <li class="nav-item dropdown" >
+          <a class="nav-link" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            <%= icon("fas", "bell", class: 'notification-icon') %>
+            <span class="badge" id="notification-count"><%= @current_user.notifications.not_read.count %></span>
+          </a>
 
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-          <%= image_tag url_for_profile_image(current_user), class: "header-profile-image" %>
-          <%= current_user.label_name %>
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <%= nav_dropdown_item "Perfil", edit_profile_student_me_path, 'user' %>
-          <%= nav_dropdown_item "Trocar Senha", change_password_student_me_path, 'lock' %>
-          <div class="dropdown-divider"></div>
-          <%= link_to student_sessions_path, method: :delete, class: "dropdown-item" do %>
-            <%= icon("fas", "sign-out-alt") %> Sair
-          <% end %>
-        </div>
-      </li>
-
+          <div class="dropdown-menu navigation-notification" aria-labelledby="navbarDropdownMenuLink">
+            <span class="notifications-list">
+              <% if current_user.notifications.order(created_at: :desc).first(5).each do |notification| %>
+                <%= render "student/notifications/#{notification.notifiable_type.underscore}/#{notification.action}", notification: notification %>
+              <% end.empty? %>
+                <div class="empty-notification">
+                  Nenhuma notificação.
+                </div>
+              <% end %>
+              <% if current_user.notifications.count > 5 %>
+                <%= link_to 'Ver mais', student_notifications_path, class: 'btn btn-light' %>
+              <% end %>
+            </span>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            <%= image_tag url_for_profile_image(current_user), class: "header-profile-image" %>
+            <%= current_user.label_name %>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <%= nav_dropdown_item "Perfil", edit_profile_student_me_path, 'user' %>
+            <%= nav_dropdown_item "Trocar Senha", change_password_student_me_path, 'lock' %>
+            <div class="dropdown-divider"></div>
+            <%= link_to student_sessions_path, method: :delete, class: "dropdown-item" do %>
+              <%= icon("fas", "sign-out-alt") %> Sair
+            <% end %>
+          </div>
+        </li>
+      </ul>
     </div>
   </div>
 

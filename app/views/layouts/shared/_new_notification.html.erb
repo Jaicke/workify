@@ -1,0 +1,4 @@
+<span id='new-notification'>
+  <% notifications_count = notification.recipient.notifications.not_read.count %>
+  +<%= notifications_count %> <%= Notification.model_name.human(count: notifications_count) %>
+</span>
