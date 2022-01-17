@@ -3,6 +3,7 @@ class Teacher::BaseController < ApplicationController
 
   before_action :authenticate
   before_action :verify_user_profile
+  before_action :fetch_menu_notifications
 
   private
 
@@ -27,6 +28,10 @@ class Teacher::BaseController < ApplicationController
     unless @current_user&.profile_completed?
       redirect_to edit_profile_teacher_me_path, alert: 'Complete seu perfil para continuar navegando'
     end
+  end
+
+  def fetch_menu_notifications
+    @menu_notifications = @current_user.notifications.order(read: :asc, created_at: :desc).first(5)
   end
 
 end

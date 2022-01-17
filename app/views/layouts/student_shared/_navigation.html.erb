@@ -9,12 +9,14 @@
         <li class="nav-item dropdown" >
           <a class="nav-link" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
             <%= icon("fas", "bell", class: 'notification-icon') %>
-            <span class="badge" id="notification-count"><%= @current_user.notifications.not_read.count %></span>
+             <span class="badge" id="notification-count">
+              <%= @current_user.notifications.not_read.count >= 10 ? '+9' : @current_user.notifications.not_read.count %>
+            </span>
           </a>
 
           <div class="dropdown-menu navigation-notification" aria-labelledby="navbarDropdownMenuLink">
             <span class="notifications-list">
-              <% if current_user.notifications.order(created_at: :desc).first(5).each do |notification| %>
+              <% if @menu_notifications.each do |notification| %>
                 <%= render "student/notifications/#{notification.notifiable_type.underscore}/#{notification.action}", notification: notification %>
               <% end.empty? %>
                 <div class="empty-notification">
