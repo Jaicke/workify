@@ -2,13 +2,16 @@ var NOTIFICATIONS = (function(notifications){
   'use strict'
 
   var readNotification = function(notification){
-    let notificationId = notification.find('input').val()
-    let namespace = location.pathname.includes('student') ? 'student' : 'teacher'
+    let notificationId = notification[0].getAttribute('data-id')
+    let namespace = notification[0].getAttribute('data-recipient-type') == 'Student::User' ? 'student' : 'teacher'
+    let read = toBoolean(notification[0].getAttribute('data-read'))
 
-    $.ajax({
-      url: `${location.origin}/${namespace}/notifications/${notificationId}/read`,
-      type: 'put',
-    })
+    if (namespace && !read){
+      $.ajax({
+        url: `${location.origin}/${namespace}/notifications/${notificationId}/read`,
+        type: 'put'
+      })
+    }
   }
 
   var markNotificationAsRead = function(){

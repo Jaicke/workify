@@ -1,5 +1,5 @@
 class Teacher::SessionsController < Teacher::BaseController
-  skip_before_action :authenticate, :verify_user_profile
+  skip_before_action :authenticate, :verify_user_profile, :fetch_menu_notifications
 
   def create
     user = Teacher::User.find_by_email(params[:email])
