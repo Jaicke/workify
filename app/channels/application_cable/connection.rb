@@ -21,7 +21,7 @@ module ApplicationCable
 
       return Student::User.find_by(id: session['student_user_id']) if session['student_user_id'].present?
 
-      Teacher::User.find_by(id: session['teacher_user_id'])
+      return Teacher::User.find_by(id: session['teacher_user_id']) if session['teacher_user_id'].present?
     end
   end
 end

@@ -1,6 +1,5 @@
 <%= link_to student_discussion_path(notification.notifiable, work_id: notification.notifiable.work_id) do %>
-  <div class="notification-card">
-    <input type="hidden" name="notification-id" value=<%= notification.id %>>
+  <div class="notification-card" data-id=<%= notification.id %> data-recipient-type=<%= notification.recipient_type %> data-read=<%= notification.read %>>
     <div class="notification-body">
       <span data-toggle="popover" data-placement="top" data-html="true" data-trigger='hover click' data-content="<%= "#{render 'layouts/shared/user_popover', user: notification.user}"%>">
         <%= image_tag url_for_profile_image(notification.user), class: "notification-user-image", style: 'cursor: pointer;' %>
