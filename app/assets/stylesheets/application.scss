@@ -391,8 +391,8 @@ img {
 }
 
 .answers .answer-content {
-  padding-left: 10px;
-  padding-right: 10px;
+  padding-top: 15px;
+  word-break: break-word;
 }
 
 .card-comments {
@@ -569,7 +569,7 @@ img {
   width: 20px;
   border-radius: 50%;
   display: inline-block;
-  border: 1px solid #000000;
+  // border: 1px solid #000000;
 }
 
 .event-body {
