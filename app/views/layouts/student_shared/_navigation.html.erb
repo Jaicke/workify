@@ -32,7 +32,7 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
             <%= image_tag url_for_profile_image(current_user), class: "header-profile-image" %>
-            <%= current_user.label_name %>
+            <span class="d-none d-md-inline"><%= current_user.label_name %></span>
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
             <%= nav_dropdown_item "Perfil", edit_profile_student_me_path, 'user' %>

@@ -1,16 +1,18 @@
-<div class="review-card review-card-<%= review.status %>">
-  <div class="review-card-header">
-    <%= link_to review.title, teacher_review_path(review, work_id: @work.id), class: 'review-card-title' %>
-    <% if review.approved? %>
-      <span class="badge badge-success" title="Aprovado" data-toggle="tooltip"><%= icon("fas", "check") %> Aprovado</span>
-    <% else %>
-      <span class="badge badge-light" title="Não Aprovado" data-toggle="tooltip"><%= icon("fas", "times") %> Não Aprovado</span>
-    <% end %>
-  </div>
+<%= link_to teacher_review_path(review, work_id: @work.id) do %>
+  <div class="review-card review-card-<%= review.status %>">
+    <div class="review-card-header">
+      <span class="review-card-title"><%= review.title %></span>
+      <% if review.approved? %>
+        <span class="badge badge-success" title="Aprovado" data-toggle="tooltip"><%= icon("fas", "check") %> Aprovado</span>
+      <% else %>
+        <span class="badge badge-light" title="Não Aprovado" data-toggle="tooltip"><%= icon("fas", "times") %> Não Aprovado</span>
+      <% end %>
+    </div>
 
-  <div class="review-card-info">
-    <%= review.creation_number %> criado por
-    <%= review.created_by.first_name %> em
-    <%= review.created_at.strftime("%d/%m/%Y") %>
+    <div class="review-card-info">
+      <%= review.creation_number %> criado por
+      <%= review.created_by.first_name %> em
+      <%= review.created_at.strftime("%d/%m/%Y") %>
+    </div>
   </div>
-</div>
+<% end %>
