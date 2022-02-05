@@ -1,34 +1,38 @@
-<div class="discussion-card row">
-  <div class="col-md-6">
-    <%= link_to discussion.title, student_discussion_path(discussion, work_id: @work.id), class: 'discussion-card-title' %>
-    <% if discussion.closed? %>
-      <span data-toggle="tooltip" data-placement="top" title="Fechada">
-        <%= icon("fas", "check", class: 'success-color') %>
-      </span>
-    <% end %>
-    <div class="tags">
-      <% discussion.tags.each do |tag| %>
-        <span class="tag"><%= tag %></span>
+<%= link_to student_discussion_path(discussion, work_id: @work.id) do %>
+  <div class="discussion-card">
+    <div class="col-md-6">
+      <span class="discussion-card-title"><%= discussion.title %></span>
+      <% if discussion.closed? %>
+        <span data-toggle="tooltip" data-placement="top" title="Fechada">
+          <%= icon("fas", "check", class: 'success-color') %>
+        </span>
+      <% else %>
+        <span data-toggle="tooltip" data-placement="top" title="Aberta">
+          <%= icon("fas", "times", class: 'danger-color') %>
+        </span>
       <% end %>
+      <div class="tags">
+        <% discussion.tags.each do |tag| %>
+          <span class="tag"><%= tag %></span>
+        <% end %>
+      </div>
     </div>
-  </div>
 
-  <div class="discussion-card-info col-md-6">
-    <span class="discussion-created-at mb-2">
-      <span data-toggle="tooltip" data-placement="top", title="<%= "#{discussion.created_at.strftime("%d/%m/%Y")} às #{ discussion.created_at.strftime("%H:%M")}" %>">
-        há
-        <%= time_ago_in_words(discussion.created_at) %>
+    <div class="discussion-card-info col-md-6">
+      <span class="discussion-created-at mb-2">
+        <span data-toggle="tooltip" data-placement="top", title="<%= "#{discussion.created_at.strftime("%d/%m/%Y")} às #{ discussion.created_at.strftime("%H:%M")}" %>">
+          há
+          <%= time_ago_in_words(discussion.created_at) %>
+        </span>
       </span>
-    </span>
-    <span data-toggle="popover" data-placement="top" data-html="true" data-trigger='hover click' data-content="<%= "#{render 'layouts/shared/user_popover', user: discussion.created_by}"%>">
-      <%= image_tag url_for_profile_image(discussion.created_by), class: "header-profile-image", style: 'cursor: pointer;' %>
-      <%= discussion.created_by.label_name %>
-    </span>
+      <span data-toggle="popover" data-placement="top" data-html="true" data-trigger='hover click' data-content="<%= "#{render 'layouts/shared/user_popover', user: discussion.created_by}"%>">
+        <%= image_tag url_for_profile_image(discussion.created_by), class: "header-profile-image", style: 'cursor: pointer;' %>
+        <%= discussion.created_by.label_name %>
+      </span>
 
-    <div class="card-comments">
-      <%= link_to student_discussion_path(discussion, work_id: @work.id) do %>
+      <div class="card-comments">
         <%= icon("far", "comments") %> <%= discussion.discussion_answers.count %>
-      <% end %>
+      </div>
     </div>
   </div>
-</div>
+<% end %>

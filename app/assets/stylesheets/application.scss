@@ -42,6 +42,11 @@ html, body {
   font-weight: 600;
 }
 
+#search {
+  border: none;
+  background-color: #f1f3f4;
+}
+
 .info-pagination {
   display: flex;
   justify-content: space-between;
@@ -100,10 +105,6 @@ html, body {
     }
   }
 
-}
-
-.user-card:hover {
-  transform: scale(1.1);
 }
 
 .user-list {
@@ -173,11 +174,11 @@ img {
 
 .search-input {
   background-image: asset-url("icons/search-icon.png");
-  background-position: 6px 7px;
+  background-position: 14px 10px;
   background-repeat: no-repeat;
-  background-size: 22px 22px;
+  background-size: 18px 18px;
   border-radius: 20px;
-  text-indent: 25px;
+  text-indent: 35px;
 }
 
 .card-title{
@@ -320,11 +321,17 @@ img {
   padding: 20px;
 }
 
+.discussion-list a {
+  text-decoration: none;
+}
+
 .discussion-card {
+  display: flex;
   align-items: center;
   padding: 10px 16px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 30px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
   margin-bottom: 20px;
+  color: rgba(0, 0, 0, 0.9);
 }
 
 .discussion-card-info {
@@ -346,11 +353,14 @@ img {
   font-size: 17px;
   font-weight: 600;
   color: rgba(0, 0, 0, 0.9);
-  text-decoration: none !important;
 }
 
 .discussion-title {
   font-size: 2rem !important;
+}
+
+.discussion-title i {
+  font-size: 22px;
 }
 
 .discussion .author {
@@ -372,10 +382,16 @@ img {
   border-bottom-left-radius: .3rem;
 }
 
+.discussion-answer-card {
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 30px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+  padding: 1px 10px;
+  margin-top: 10px;
+}
+
 .answer-header {
   display: flex;
   justify-content: space-between;
-  padding: 10px;
+  padding: 6px;
 }
 
 .answer-header .actions {
@@ -384,15 +400,16 @@ img {
   align-items: center;
 }
 
-.answer-header .actions a {
+.answers a {
   color: #000000;
   text-decoration: none;
-  padding: 8px;
 }
 
 .answers .answer-content {
   padding-top: 15px;
   word-break: break-word;
+  text-align: justify;
+  text-justify: inter-word;
 }
 
 .card-comments {
@@ -431,9 +448,18 @@ img {
   grid-gap: 20px;
 }
 
+.review-list a {
+  text-decoration: none;
+}
+
 .review-card {
   padding: 10px 16px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 30px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+  color: rgba(0, 0, 0, 0.9);
+}
+
+.review-card:hover {
+  opacity: 1;
 }
 
 .review-card-open {
@@ -518,10 +544,6 @@ img {
   padding: 20px;
   margin-top: 10px;
   border-radius: 8px;
-}
-
-.event-card:hover {
-  transform: scale(1.05);
 }
 
 .event-card .date-info {

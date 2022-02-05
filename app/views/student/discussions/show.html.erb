@@ -9,6 +9,10 @@
           <span data-toggle="tooltip" data-placement="top" title="Fechada">
             <%= icon("fas", "check", class: 'success-color') %>
           </span>
+        <% else %>
+          <span data-toggle="tooltip" data-placement="top" title="Aberta">
+            <%= icon("fas", "times", class: 'danger-color') %>
+          </span>
         <% end %>
       </h1>
 
