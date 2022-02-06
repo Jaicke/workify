@@ -27,7 +27,7 @@
       </span>
       <span data-toggle="popover" data-placement="top" data-html="true" data-trigger='hover click' data-content="<%= "#{render 'layouts/shared/user_popover', user: discussion.created_by}"%>">
         <%= image_tag url_for_profile_image(discussion.created_by), class: "header-profile-image", style: 'cursor: pointer;' %>
-        <%= discussion.created_by.label_name %>
+        <%= discussion.created_by.first_name.capitalize %>
       </span>
 
       <div class="card-comments">

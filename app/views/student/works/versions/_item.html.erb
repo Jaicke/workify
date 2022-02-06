@@ -7,7 +7,7 @@
       </a>
     <% end %>
   </td>
-  <td><%= image_tag url_for_profile_image(version.created_by), loading: "lazy", class: 'view-work-image' %> <%= version.created_by.first_name%></td>
+  <td><%= image_tag url_for_profile_image(version.created_by), loading: "lazy", class: 'view-work-image' %> <%= version.created_by.first_name %></td>
   <td><%= version.created_at.strftime('%d/%m/%Y') %></td>
   <td>
     <li class="nav-item dropdown">
