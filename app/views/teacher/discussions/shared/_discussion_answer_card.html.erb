@@ -14,7 +14,7 @@
         <%= answer.content.html_safe %>
       </div>
 
-      <%= link_to toggle_like_student_discussion_discussion_answer_path(id: answer.id, work_id: @work.id, discussion_id: @discussion.id) do %>
+      <%= link_to toggle_like_teacher_discussion_discussion_answer_path(id: answer.id, work_id: @work.id, discussion_id: @discussion.id) do %>
         <%= current_user_like_icon(answer) %> <%= answer.likes.count %>
       <% end %>
     </div>
