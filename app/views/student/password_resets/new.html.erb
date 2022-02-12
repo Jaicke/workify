@@ -1,0 +1,22 @@
+<div class="card-body">
+  <div class="card-title-container">
+    <span class="card-title">
+      Redefinir senha
+    </span>
+    <p>Digite seu endereço de e-mail abaixo e enviaremos um link para redefinir sua senha.</p>
+  </div>
+  <%= form_with url: student_password_resets_path, method: :post, autocomplete: "disabled" do |form| %>
+    <div class="form-row">
+      <div class="input-group mb-3">
+        <%= form.email_field :email, class: "form-control sign-input-rounded", placeholder: "E-mail", autofocus: true, required: true %>
+      </div>
+    </div>
+    <div class="sign-submit-container">
+      <%= form.submit "Redefinir senha", class: "btn btn-dark float-righ sign-submit" %>
+    </div>
+  <% end %>
+</div>
+<div class="card-footer text-muted">
+  <small class="text-muted">Ainda não possui uma conta? Cadastre-se <%= link_to  "aqui", sign_up_path %>.</small>
+  <br>
+</div>

@@ -16,4 +16,12 @@ class Student::UserMailer < ApplicationMailer
 
     mail to: @connection.student.email, subject: "Pedido de conexão recusado!"
   end
+
+  def password_reset_email
+    @user = params[:user]
+    @user.generate_password_token!
+    @token = @user.reset_password_token
+
+    mail to: @user.email, subject: 'Instruções de redefinição de senha'
+  end
 end
