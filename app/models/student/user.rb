@@ -62,4 +62,23 @@ class Student::User < ApplicationRecord
     self.first_login = true unless profile_completed?
   end
 
+  def generate_password_token!
+    self.reset_password_token = generate_token
+    self.reset_password_sent_at = Time.now
+    save!
+  end
+
+  def password_token_valid?
+    (self.reset_password_sent_at + 4.hours) > Time.now
+   end
+
+  private
+
+  def generate_token
+    token = loop do
+      token = SecureRandom.hex
+      break token unless Student::User.exists?(reset_password_token: token)
+    end
+  end
+
 end

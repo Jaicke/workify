@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_09_035019) do
+ActiveRecord::Schema.define(version: 2022_02_12_210722) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -206,6 +206,8 @@ ActiveRecord::Schema.define(version: 2021_12_09_035019) do
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
     t.index ["class_shift"], name: "index_student_users_on_class_shift"
     t.index ["college_id"], name: "index_student_users_on_college_id"
     t.index ["course_id"], name: "index_student_users_on_course_id"
@@ -242,6 +244,7 @@ ActiveRecord::Schema.define(version: 2021_12_09_035019) do
     t.boolean "current", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
   end
 
   create_table "works", force: :cascade do |t|
