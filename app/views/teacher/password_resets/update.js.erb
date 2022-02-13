@@ -1,0 +1,32 @@
+<% if @valid_token.nil? %>
+  swal({
+    type: 'error',
+    showConfirmButton: true,
+    allowOutsideClick: true,
+    allowEscapeKey: false,
+    allowEnterKey: true,
+    title: 'Confirmação de senha não é igual a senha.',
+  });
+<% elsif @valid_token %>
+  swal({
+    type: 'success',
+    showConfirmButton: true,
+    allowOutsideClick: true,
+    allowEscapeKey: false,
+    allowEnterKey: true,
+    title: 'Senha alterada com sucesso!',
+  }).then(function() {
+    window.location.href = '/sign_in'
+  });
+<% else %>
+  swal({
+    type: 'error',
+    showConfirmButton: true,
+    allowOutsideClick: true,
+    allowEscapeKey: false,
+    allowEnterKey: true,
+    title: 'Redefinição de senha expirada!',
+  }).then(function() {
+    window.location.href = '/sign_in'
+  });
+<% end %>

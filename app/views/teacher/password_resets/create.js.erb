@@ -1,0 +1,21 @@
+<% if @valid_email %>
+  swal({
+    type: 'success',
+    showConfirmButton: true,
+    allowOutsideClick: true,
+    allowEscapeKey: false,
+    allowEnterKey: true,
+    title: 'Verifique sua caixa de entrada para os próximos passos.',
+  }).then(function() {
+    window.location.href = '/sign_in'
+  });
+<% else %>
+  swal({
+    type: 'error',
+    showConfirmButton: true,
+    allowOutsideClick: true,
+    allowEscapeKey: false,
+    allowEnterKey: true,
+    title: 'E-mail não encontrado!',
+  });
+<% end %>

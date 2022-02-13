@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   namespace :student do
     resources :users, only: [:create]
-    resource :password_resets
+    resource :password_resets, only: [:new, :create, :edit, :update]
     resources :notifications, only: :index do
       put :read, on: :member
     end
@@ -45,6 +45,7 @@ Rails.application.routes.draw do
 
   namespace :teacher do
     resources :users, only: [:create]
+    resource :password_resets, only: [:new, :create, :edit, :update]
     resources :notifications, only: :index do
       put :read, on: :member
     end
