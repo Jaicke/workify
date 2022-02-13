@@ -11,4 +11,12 @@ class Teacher::UserMailer < ApplicationMailer
 
     mail to: @teacher.email, subject: "Pedido de conexão"
   end
+
+  def password_reset_email
+    @user = params[:user]
+    @user.generate_password_token!
+    @token = @user.reset_password_token
+
+    mail to: @user.email, subject: 'Instruções de redefinição de senha'
+  end
 end
