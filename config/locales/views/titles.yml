@@ -1,0 +1,62 @@
+pt-BR:
+  titles:
+    site:
+      sign_in: Entrar
+      sign_up: Cadastrar
+      home: Início
+    teacher/password_resets:
+      new: Redefinir senha
+      edit: Nova Senha
+    teacher/me:
+      edit_profile: Editar Perfil
+      change_password: Trocar Senha
+    teacher/home:
+      index: Início
+    teacher/notifications:
+      index: Notificações
+    teacher/works:
+      index: Trabalhos
+      show: Detalhes do Trabalho
+    teacher/discussions:
+      index: Discussões
+      show: Discussão
+      new: Criar Discussão
+      edit: Editar Discussão
+    teacher/reviews:
+      index: Revisões
+      show: Revisão
+    teacher/events:
+      index: Cronograma
+    teacher/students:
+      index: Estudantes
+      show: Estudante
+    teacher/connections:
+      index: Conexão
+    student/password_resets:
+      new: Redefinir senha
+      edit: Nova Senha
+    student/me:
+      edit_profile: Editar Perfil
+      change_password: Trocar Senha
+    student/home:
+      index: Início
+    student/notifications:
+      index: Notificações
+    student/works:
+      index: Trabalhos
+      show: Detalhes do Trabalho
+    student/discussions:
+      index: Discussões
+      show: Discussão
+      new: Criar Discussão
+      edit: Editar Discussão
+    student/reviews:
+      index: Revisões
+      show: Revisão
+      new: Criar Revisão
+      edit: Editar Revisão
+    student/events:
+      index: Cronograma
+    student/teachers:
+      index: Professores
+      show: Professor

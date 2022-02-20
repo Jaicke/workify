@@ -2,7 +2,6 @@
   <div class="content">
     <div class="student-profile">
       <div class="header">
-
         <div class="avatar">
           <%= image_tag url_for_profile_image(@student), loading: "lazy" %>
         </div>
@@ -36,6 +35,7 @@
           </div>
         </div>
 
+        <%= connection_button(@student.id) %>
       </div>
 
       <h4>Trabalhos</h4><br>

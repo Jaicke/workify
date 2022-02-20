@@ -10,7 +10,7 @@
       <%= link_to student_notifications_path do %>
         <div id="new-notification-alert"></div>
       <% end %>
-      <% @notifications.each do |notification| %>
+      <% if @notifications.each do |notification| %>
         <%= render "student/notifications/#{notification.notifiable_type.underscore}/#{notification.action}", notification: notification %>
       <% end.empty? %>
         Nenhuma notificação.

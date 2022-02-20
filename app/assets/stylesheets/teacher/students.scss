@@ -40,6 +40,13 @@
   text-align: center;
 }
 
+.student-profile .connection-buttons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  width: 175px;
+}
+
 .student-profile .header .tag {
   opacity: 0.8;
   margin-right: 10px;
@@ -62,6 +69,11 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   grid-gap: 20px;
+}
+
+.student-work-list a {
+  text-decoration: none;
+  color: #000000;
 }
 
 .student-work-list .student-work {

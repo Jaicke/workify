@@ -8,6 +8,7 @@
   width: 115px;
   height: 110px;
   background-size: cover;
+  margin-top: 65px;
 }
 
 .site-home {
@@ -186,10 +187,12 @@
     }
   }
 
-  .site-footer {
-    position: absolute;
-    bottom: 20px;
-  }
+}
+
+.site-footer {
+  position: absolute;
+  bottom: 20px;
+  font-weight: 600;
 }
 
 @media (max-width: 720px)

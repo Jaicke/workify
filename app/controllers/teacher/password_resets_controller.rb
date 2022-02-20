@@ -24,7 +24,7 @@ class Teacher::PasswordResetsController < ApplicationController
     @user = Teacher::User.find_by(reset_password_token: params[:token])
 
     if @user.blank? || !@user.password_token_valid?
-      redirect_to sign_in, notice: 'Token inválido.'
+      redirect_to sign_in_path, alert: 'Redefinição de senha expirada.'
     end
   end
 

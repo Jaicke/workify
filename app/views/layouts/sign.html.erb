@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Workify - <%= params[:action].sub('_', ' ').capitalize %></title>
+    <title>Workify | <%= t("titles.#{params[:controller]}.#{params[:action]}") %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <meta name="viewport" content="width=device-width, user-scalable=no">
@@ -18,6 +18,9 @@
       <div class="sign-box">
         <%= yield %>
       </div>
+       <footer class="site-footer">
+        © <%= Date.today.year %> - Workify
+      </footer>
     </div>
   </body>
 </html>

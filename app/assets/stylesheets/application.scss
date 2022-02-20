@@ -22,6 +22,17 @@ $student-logo: "logos/gray_and_orange.svg";
   font-family: 'Roboto';
 }
 
+.alert-danger {
+  background-color: #d64242;
+  color: white;
+}
+
+.alert-info {
+  background-color: #2d71b1;
+  color: white;
+}
+
+
 #calendar {
   background-color: #e9edeea1;
 }
