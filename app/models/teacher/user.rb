@@ -40,6 +40,11 @@ class Teacher::User < ApplicationRecord
     "#{name.first} #{name.last}".titleize
   end
 
+  def connection_with(student_id)
+    connection = self.connections.where(student_id: student_id, status: ['pending', 'accepted']).last
+    return connection if connection
+  end
+
   def profile_completed?
     [
       colleges.any?,

@@ -83,9 +83,9 @@
 .teacher-profile .contacts {
   display: flex;
   justify-content: space-evenly;
-  font-size: 20px;
+  font-size: 18px;
   width: 500px;
-  margin-top: 30px;
+  margin-top: 25px;
 
   a {
     color: #000000;
@@ -96,6 +96,11 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   grid-gap: 20px;
+}
+
+.teacher-work-list a {
+  text-decoration: none;
+  color: #000000;
 }
 
 .teacher-work-list .teacher-work {

@@ -1,11 +1,11 @@
 <div class="card-body">
   <div class="card-title-container">
     <span class="card-title">
-      <span class="hat-icon"></span>
       Entrar
     </span>
   </div>
   <%= form_with url: form_url, method: :post, autocomplete: "disabled" do |form|%>
+    <%= render  "layouts/shared/alerts" %>
     <div class="form-row">
       <div class="input-group mb-3">
         <%= form.email_field :email, class: "form-control sign-input-rounded", id: "#{prefix}_email", placeholder: "E-mail", autofocus: true, required: true %>

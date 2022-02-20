@@ -64,7 +64,7 @@ class Student::DiscussionsController < Student::BaseController
   end
 
   def fetch_discussion_answers
-    @discussion_answers = @discussion.discussion_answers.left_joins(:likes).group(:id).order('COUNT(likes.id) DESC').page(params[:page])
+    @discussion_answers = @discussion.discussion_answers.left_joins(:likes).group(:id).order('COUNT(likes.id) DESC, created_at DESC').page(params[:page])
   end
 
   def discussion_params

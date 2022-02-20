@@ -1,13 +1,15 @@
 <div class="student-work-list">
   <% works.each do |work| %>
-    <div class='student-work'>
-      <span data-toggle="tooltip" data-placement="top" title="<%= work.theme_label %>" class="student-work-theme">
-        <%= work.theme_label.truncate(23) %>
-      </span>
-      <div class="work-item-last-modification">
-        <small class="text-muted">Criado em <%= work.created_at.strftime('%d/%m/%Y') %></small>
+    <%= link_to teacher_work_path(work) do %>
+      <div class='student-work'>
+        <span data-toggle="tooltip" data-placement="top" title="<%= work.theme_label %>" class="student-work-theme">
+          <%= work.theme_label.truncate(23) %>
+        </span>
+        <div class="work-item-last-modification">
+          <small class="text-muted">Criado em <%= work.created_at.strftime('%d/%m/%Y') %></small>
+        </div>
       </div>
-    </div>
+    <% end %>
   <% end %>
 </div>
 
