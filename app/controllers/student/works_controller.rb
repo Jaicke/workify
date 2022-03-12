@@ -1,5 +1,5 @@
 class Student::WorksController < Student::BaseController
-  before_action :fetch_work, only: [:edit, :update, :destroy, :show]
+  before_action :fetch_work, only: [:edit, :update, :destroy, :show, :conclude, :restart]
   before_action :fetch_teachers, only: [:new, :create, :edit, :update]
   before_action :fetch_members, only: :show
   before_action :fetch_work_versions, only: :show
@@ -54,6 +54,18 @@ class Student::WorksController < Student::BaseController
     else
       render :edit
     end
+  end
+
+  def conclude
+    @work.concluded!
+
+    redirect_to student_work_path(@work), notice: 'Trabalho concluído.'
+  end
+
+  def restart
+    @work.in_progress!
+
+    redirect_to student_work_path(@work), notice: 'Trabalho reiniciado.'
   end
 
   def destroy

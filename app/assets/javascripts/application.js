@@ -98,6 +98,16 @@ var APPLICATION = (function(application){
     }
   }
 
+  var calculateFooterHeight = function() {
+    let footer = document.querySelector("footer")
+
+    if (footer){
+      let innerScreenHeight = window.innerHeight;
+
+      footer.style.top = `${innerScreenHeight - 45}px`;
+    }
+  }
+
   var application = {
     init: function(){
       delayedSearch()
@@ -105,6 +115,7 @@ var APPLICATION = (function(application){
       initializeSelect2()
       initializeTooltip()
       initializePopover()
+      calculateFooterHeight()
     }
   }
 

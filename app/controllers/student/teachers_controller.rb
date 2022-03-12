@@ -34,6 +34,6 @@ class Student::TeachersController < Student::BaseController
     works = Work.by_adivisor_or_co_advisor(@teacher).by_owner_or_member(current_user).distinct
 
     @works_advising = works.in_progress.page(params[:page])
-    @works_advised = works.complete.page(params[:page])
+    @works_advised = works.concluded.page(params[:page])
   end
 end
