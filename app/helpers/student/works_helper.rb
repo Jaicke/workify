@@ -3,7 +3,7 @@ module Student::WorksHelper
     badges = {
       not_started: '<span class="badge badge-secondary">Não iniciado</span>',
       in_progress: '<span class="badge badge-info">Em progresso</span>',
-      complete: '<span class="badge badge-success">Completo</span>'
+      concluded: '<span class="badge badge-success">Concluído</span>'
     }
 
     badges[status.to_sym].html_safe

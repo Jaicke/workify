@@ -10,6 +10,13 @@
               Opções
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <%=
+                if @work.in_progress?
+                  nav_dropdown_item "Concluir", conclude_student_work_path(@work), '', data: { confirm: 'Tem certeza que deseja concluir?' }, method: :patch
+                elsif @work.concluded?
+                  nav_dropdown_item "Reiniciar", restart_student_work_path(@work), '', data: { confirm: 'Tem certeza que deseja reiniciar?' }, method: :patch
+                end
+              %>
               <%= nav_dropdown_item "Editar", edit_student_work_path(@work), '', remote: true  %>
               <%= nav_dropdown_item "Excluir", student_work_path(@work), '', data: { confirm: 'Tem certeza que deseja remover?' }, method: :delete %>
             </div>

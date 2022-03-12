@@ -2,7 +2,7 @@ class Work < ApplicationRecord
   acts_as_paranoid
   paginates_per 8
 
-  enum status: { not_started: 0, in_progress: 1, complete: 2 }
+  enum status: { not_started: 0, in_progress: 1, concluded: 2 }
 
   belongs_to :created_by, class_name: 'Student::User'
   belongs_to :advisor, class_name: 'Teacher::User', optional: true

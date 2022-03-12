@@ -28,6 +28,8 @@ Rails.application.routes.draw do
       get :events, on: :collection
     end
     resources :works, only: [:index, :new, :create, :edit, :update, :destroy, :show] do
+      patch :restart, on: :member
+      patch :conclude, on: :member
       resources :work_versions, on: :member, except: [:index, :destroy]
     end
     resources :reviews, only: [:index, :show, :new, :create, :edit, :update] do
