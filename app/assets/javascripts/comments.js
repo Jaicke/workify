@@ -41,10 +41,18 @@ var COMMENTS = (function(comments){
     })
   }
 
+  var showReplies = function(){
+    $('body').on('click', '.reply-count-link', function(){
+      let commentId = $(this).data('comment-id')
+      $(`.replies-${commentId}`).removeClass('d-none')
+    })
+  }
+
   var comments = {
     init: function(){
       toggleButtons()
       showReplyForm()
+      showReplies()
     }
   }
 

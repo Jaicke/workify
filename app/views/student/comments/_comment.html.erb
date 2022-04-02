@@ -17,7 +17,7 @@
         <div class="comment-replies">
           <span class="reply-link" data-parent-id="<%= comment.id %>">Responder</span>
           <% if comment.replies.any? %>
-            | <%= comment.replies.count %> resposta(s)
+            | <span class="reply-count-link" data-comment-id="<%= comment.id %>"><%= comment.replies.count %> resposta(s)</span>
           <% end %>
         </div>
 

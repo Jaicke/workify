@@ -1,4 +1,4 @@
-<div class="replies">
+<div class="replies-<%= comment.id %> d-none">
   <% comment.replies.last(10).each do |reply| %>
     <div class="reply d-flex mb-3">
       <div class="comment-author mt-3">

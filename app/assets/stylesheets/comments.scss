@@ -22,6 +22,10 @@
   text-align: justify;
 }
 
-.reply-link {
+.reply-link, .reply-count-link {
   cursor: pointer;
+}
+
+.reply-link:hover, .reply-count-link:hover {
+    text-decoration: underline;
 }
