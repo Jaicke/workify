@@ -1,0 +1,12 @@
+<%= form_with(url: teacher_comments_path) do |f| %>
+  <div class="d-flex mb-2 mt-3">
+    <%= image_tag url_for_profile_image(current_user), class: 'comment-author-avatar' %>
+    <%= f.hidden_field :commentable_id, value: commentable.id %>
+    <%= f.hidden_field :commentable_type, value: commentable.model_name %>
+    <%= f.text_area :body, class: 'ml-3 form-control', placeholder: 'Adicionar um comentário...', id: 'comment-input' %>
+  </div>
+  <div class="d-flex justify-content-end">
+    <button type="button" class="btn btn-outline-dark btn-rounded mb-3 d-none" id="comment-cancel">Cancelar</button>
+    <%= f.submit 'Comentar', class: 'btn btn-primary btn-rounded ml-2 mb-3 d-none', disabled: true, id: 'comment-submit' %>
+  </div>
+<% end %>

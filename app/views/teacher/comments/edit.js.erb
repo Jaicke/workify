@@ -1,0 +1,7 @@
+<% if @comment.errors.any? %>
+  <%= render 'layouts/shared/alert_errors_message', resource: @comment %>
+<% end %>
+
+$("#modal-window").find(".modal-title").html("Editar comentário");
+$("#modal-window").find(".modal-body").html("<%= j (render 'form_edit', path: teacher_comment_path(@comment)) %>");
+$("#modal-window").modal();

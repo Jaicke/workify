@@ -1,0 +1,15 @@
+<div class="<%= "reply-form-#{parent_id} flex-grow-1 d-none" %>">
+  <%= form_with(url: teacher_comments_path) do |f| %>
+    <div class="d-flex mb-2 mt-3">
+      <%= image_tag url_for_profile_image(current_user), class: 'comment-author-avatar' %>
+      <%= f.hidden_field :parent_id, value: parent_id %>
+      <%= f.hidden_field :commentable_id, value: commentable.id %>
+      <%= f.hidden_field :commentable_type, value: commentable.model_name %>
+
+      <%= f.text_area :body, class: 'ml-3 form-control', placeholder: 'Adicionar resposta...' %>
+    </div>
+    <div class="d-flex justify-content-end">
+      <%= f.submit 'Responder', class: 'btn btn-primary btn-rounded ml-2 mb-3' %>
+    </div>
+  <% end %>
+</div>

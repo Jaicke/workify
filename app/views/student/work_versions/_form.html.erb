@@ -9,8 +9,8 @@
   <% if ['new', 'create'].include?(params[:action]) %>
     <div class="form-row">
       <div class="form-group col-md-12">
-        <%= f.label :file %>
-        <%= f.file_field :file, class: "form-control", accept: 'application/pdf' %>
+        <%= f.label :file %> <small>(.docx, .doc, .pdf)</small>
+        <%= f.file_field :file, class: "form-control", accept: "application/pdf, .doc, .docx, application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document" %>
       </div>
     </div>
   <% end %>
