@@ -1,6 +1,8 @@
 <div class="box">
   <div class="content">
     <%= render 'teacher/works/shared/tabs' %>
+    <h3 class="d-flex justify-content-center mb-3"><%= @work_version.title %></h3>
     <%= render 'teacher/work_versions/shared/file' %>
+    <%= render 'teacher/comments/comments', commentable: @work_version %>
   </div>
 </div>
