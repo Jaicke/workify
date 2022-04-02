@@ -45,6 +45,8 @@ pt-BR:
     student/works:
       index: Trabalhos
       show: Detalhes do Trabalho
+    student/work_versions:
+      show: Versão
     student/discussions:
       index: Discussões
       show: Discussão

@@ -15,7 +15,7 @@
         <%= icon("fas", "ellipsis-h") %>
       </a>
       <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-        <%= nav_dropdown_item "Visualizar", student_work_work_version_path(work_id: @work.id, id: version.id), 'eye', remote: true %>
+        <%= nav_dropdown_item "Visualizar", student_work_work_version_path(work_id: @work.id, id: version.id), 'eye' %>
         <%= nav_dropdown_item "Editar", edit_student_work_work_version_path(work_id: @work.id, id: version.id), 'pen', remote: true %>
       </div>
     </li>

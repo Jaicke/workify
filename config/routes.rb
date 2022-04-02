@@ -43,6 +43,7 @@ Rails.application.routes.draw do
       end
     end
     resources :events, only: [:index, :new, :create, :show, :edit, :update, :destroy]
+    resources :comments, only: [:create, :destroy, :edit, :update]
   end
 
   namespace :teacher do

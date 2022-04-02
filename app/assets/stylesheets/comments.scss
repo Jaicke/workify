@@ -1,0 +1,27 @@
+.comment-author-avatar {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  max-width: none;
+}
+
+.comment-content {
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 30px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+  padding: 7px;
+  margin-top: 8px;
+  width: fit-content;
+}
+
+.comments {
+  border-top: 1px solid rgba(0, 0, 0, 0.26);
+  margin-top: 30px;
+}
+
+.comment-body {
+  word-break: break-word;
+  text-align: justify;
+}
+
+.reply-link {
+  cursor: pointer;
+}

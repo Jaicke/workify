@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_13_005350) do
+ActiveRecord::Schema.define(version: 2022_03_12_235146) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -70,6 +70,20 @@ ActiveRecord::Schema.define(version: 2022_02_13_005350) do
     t.bigint "college_id"
     t.index ["college_id"], name: "index_colleges_teacher_users_on_college_id"
     t.index ["user_id"], name: "index_colleges_teacher_users_on_user_id"
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.string "commentable_type"
+    t.bigint "commentable_id"
+    t.string "created_by_type"
+    t.bigint "created_by_id"
+    t.integer "parent_id"
+    t.boolean "edited", default: false
+    t.text "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id"
+    t.index ["created_by_type", "created_by_id"], name: "index_comments_on_created_by_type_and_created_by_id"
   end
 
   create_table "connections", force: :cascade do |t|
