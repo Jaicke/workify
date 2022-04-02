@@ -1,8 +1,12 @@
 class WorkVersion < ApplicationRecord
+  PERMITTED_FILE_CONTENT_TYPES = ['application/msword', 'application/pdf', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document']
+
   paginates_per 5
 
   belongs_to :work
   belongs_to :created_by, class_name: 'Student::User'
+
+  has_many :comments, class_name: 'Comment', foreign_key: :commentable
 
   validates :title, presence: true
   validates :title, uniqueness: { scope: :work }
@@ -30,6 +34,6 @@ class WorkVersion < ApplicationRecord
   end
 
   def file_content_type
-    errors.add(:file, 'deve ser um PDF') unless self.file.content_type == 'application/pdf'
+    errors.add(:file, 'com formato inválido.') unless PERMITTED_FILE_CONTENT_TYPES.include?(self.file.content_type)
   end
 end

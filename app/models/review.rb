@@ -8,6 +8,7 @@ class Review < ApplicationRecord
 
   has_many :approvals, class_name: 'Approval'
   has_many :review_events, class_name: 'ReviewEvent'
+  has_many :comments, class_name: 'Comment', foreign_key: :commentable
 
   validates :old_work_version, presence: true
   validates :new_work_version, presence: true
