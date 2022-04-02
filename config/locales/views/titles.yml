@@ -17,6 +17,8 @@ pt-BR:
     teacher/works:
       index: Trabalhos
       show: Detalhes do Trabalho
+    teacher/work_versions:
+      show: Versão
     teacher/discussions:
       index: Discussões
       show: Discussão

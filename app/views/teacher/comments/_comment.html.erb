@@ -1,0 +1,48 @@
+<div class="comment d-flex mb-3">
+  <div class="comment-author mt-3">
+    <span data-toggle="popover" data-placement="top" data-html="true" data-trigger='hover click' data-content="<%= "#{render 'layouts/shared/user_popover', user: comment.created_by}"%>">
+      <%= image_tag url_for_profile_image(comment.created_by), class: 'comment-author-avatar', style: 'cursor: pointer;' %>
+    </span>
+  </div>
+  <div class="d-flex justify-content-between flex-grow-1 ml-3 comment-content">
+    <div class="info d-flex w-100">
+      <div class="ml-3 w-100">
+        <strong><%= comment.created_by.label_name %></strong>
+        <span data-toggle="tooltip" data-placement="top", title="<%= "#{comment.created_at.strftime("%d/%m/%Y")} às #{comment.created_at.strftime("%H:%M")}" %>">
+          há
+          <%= time_ago_in_words(comment.created_at) %>
+        </span>
+        <div class="comment-body mt-3 mb-3"><%= comment.body %></div>
+        <small class="text-muted"><%= comment.edited? ? '(Editado)' : '' %></small>
+        <div class="comment-replies">
+          <span class="reply-link" data-parent-id="<%= comment.id %>">Responder</span>
+          <% if comment.replies.any? %>
+            | <%= comment.replies.count %> resposta(s)
+          <% end %>
+        </div>
+
+        <%= render 'teacher/comments/form_reply', parent_id: comment.id, commentable: comment.commentable %>
+        <%= render 'teacher/comments/replies', comment: comment %>
+      </div>
+    </div>
+
+
+    <div class="actions">
+      <% if comment.created_by == @current_user %>
+        <ul>
+          <li class="nav-item dropdown">
+            <a class="nav-link" href="#" id="navbarDropdownMenuLink" data-display="static" data-toggle="dropdown" aria-haspopup="false" aria-expanded="false" data-placement="top">
+              <%= icon("fas", "ellipsis-h") %>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+              <%= nav_dropdown_item "Editar", edit_teacher_comment_path(comment), 'pen', remote: true %>
+              <%= link_to teacher_comment_path(comment), method: :delete, class: "dropdown-item", data: { confirm: "Tem certeza que deseja remover?" } do %>
+                <%= icon("fas", "trash") %> Remover
+              <% end %>
+            </div>
+          </li>
+        </ul>
+      <% end %>
+    </div>
+  </div>
+</div>
