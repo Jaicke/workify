@@ -5,7 +5,7 @@ class Teacher::UsersController < Teacher::BaseController
     @user = Teacher::User.new(user_params)
     respond_to do |format|
       if @user.save
-        format.html { redirect_to sign_in_path }
+        format.html { redirect_to sign_in_path, notice: "Criado com sucesso." }
       else
         format.js
       end

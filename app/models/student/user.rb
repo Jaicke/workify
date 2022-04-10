@@ -8,16 +8,16 @@ class Student::User < ApplicationRecord
   belongs_to :college, optional: true
   belongs_to :course, optional: true
 
-  has_many :connections, foreign_key: :student_id
+  has_many :connections, foreign_key: :student_id, dependent: :destroy
   has_many :teachers, -> { includes(:connections).where(connections: { status: :accepted }) }, through: :connections
 
-  has_many :works, foreign_key: :created_by
-  has_many :reviews, foreign_key: :created_by
-  has_many :discussions, as: :created_by
-  has_many :discussion_answers, as: :created_by
-  has_many :notifications, as: :recipient
-  has_many :likes
-  has_many :events
+  has_many :works, foreign_key: :created_by, dependent: :destroy
+  has_many :reviews, foreign_key: :created_by, dependent: :destroy
+  has_many :discussions, as: :created_by, dependent: :destroy
+  has_many :discussion_answers, as: :created_by, dependent: :destroy
+  has_many :notifications, as: :recipient, dependent: :destroy
+  has_many :likes, dependent: :destroy
+  has_many :events, as: :created_by, dependent: :destroy
 
   has_one_attached :avatar
 
@@ -59,7 +59,7 @@ class Student::User < ApplicationRecord
   end
 
   def check_profile
-    self.first_login = true unless profile_completed?
+    self.first_login = true unless profile_completed? || new_record?
   end
 
   def generate_password_token!

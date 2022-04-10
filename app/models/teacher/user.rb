@@ -10,22 +10,26 @@ class Teacher::User < ApplicationRecord
   has_and_belongs_to_many :courses, class_name: 'Course'
   has_and_belongs_to_many :works_co_advising, class_name: 'Work'
 
-  has_many :works_advising, foreign_key: :advisor_id, class_name: 'Work'
+  has_many :works_advising, foreign_key: :advisor_id, class_name: 'Work', dependent: :destroy
 
-  has_many :connections, foreign_key: :teacher_id
+  has_many :connections, foreign_key: :teacher_id, dependent: :destroy
   has_many :students, -> { includes(:connections).where(connections: { status: :accepted }) }, through: :connections
 
   has_many :approvals, class_name: 'Approval', foreign_key: :teacher_id
-  has_many :discussions, as: :created_by
-  has_many :discussion_answers, as: :created_by
-  has_many :notifications, as: :recipient
-  has_many :likes
-  has_many :events
+  has_many :discussions, as: :created_by, dependent: :destroy
+  has_many :discussion_answers, as: :created_by, dependent: :destroy
+  has_many :notifications, as: :recipient, dependent: :destroy
+  has_many :likes, dependent: :destroy
+  has_many :events, dependent: :destroy
 
-  validates_uniqueness_of :email
-  validates_presence_of :first_name, :last_name, :email
-  validates_presence_of :colleges, :courses, on: :update
-  validates :whatsapp, numericality: { only_integer: true }, if: -> { whatsapp.present? }
+  with_options({ unless: :first_login }) do
+    validates_uniqueness_of :email
+    validates_presence_of :first_name, :last_name, :email
+    validates_presence_of :colleges, :courses, on: :update
+    validates :whatsapp, numericality: { only_integer: true }, if: -> { whatsapp.present? }
+  end
+
+  before_validation :check_profile
 
   scope :by_college, ->(college_id) { includes(:colleges).where(colleges: { id: college_id }) }
   scope :by_course, ->(course_id) { includes(:courses).where(courses: { id: course_id }) }
@@ -53,7 +57,7 @@ class Teacher::User < ApplicationRecord
   end
 
   def check_profile
-    self.first_login = true unless profile_completed?
+    self.first_login = true unless profile_completed? || new_record?
   end
 
   def generate_password_token!
