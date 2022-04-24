@@ -8,8 +8,8 @@ pt-BR:
       event:
         title: Título
         description: Descrição
-        event_date: Data do evento
+        event_date: Data
         color: Cor
         online: Online
-        room_url: Link da sala
+        room_url: Link
         place: Lugar
