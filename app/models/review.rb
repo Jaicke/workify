@@ -6,9 +6,9 @@ class Review < ApplicationRecord
   belongs_to :old_work_version, class_name: 'WorkVersion', optional: true
   belongs_to :new_work_version, class_name: 'WorkVersion', optional: true
 
-  has_many :approvals, class_name: 'Approval'
-  has_many :review_events, class_name: 'ReviewEvent'
-  has_many :comments, class_name: 'Comment', foreign_key: :commentable
+  has_many :approvals, dependent: :destroy, class_name: 'Approval'
+  has_many :review_events, dependent: :destroy, class_name: 'ReviewEvent'
+  has_many :comments, dependent: :destroy, class_name: 'Comment', foreign_key: :commentable
 
   validates :old_work_version, presence: true
   validates :new_work_version, presence: true

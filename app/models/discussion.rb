@@ -4,7 +4,7 @@ class Discussion < ApplicationRecord
   belongs_to :work
   belongs_to :created_by, polymorphic: true
 
-  has_many :discussion_answers
+  has_many :discussion_answers, dependent: :destroy
   has_many :notifications, as: :notifiable, dependent: :destroy
 
   validates :title, :body, presence: true

@@ -6,7 +6,7 @@ class WorkVersion < ApplicationRecord
   belongs_to :work
   belongs_to :created_by, class_name: 'Student::User'
 
-  has_many :comments, class_name: 'Comment', foreign_key: :commentable
+  has_many :comments, dependent: :destroy, class_name: 'Comment', foreign_key: :commentable
 
   validates :title, presence: true
   validates :title, uniqueness: { scope: :work }

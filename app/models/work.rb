@@ -8,10 +8,10 @@ class Work < ApplicationRecord
   belongs_to :advisor, class_name: 'Teacher::User', optional: true
 
   has_many :group_members, class_name: 'GroupMember', inverse_of: :work
-  has_many :work_versions
-  has_many :reviews
-  has_many :discussions
-  has_many :events
+  has_many :work_versions, dependent: :destroy
+  has_many :reviews, dependent: :destroy
+  has_many :discussions, dependent: :destroy
+  has_many :events, dependent: :destroy
 
   has_and_belongs_to_many :co_advisors, class_name: 'Teacher::User'
 
