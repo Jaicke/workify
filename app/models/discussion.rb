@@ -5,6 +5,7 @@ class Discussion < ApplicationRecord
   belongs_to :created_by, polymorphic: true
 
   has_many :discussion_answers
+  has_many :notifications, as: :notifiable, dependent: :destroy
 
   validates :title, :body, presence: true
   validate :tags_quantity
