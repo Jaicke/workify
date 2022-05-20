@@ -8,7 +8,7 @@ class Teacher::WorkVersionsController < Teacher::BaseController
   private
 
   def fetch_work_version
-    @work_version = @work.work_versions.find(params[:id])
+    @work_version = @work.current_version
   end
 
   def fetch_work
