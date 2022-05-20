@@ -70,7 +70,7 @@ Rails.application.routes.draw do
       get :events, on: :collection
     end
     resources :works, only: [:index, :show] do
-      resources :work_versions, on: :member, only: :show
+      get :current_version, to: 'work_versions#show'
     end
     resources :reviews, only: [:index, :show] do
       patch :approve, on: :member
