@@ -6,7 +6,7 @@
     <%= f.text_area :body, class: 'ml-3 form-control', placeholder: 'Adicionar um comentário...', id: 'comment-input' %>
   </div>
   <div class="d-flex justify-content-end">
-    <button type="button" class="btn btn-outline-dark btn-rounded mb-3 d-none" id="comment-cancel">Cancelar</button>
-    <%= f.submit 'Comentar', class: 'btn btn-primary btn-rounded ml-2 mb-3 d-none', disabled: true, id: 'comment-submit' %>
+    <button type="button" class="btn btn-outline-danger btn-rounded mb-3 d-none" id="comment-cancel">Cancelar</button>
+    <%= f.submit 'Comentar', class: 'btn btn-dark btn-rounded ml-2 mb-3 d-none', disabled: true, id: 'comment-submit' %>
   </div>
 <% end %>
