@@ -21,8 +21,10 @@ var NOTIFICATIONS = (function(notifications){
   }
 
   var markAllAsRead = function(){
-    $('.notification-card').each(function(){
-      readNotification($(this))
+    $('body').on('click', '.notification-icon', function(){
+      $('.notification-card').each(function(){
+        readNotification($(this))
+      });
     });
   }
 
