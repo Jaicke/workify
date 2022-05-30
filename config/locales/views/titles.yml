@@ -19,6 +19,7 @@ pt-BR:
       show: Detalhes do Trabalho
     teacher/work_versions:
       show: Versão
+      current_version: Versão Atual
     teacher/discussions:
       index: Discussões
       show: Discussão
