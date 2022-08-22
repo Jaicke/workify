@@ -9,14 +9,18 @@ indirect: true
 inheritance: false
 markup: true
 notation: simple
-orientation: horizontal
+orientation: vertical
 polymorphism: false
 sort: true
 warn: true
-title: Diagrama de Entidade e Relacionamento
+title: false
 exclude: "Ckeditor::Asset, ActiveStorage::Blob, ActiveStorage::Attachment"
 only: null
 only_recursion_depth: null
 prepend_primary: false
 cluster: false
 splines: spline
+fonts:
+ normal: "Arial"
+ bold: "Arial Bold"
+ italic: "Arial Italic"
