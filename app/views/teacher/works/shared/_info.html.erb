@@ -31,6 +31,6 @@
 
 <% if @work.current_version.present? %>
   <div class="view-work-button">
-    <%= link_to "Visualizar versão atual", teacher_work_work_version_path(work_id: @work.id, id: @work.current_version.id), class: 'btn btn-info' %>
+    <%= link_to "Visualizar", teacher_work_current_version_path(work_id: @work.id), class: 'btn btn-info' %>
   </div>
 <% end %>

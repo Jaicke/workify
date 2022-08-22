@@ -7,7 +7,7 @@ var TEACHERS = (function(teachers){
       let teacherId = $(this).attr('data-id')
 
       $.ajax({
-        url: `https://${location.host}/student/teachers/${teacherId}/send_connection`,
+        url: `${location.protocol}//${location.host}/student/teachers/${teacherId}/send_connection`,
         dataType: 'html',
         type: 'post',
         success: function(){

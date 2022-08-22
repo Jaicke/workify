@@ -260,7 +260,6 @@ ActiveRecord::Schema.define(version: 2022_03_12_235146) do
     t.boolean "current", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.datetime "deleted_at"
   end
 
   create_table "works", force: :cascade do |t|

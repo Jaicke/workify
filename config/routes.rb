@@ -71,6 +71,7 @@ Rails.application.routes.draw do
     end
     resources :works, only: [:index, :show] do
       resources :work_versions, on: :member, only: :show
+      get :current_version, to: 'work_versions#current_version'
     end
     resources :reviews, only: [:index, :show] do
       patch :approve, on: :member
