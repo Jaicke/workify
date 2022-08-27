@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_12_235146) do
+ActiveRecord::Schema.define(version: 2022_08_27_210310) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -276,6 +276,29 @@ ActiveRecord::Schema.define(version: 2022_03_12_235146) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "approvals", "reviews"
+  add_foreign_key "approvals", "teacher_users", column: "teacher_id"
+  add_foreign_key "colleges_teacher_users", "colleges"
+  add_foreign_key "colleges_teacher_users", "teacher_users", column: "user_id"
+  add_foreign_key "comments", "comments", column: "parent_id"
   add_foreign_key "connections", "student_users", column: "student_id"
   add_foreign_key "connections", "teacher_users", column: "teacher_id"
+  add_foreign_key "courses_teacher_users", "courses"
+  add_foreign_key "courses_teacher_users", "teacher_users", column: "user_id"
+  add_foreign_key "discussion_answers", "discussions"
+  add_foreign_key "events", "works"
+  add_foreign_key "group_members", "works"
+  add_foreign_key "review_events", "reviews"
+  add_foreign_key "reviews", "student_users", column: "created_by_id"
+  add_foreign_key "reviews", "work_versions", column: "new_work_version_id"
+  add_foreign_key "reviews", "work_versions", column: "old_work_version_id"
+  add_foreign_key "reviews", "works"
+  add_foreign_key "student_users", "colleges"
+  add_foreign_key "student_users", "courses"
+  add_foreign_key "teacher_users_works", "teacher_users", column: "user_id"
+  add_foreign_key "teacher_users_works", "works"
+  add_foreign_key "work_versions", "student_users", column: "created_by_id"
+  add_foreign_key "work_versions", "works"
+  add_foreign_key "works", "student_users", column: "created_by_id"
+  add_foreign_key "works", "teacher_users", column: "advisor_id"
 end
