@@ -1,7 +1,7 @@
 require 'fileutils'
 require 'csv'
 
-namespace :tcc do
+namespace :workify do
   namespace :colleges do
     desc "Loads all colleges from data/colleges.csv"
     task load: :environment do
