@@ -80,6 +80,6 @@ test:
 #
 production:
   <<: *default
-  database: tcc_production
-  username: tcc
+  database: workify-production
+  username: postgres
   password: <%= ENV['TCC_DATABASE_PASSWORD'] %>
