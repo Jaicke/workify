@@ -17,7 +17,7 @@ module ApplicationCable
     end
 
     def fetch_user
-      session = cookies.encrypted['_tcc_session']
+      session = cookies.encrypted['_workify_session']
 
       return Student::User.find_by(id: session['student_user_id']) if session['student_user_id'].present?
 
